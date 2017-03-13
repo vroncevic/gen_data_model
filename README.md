@@ -19,7 +19,12 @@ DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-	py_util modules are build blocks for python applications.
+	sys
+	os.path
+	datetime
+	os.chmod
+	string.Template
+	py_util         https://github.com/vroncevic/py_util
 
 COPYRIGHT AND LICENCE
 
