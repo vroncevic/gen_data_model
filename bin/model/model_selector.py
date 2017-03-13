@@ -59,7 +59,5 @@ class ModelSelector(object):
 		:rtype: str or NoneType
 		"""
 		if model_name:
-			file_name = "{0}{1}".format("model_", model_name.lower())
-		else:
-			return None
-		return "{0}{1}".format(file_name, ".py")
+			return "model_{0}{1}".format(model_name.lower(), ".py")
+		return None

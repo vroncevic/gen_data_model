@@ -52,7 +52,6 @@ class WriteTemplate(object):
 			model_file.write(template.substitute(model))
 		except (IOError, KeyError, ValueError) as e:
 			print("I/O error({0}): {1}".format(e.errno, e.strerror))
-			model_file.close()
 		else:
 			model_file.close()
 			chmod(module_file, 0o666)
