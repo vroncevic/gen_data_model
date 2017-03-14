@@ -41,7 +41,7 @@ class ReadTemplate(object):
 
 	def read(self, model_type):
 		"""
-		:arg: model_type - Chosen type of model (Django/Flask/SQLAlchemy)
+		:param model_type: Chosen type of model (Django/Flask/SQLAlchemy)
 		:return: Template content
 		:rtype: str or NoneType
 		"""
@@ -53,7 +53,6 @@ class ReadTemplate(object):
 			model_content = model_file.read()
 		except IOError as e:
 			print("I/O error({0}): {1}".format(e.errno, e.strerror))
-			model_file.close()
 		else:
 			model_file.close()
 			return model_content

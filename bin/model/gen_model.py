@@ -30,7 +30,7 @@ class GenModel(ReadTemplate, WriteTemplate):
 
 	def gen_model(self, model_name):
 		"""
-		:arg: model_name - Parameter name (class and file name)
+		:param model_name: Parameter name (class and file name)
 		:type: str
 		:return: Boolean status
 		:rtype: bool

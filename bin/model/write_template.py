@@ -30,9 +30,9 @@ class WriteTemplate(object):
 
 	def write(self, model_content, model_name):
 		"""
-		:arg: model_content - Template content for model
+		:param model_content: Template content for model
 		:type: str
-		:arg: model_name - Parameter model name
+		:param model_name: Parameter model name
 		:type: str
 		:return: Boolean status
 		:rtype: bool

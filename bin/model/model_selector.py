@@ -14,10 +14,10 @@ class ModelSelector(object):
 	Selecting data model type for generating process.
 	It defines:
 		attribute:
-			Django - 0 (Django type model)
-			Flask - 1 (Flask type model)
-			SQLAlchemy - 2 (SQLAlchemy type model)
-			Cancel - 3 (Cancel option)
+			Django - 0 Django type model
+			Flask - 1 Flask type model
+			SQLAlchemy - 2 SQLAlchemy type model
+			Cancel - 3 Cancel option
 			__MODELS - Dictionary with option/description
 		method:
 			choose_model - Selecting type of model for generating process
@@ -53,7 +53,7 @@ class ModelSelector(object):
 	@classmethod
 	def format_name(cls, model_name):
 		"""
-		:arg: model_name - Postfix name for data model file
+		:param model_name: Postfix name for data model file
 		:type:
 		:return: File name with extension (lower case)
 		:rtype: str or NoneType
