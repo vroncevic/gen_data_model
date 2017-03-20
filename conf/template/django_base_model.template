@@ -8,19 +8,22 @@ __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
-from .model_base import Base
+from django.db import models
 
-class ${mod}(Base):
+class Base(models.Model):
 	"""
-	Define class ${mod} with attribute(s) and method(s).
-	Model ${mod}.
+	Define class Base with attribute(s) and method(s).
+	Abstract Data Model.
 	It defines:
 		attribute:
-			
+			created - Date of creation
+			modified - Date of modification
 		method:
 			None
 	"""
-
 	class Meta:
-		db_table = "${modlc}"
+		abstract = True
+
+	created = models.DateTimeField(auto_now_add=True)
+	modified = models.DateTimeField(auto_now=True)
 

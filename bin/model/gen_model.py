@@ -18,7 +18,7 @@ class GenModel(ReadTemplate, WriteTemplate):
 	Generate data model by template and parameters.
 	It defines:
 		attribute:
-			None
+			__status - Operation status
 		method:
 			__init__ - Initial constructor
 			gen_model - Generate module file with data model
@@ -27,6 +27,7 @@ class GenModel(ReadTemplate, WriteTemplate):
 	def __init__(self):
 		ReadTemplate.__init__(self)
 		WriteTemplate.__init__(self)
+		self.__status = False
 
 	def gen_model(self, model_name):
 		"""
@@ -35,12 +36,14 @@ class GenModel(ReadTemplate, WriteTemplate):
 		:return: Boolean status
 		:rtype: bool
 		"""
-		status = False
 		model_type = ModelSelector.choose_model()
 		if model_type != ModelSelector.Cancel:
-			model_content = self.read(model_type)
-			if model_content:
-				status = self.write(model_content, model_name)
+			model_content, model_base_content = self.read(model_type)
+			if model_content and model_base_content:
+				status_model = self.write(model_content, model_name)
+				status_base_model = self.write(model_base_content, "base")
+				if status_model and status_base_model:
+					self.__status = True
 		else:
-			status = True
-		return status
+			self.__status = True
+		return self.__status

@@ -12,6 +12,7 @@ from datetime import date
 from os import getcwd, chmod
 from string import Template
 from model.model_selector import ModelSelector
+from app.error.lookup_error import AppError
 
 class WriteTemplate(object):
 	"""
@@ -19,14 +20,14 @@ class WriteTemplate(object):
 	Write a template content with parameters to a file.
 	It defines:
 		attribute:
-			None
+			__status - Operation status
 		method:
 			__init__ - Initial constructor
 			write - Write a template content with parameters to a file
 	"""
 
 	def __init__(self):
-		pass
+		self.__status = False
 
 	def write(self, model_content, model_name):
 		"""
@@ -37,23 +38,28 @@ class WriteTemplate(object):
 		:return: Boolean status
 		:rtype: bool
 		"""
-		current_dir = getcwd()
-		file_name = ModelSelector.format_name(model_name)
-		module_file = "{0}/{1}".format(current_dir, file_name)
-		model = {
-			"mod" : "{0}".format(model_name),
-			"modlc": "{0}".format(model_name.lower()),
-			"date" : "{0}".format(date.today()),
-			"year" : "{0}".format(date.today().year)
-		}
 		try:
-			template = Template(model_content)
-			model_file = open(module_file, "w")
-			model_file.write(template.substitute(model))
+			file_name = ModelSelector.format_name(model_name)
+			if file_name:
+				current_dir = getcwd()
+				module_file = "{0}/{1}".format(current_dir, file_name)
+				model_params = {
+					"mod": "{0}".format(model_name),
+					"modlc": "{0}".format(model_name.lower()),
+					"date": "{0}".format(date.today()),
+					"year": "{0}".format(date.today().year)
+				}
+				template = Template(model_content)
+				model_file = open(module_file, "w")
+				model_file.write(template.substitute(model_params))
+			else:
+				raise AppError("missing module name!")
 		except (IOError, KeyError, ValueError) as e:
 			print("I/O error({0}): {1}".format(e.errno, e.strerror))
+		except AppError as e2:
+			print("Error: ", e2)
 		else:
 			model_file.close()
 			chmod(module_file, 0o666)
-			return True
-		return False
+			self.__status = True
+		return self.__status

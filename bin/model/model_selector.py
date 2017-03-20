@@ -54,7 +54,7 @@ class ModelSelector(object):
 	def format_name(cls, model_name):
 		"""
 		:param model_name: Postfix name for data model file
-		:type:
+		:type: str
 		:return: File name with extension (lower case)
 		:rtype: str or NoneType
 		"""
