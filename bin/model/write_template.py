@@ -29,7 +29,7 @@ try:
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ###################################
+    sys.exit(msg)  # Force close python ATS ##################################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2017, Free software to use and distributed it."
@@ -47,13 +47,14 @@ class WriteTemplate(object):
         Write a template content with parameters to a file.
         It defines:
             attribute:
+                __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
-                __status - Operation status
             method:
                 __init__ - Initial constructor
                 write - Write a template content with parameters to a file
     """
 
+    __slots__ = ('VERBOSE')
     VERBOSE = 'MODEL::WRITE_TEMPLATE'
 
     def __init__(self, verbose=False):
@@ -61,9 +62,11 @@ class WriteTemplate(object):
             Initial constructor
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
+            :excptions: None
         """
-        cls = WriteTemplate
-        verbose_message(cls.VERBOSE, verbose, 'Initial write data model')
+        verbose_message(
+            WriteTemplate.VERBOSE, verbose, 'Initial write data model'
+        )
 
     def write(self, model_content, model_name, verbose=False):
         """
@@ -75,8 +78,9 @@ class WriteTemplate(object):
             :type verbose: <bool>
             :return: Boolean status
             :rtype: <bool>
+            :excptions: ATSBadCallError | ATSTypeError
         """
-        cls, func, status = WriteTemplate, stack()[0][3], False
+        func, status = stack()[0][3], False
         model_cont_txt = 'Argument: expected model_content <str> object'
         model_cont_msg = "{0} {1} {2}".format('def', func, model_cont_txt)
         model_name_txt = 'Argument: expected model_content <str> object'
@@ -101,7 +105,7 @@ class WriteTemplate(object):
             }
             template = Template(model_content)
             verbose_message(
-                cls.VERBOSE, verbose, 'Write data model', module_file
+                WriteTemplate.VERBOSE, verbose, 'Write data model', module_file
             )
             try:
                 with open(module_file, 'w') as model_file:
@@ -110,6 +114,9 @@ class WriteTemplate(object):
             except AttributeError:
                 pass
             else:
-                verbose_message(cls.VERBOSE, verbose, 'Write data model done')
+                verbose_message(
+                    WriteTemplate.VERBOSE, verbose, 'Write data model done'
+                )
                 status = True
         return True if status else False
+

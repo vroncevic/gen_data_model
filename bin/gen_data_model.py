@@ -29,7 +29,7 @@ try:
     from ats_utilities.console_io.success import success_message
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ###################################
+    sys.exit(msg)  # Force close python ATS ##################################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2017, Free software to use and distributed it."
@@ -41,12 +41,13 @@ __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
 
-class GenDataModel(CfgBase, GenModel):
+class GenDataModel(CfgBase):
     """
         Define class GenDataModel with attribute(s) and method(s).
         Load a settings, create an interface and run operation(s).
         It defines:
             attribute:
+                __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
                 __CONFIG - Configuration file path
                 __OPS - Tool options (list)
@@ -55,28 +56,27 @@ class GenDataModel(CfgBase, GenModel):
                 process - Process and run tool option
     """
 
+    __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
     VERBOSE = 'GEN_DATA_MODEL'
-    __CONFIG = "/../conf/gen_data_model.cfg"
-    __OPS = ["-g", "--gen", "-h", "--version"]
+    __CONFIG = '/../conf/gen_data_model.cfg'
+    __OPS = ['-g', '--gen', '-h', '--version']
 
     def __init__(self, verbose=False):
         """
             Loading configuration and setting argument options.
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
+            :exceptions: None
         """
-        cls = GenDataModel
-        verbose_message(cls.VERBOSE, verbose, 'Initial configuration')
+        verbose_message(GenDataModel.VERBOSE, verbose, 'Initial configuration')
         module_dir = Path(__file__).resolve().parent
-        base_config_file = "{0}{1}".format(module_dir, cls.__CONFIG)
+        base_config_file = "{0}{1}".format(module_dir, GenDataModel.__CONFIG)
         CfgBase.__init__(self, base_config_file, verbose=verbose)
-        tool_status = self.get_tool_status(verbose=verbose)
-        if tool_status:
+        if self.tool_status:
             self.add_new_option(
-                cls.__OPS[0], cls.__OPS[1], dest="mod",
+                GenDataModel.__OPS[0], GenDataModel.__OPS[1], dest="mod",
                 help="generate data model"
             )
-            GenModel.__init__(self, verbose=verbose)
 
     def process(self, verbose=False):
         """
@@ -85,14 +85,14 @@ class GenDataModel(CfgBase, GenModel):
             :type verbose: <bool>
             :return: True (success) | False
             :rtype: <bool>
+            :exceptions: None
         """
-        cls, status = GenDataModel, False
-        tool_status = self.get_tool_status(verbose=verbose)
-        if tool_status:
+        status = False
+        if self.tool_status:
             self.show_base_info(verbose=verbose)
             if len(sys.argv) > 1:
                 op = sys.argv[1]
-                if op not in cls.__OPS:
+                if op not in GenDataModel.__OPS:
                     sys.argv = []
                     sys.argv.append("-h")
             else:
@@ -103,28 +103,20 @@ class GenDataModel(CfgBase, GenModel):
             model_path = "{0}/{1}".format(current_dir, model)
             model_exists = Path(model_path).exists()
             if num_of_args == 1 and opts.mod and not model_exists:
+                generator, gen_status = GenModel(verbose=verbose), False
                 message = "{0} {1} [{2}]".format(
-                    "[{0}]".format(self.get_ats_name(verbose=verbose)),
-                    'Generating data model',
-                    opts.mod
+                    "[{0}]".format(self.name), 'Generating model', opts.mod
                 )
                 print(message)
-                gen_model_process = self.gen_model("{0}".format(opts.mod))
-                if gen_model_process:
-                    success_message(
-                        self.get_ats_name(verbose=verbose), 'Done\n'
-                    )
+                gen_status = generator.gen_model("{0}".format(opts.mod))
+                if gen_status:
+                    success_message(self.name, 'Done\n')
                     status = True
                 else:
-                    error_message(
-                        self.get_ats_name(verbose=verbose),
-                        'Failed to process and run option'
-                    )
+                    error_message(self.name, 'Failed to generate model')
             else:
-                error_message(
-                    self.get_ats_name(verbose=verbose),
-                    'model already exist in current directory'
-                )
+                error_message(self.name, 'model already exist !')
         else:
             error_message('[gen_data_model]', 'Tool is not operational')
         return True if status else False
+

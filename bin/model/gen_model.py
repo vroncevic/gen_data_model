@@ -30,10 +30,10 @@ try:
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ###################################
+    sys.exit(msg)  # Force close python ATS ##################################
 
 __author__ = "Vladimir Roncevic"
-__copyright__ = "Copyright 2017, Free software to use and distributed it."
+__copyright__ = "Copyright 2018, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
 __license__ = "GNU General Public License (GPL)"
 __version__ = "1.0.0"
@@ -42,18 +42,21 @@ __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
 
-class GenModel(ReadTemplate, WriteTemplate):
+class GenModel(object):
     """
         Define class GenModel with attribute(s) and method(s).
         Generate data model by template and parameters.
         It defines:
             attribute:
                 VERBOSE - Console text indicator for current process-phase
+                __reader - Reader API
+                __writter - Writer API
             method:
                 __init__ - Initial constructor
                 gen_model - Generate module file with data model
     """
 
+    __slots__ = ('VERBOSE', '__reader', '__writter')
     VERBOSE = 'MODEL::GEN_MODEL'
 
     def __init__(self, verbose=False):
@@ -61,11 +64,11 @@ class GenModel(ReadTemplate, WriteTemplate):
             Initial constructor
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
+            :exceptions: None
         """
-        cls = GenModel
-        verbose_message(cls.VERBOSE, verbose, 'Initial data model')
-        ReadTemplate.__init__(self, verbose=verbose)
-        WriteTemplate.__init__(self, verbose=verbose)
+        verbose_message(GenModel.VERBOSE, verbose, 'Initial data model')
+        self.__reader = ReadTemplate(verbose=verbose)
+        self.__writter = WriteTemplate(verbose=verbose)
 
     def gen_model(self, model_name, verbose=False):
         """
@@ -78,7 +81,7 @@ class GenModel(ReadTemplate, WriteTemplate):
             :rtype: <bool>
             :exceptions: ATSBadCallError | ATSTypeError
         """
-        cls, func, status = GenModel, stack()[0][3], False
+        func, status = stack()[0][3], False
         model_txt = 'Argument: expected model_name <str> object'
         model_msg = "{0} {1} {2}".format('def', func, model_txt)
         if model_name is None or not model_name:
@@ -86,18 +89,21 @@ class GenModel(ReadTemplate, WriteTemplate):
         if not isinstance(model_name, str):
             raise ATSTypeError(model_msg)
         verbose_message(
-            cls.VERBOSE, verbose, 'Generating data model', model_name
+            GenModel.VERBOSE, verbose, 'Generating data model', model_name
         )
         model_type = ModelSelector.choose_model()
         if model_type == ModelSelector.Cancel:
             status = True
         else:
-            model_content, model_base_content = self.read(
+            model_content, model_base_content = self.__reader.read(
                 model_type, verbose=verbose
             )
             if model_content and model_base_content:
-                status_model = self.write(model_content, model_name)
-                status_base_model = self.write(model_base_content, 'base')
-                if status_model and status_base_model:
+                status_of_generation = [
+                    self.__writter.write(model_content, model_name),
+                    self.__writter.write(model_base_content, 'base')
+                ]
+                if all(status_of_generation):
                     status = True
         return True if status else False
+
