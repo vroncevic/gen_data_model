@@ -18,7 +18,7 @@ cp -R ~/gen_data_model/log/   /root/scripts/gen_data_model/ver.1.0/
 
 This module requires these other modules and libraries:
 
-    * py_util    https://github.com/vroncevic/py_util
+* ats_utilities https://vroncevic.github.io/ats_utilities
 
 ### COPYRIGHT AND LICENCE
 

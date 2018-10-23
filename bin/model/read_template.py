@@ -25,7 +25,7 @@ try:
     from ats_utilities.console_io.verbose import verbose_message
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ###################################
+    sys.exit(msg)  # Force close python ATS ##################################
 
 
 __author__ = "Vladimir Roncevic"
@@ -44,6 +44,7 @@ class ReadTemplate(object):
         Read a model template file and return a content.
         It defines:
             attribute:
+                __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
                 __TEMPLATE_DIR - Prefix path to templates
                 __TEMPLATES - Models (python module templates)
@@ -53,8 +54,14 @@ class ReadTemplate(object):
                 read - Read templates and return a string representations
     """
 
+    __slots__ = (
+        'VERBOSE',
+        '__TEMPLATE_DIR',
+        '__TEMPLATES',
+        '__template'
+    )
     VERBOSE = 'MODEL::READ_TEMPLATE'
-    __TEMPLATE_DIR = "/../../conf/template"
+    __TEMPLATE_DIR = '/../../conf/template'
     __TEMPLATES = {
         ModelSelector.Django: [
             'django.template', 'django_base_model.template'
@@ -72,10 +79,15 @@ class ReadTemplate(object):
             Loading configuration and setting argument options.
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
+            :excptions: None
         """
-        cls, module_dir = ReadTemplate, Path(__file__).parent
-        self.__template = "{0}{1}".format(module_dir, cls.__TEMPLATE_DIR)
-        verbose_message(cls.VERBOSE, verbose, 'Initial template dir path')
+        module_dir = Path(__file__).parent
+        self.__template = "{0}{1}".format(
+            module_dir, ReadTemplate.__TEMPLATE_DIR
+        )
+        verbose_message(
+            ReadTemplate.VERBOSE, verbose, 'Initial template dir path'
+        )
 
     def read(self, model_type, verbose=False):
         """
@@ -86,23 +98,35 @@ class ReadTemplate(object):
             :type verbose: <bool>
             :return: Template contents (base data model and data model)
             :rtype: <str> | <NoneType>
+            :excptions: ATSBadCallError | ATSTypeError
         """
-        cls, model_content, model_base_content = ReadTemplate, None, None
-        if model_type in cls.__TEMPLATES.keys():
-            templates = cls.__TEMPLATES[model_type]
+        func, model_content, model_base_content = stack()[0][3], None, None
+        model_type_txt = 'Argument: expected model_content <str> object'
+        model_type_msg = "{0} {1} {2}".format('def', func, model_type_txt)
+        if model_type is None:
+            raise ATSBadCallError(model_type_msg)
+        if not isinstance(model_type, int):
+            raise ATSTypeError(model_type_msg)
+        if model_type in ReadTemplate.__TEMPLATES.keys():
+            templates = ReadTemplate.__TEMPLATES[model_type]
             template = "{0}/{1}".format(self.__template, templates[0])
-            verbose_message(cls.VERBOSE, verbose, 'Loading template')
+            verbose_message(ReadTemplate.VERBOSE, verbose, 'Loading template')
             template_base = "{0}/{1}".format(self.__template, templates[1])
-            verbose_message(cls.VERBOSE, verbose, 'Loading template base')
+            verbose_message(
+                ReadTemplate.VERBOSE, verbose, 'Loading template base'
+            )
             try:
                 with open(template, 'r') as model_file:
                     model_content = model_file.read()
-                verbose_message(cls.VERBOSE, verbose, 'Loading template done')
+                verbose_message(
+                    ReadTemplate.VERBOSE, verbose, 'Loading template done'
+                )
                 with open(template_base, 'r') as model_base_file:
                     model_base_content = model_base_file.read()
                 verbose_message(
-                    cls.VERBOSE, verbose, 'Loading template base done'
+                    ReadTemplate.VERBOSE, verbose, 'Loading template base done'
                 )
             except AttributeError:
                 pass
         return model_content, model_base_content
+

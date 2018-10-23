@@ -26,7 +26,7 @@ try:
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ###################################
+    sys.exit(msg)  # Force close python ATS ##################################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2018, Free software to use and distributed it."
@@ -73,6 +73,7 @@ class ModelSelector(object):
             :type verbose: <bool>
             :return: Type of data model (0, 1, 2)
             :rtype: <int>
+            :exceptions: None
         """
         verbose_message(cls.VERBOSE, verbose, 'Loading options')
         print("\n {0}".format('model option list:'))
@@ -95,6 +96,7 @@ class ModelSelector(object):
             :type: <str>
             :return: File name with extension (lower case) | None
             :rtype: <str> | <NoneType>
+            :exceptions: ATSBadCallError | ATSTypeError
         """
         func, model_name_final = stack()[0][3], None
         model_name_txt = 'Argument: expected model_name <str> object'
@@ -106,3 +108,4 @@ class ModelSelector(object):
         if model_name:
             model_name_final = "model_{0}{1}".format(model_name.lower(), '.py')
         return model_name_final
+
