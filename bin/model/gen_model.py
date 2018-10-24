@@ -48,6 +48,7 @@ class GenModel(object):
         Generate data model by template and parameters.
         It defines:
             attribute:
+                __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
                 __reader - Reader API
                 __writter - Writer API

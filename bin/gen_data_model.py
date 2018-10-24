@@ -117,6 +117,6 @@ class GenDataModel(CfgBase):
             else:
                 error_message(self.name, 'model already exist !')
         else:
-            error_message('[gen_data_model]', 'Tool is not operational')
+            error_message('gen_data_model', 'Tool is not operational')
         return True if status else False
 

@@ -44,6 +44,7 @@ class ModelSelector(object):
         Selecting data model type for generating process.
         It defines:
             attribute:
+                __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
                 Django - 0 Django type model
                 Flask - 1 Flask type model
@@ -55,9 +56,16 @@ class ModelSelector(object):
                 format_name - Formatting name for file module
     """
 
+    __slots__ = (
+        'VERBOSE',
+        'Django',
+        'Flask',
+        'SQLAlchemy',
+        'Cancel',
+        '__MODELS'
+    )
     VERBOSE = 'MODEL::MODEL_SELECTOR'
     Django, Flask, SQLAlchemy, Cancel = range(4)
-
     __MODELS = {
         Django: "Django model",
         Flask: "Flask model",
