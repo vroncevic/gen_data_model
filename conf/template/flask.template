@@ -1,4 +1,29 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
+# ${mod}.py
+# Copyright (C) ${year} Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+# <project_name> is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# <project_name> is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+
+import sys
+
+try:
+    from app_server.models.model_base import Base
+except ImportError as e:
+    msg = "\n{0}\n{1}\n".format(__file__, e)
+    sys.exit(msg)  # Force close python ATS ##################################
+
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright ${year}, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
@@ -8,36 +33,45 @@ __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
-from app_server.models.model_base import Base
 
 class ${mod}(Base):
-	"""
-	Define class ${mod} with attribute(s) and method(s).
-	Model ${mod}.
-	It defines:
-		attribute:
-			
-		method:
-			__init__ - Initial constructor
-			get_id - Getting id
-			__repr__ - Printable representation of the ${mod}
-	"""
+    """
+        Define class ${mod} with attribute(s) and method(s).
+        Model ${mod}.
+        It defines:
+            attribute:
+                __tablename__ - Database table name
+                
+            method:
+                __init__ - Initial constructor
+                get_id - Getting id
+                __repr__ - Printable representation of the ${mod}
+    """
 
-	__tablename__ = "${modlc}"
+    __tablename__ = "${modlc}"
 
-	def __init__(self):
-		pass
+    def __init__(self, verbose=False):
+        """
+            Loading configuration and setting argument options.
+            :param verbose: Enable/disable verbose option
+            :type verbose: <bool>
+            :exceptions: None
+        """
+        pass
 
-	def get_id(self):
-		"""
-		:return: Getting id
-		:type: int
-		"""
-		return self.id
+    def get_id(self):
+        """
+            Getting id from table
+            :return: Getting id
+            :type: <int>
+        """
+        return self.id
 
-	def __repr__(self):
-		"""
-		:return: Printable representation of the ${mod}
-		:type: str
-		"""
-		pass
+    def __repr__(self):
+        """
+            Printable representation of the ${mod}
+            :return: Printable representation of the ${mod}
+            :type: <str>
+        """
+        pass
+

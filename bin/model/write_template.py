@@ -32,7 +32,7 @@ except ImportError as e:
     sys.exit(msg)  # Force close python ATS ##################################
 
 __author__ = "Vladimir Roncevic"
-__copyright__ = "Copyright 2017, Free software to use and distributed it."
+__copyright__ = "Copyright 2018, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
 __license__ = "GNU General Public License (GPL)"
 __version__ = "1.0.0"
@@ -55,7 +55,7 @@ class WriteTemplate(object):
     """
 
     __slots__ = ('VERBOSE')
-    VERBOSE = 'MODEL::WRITE_TEMPLATE'
+    VERBOSE = 'GEN_DATA_MODEL::MODEL::WRITE_TEMPLATE'
 
     def __init__(self, verbose=False):
         """
@@ -65,7 +65,7 @@ class WriteTemplate(object):
             :excptions: None
         """
         verbose_message(
-            WriteTemplate.VERBOSE, verbose, 'Initial write data model'
+            WriteTemplate.VERBOSE, verbose, 'Initial writer'
         )
 
     def write(self, model_content, model_name, verbose=False):
@@ -80,7 +80,7 @@ class WriteTemplate(object):
             :rtype: <bool>
             :excptions: ATSBadCallError | ATSTypeError
         """
-        func, status = stack()[0][3], False
+        func, status, file_name = stack()[0][3], False, None
         model_cont_txt = 'Argument: expected model_content <str> object'
         model_cont_msg = "{0} {1} {2}".format('def', func, model_cont_txt)
         model_name_txt = 'Argument: expected model_content <str> object'
@@ -107,16 +107,10 @@ class WriteTemplate(object):
             verbose_message(
                 WriteTemplate.VERBOSE, verbose, 'Write data model', module_file
             )
-            try:
+            if template:
                 with open(module_file, 'w') as model_file:
                     model_file.write(template.substitute(model_params))
                     chmod(module_file, 0o666)
-            except AttributeError:
-                pass
-            else:
-                verbose_message(
-                    WriteTemplate.VERBOSE, verbose, 'Write data model done'
-                )
-                status = True
+                    status = True
         return True if status else False
 

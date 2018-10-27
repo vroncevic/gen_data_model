@@ -51,14 +51,14 @@ class GenModel(object):
                 __slots__ - Setting class slots
                 VERBOSE - Console text indicator for current process-phase
                 __reader - Reader API
-                __writter - Writer API
+                __writer - Writer API
             method:
                 __init__ - Initial constructor
                 gen_model - Generate module file with data model
     """
 
-    __slots__ = ('VERBOSE', '__reader', '__writter')
-    VERBOSE = 'MODEL::GEN_MODEL'
+    __slots__ = ('VERBOSE', '__reader', '__writer')
+    VERBOSE = 'GEN_DATA_MODEL::MODEL::GEN_MODEL'
 
     def __init__(self, verbose=False):
         """
@@ -69,7 +69,7 @@ class GenModel(object):
         """
         verbose_message(GenModel.VERBOSE, verbose, 'Initial data model')
         self.__reader = ReadTemplate(verbose=verbose)
-        self.__writter = WriteTemplate(verbose=verbose)
+        self.__writer = WriteTemplate(verbose=verbose)
 
     def gen_model(self, model_name, verbose=False):
         """
@@ -82,7 +82,8 @@ class GenModel(object):
             :rtype: <bool>
             :exceptions: ATSBadCallError | ATSTypeError
         """
-        func, status = stack()[0][3], False
+        func, status, model_type = stack()[0][3], False, None
+        model_content, model_base_content = None, None
         model_txt = 'Argument: expected model_name <str> object'
         model_msg = "{0} {1} {2}".format('def', func, model_txt)
         if model_name is None or not model_name:
@@ -101,8 +102,8 @@ class GenModel(object):
             )
             if model_content and model_base_content:
                 status_of_generation = [
-                    self.__writter.write(model_content, model_name),
-                    self.__writter.write(model_base_content, 'base')
+                    self.__writer.write(model_content, model_name),
+                    self.__writer.write(model_base_content, 'base')
                 ]
                 if all(status_of_generation):
                     status = True
