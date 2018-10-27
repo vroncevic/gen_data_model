@@ -1,4 +1,30 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
+# base_model.py
+# Copyright (C) ${year} Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+# <project_name> is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# <project_name> is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+
+import sys
+
+try:
+    from sqlalchemy.ext.declarative import declarative_base
+    from sqlalchemy import Column, Integer, DateTime
+except ImportError as e:
+    msg = "\n{0}\n{1}\n".format(__file__, e)
+    sys.exit(msg)  # Force close python ATS ##################################
+
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright ${year}, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
@@ -8,27 +34,25 @@ __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, DateTime
-
 ModelBase = declarative_base()
 
+
 class Base(ModelBase):
-	"""
-	Define class Base with attribute(s) and method(s).
-	Abstract Data Model.
-	It defines:
-		attribute:
-			id - Table id
-			created - Date of creation
-			modified - Date of modification
-		method:
-			None
-	"""
+    """
+        Define class Base with attribute(s) and method(s).
+        Abstract Data Model.
+        It defines:
+            attribute:
+                __abstract__ - Setting abstract
+                id - Table id
+                created - Date of creation
+                modified - Date of modification
+            method:
+                None
+    """
 
-	__abstract__ = True
-
-	id = Column(Integer, primary_key=True, autoincrement=True)
-	created = Column(DateTime, nullable=False)
-	modified = Column(DateTime, nullable=False)
+    __abstract__ = True
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    created = Column(DateTime, nullable=False)
+    modified = Column(DateTime, nullable=False)
 

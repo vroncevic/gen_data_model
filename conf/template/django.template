@@ -1,4 +1,29 @@
-# encoding: utf-8
+# -*- coding: utf-8 -*-
+# ${mod}.py
+# Copyright (C) ${year} Vladimir Roncevic <elektron.ronca@gmail.com>
+#
+# <project_name> is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# <project_name> is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+
+import sys
+
+try:
+    from .model_base import Base
+except ImportError as e:
+    msg = "\n{0}\n{1}\n".format(__file__, e)
+    sys.exit(msg)  # Force close python ATS ##################################
+
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright ${year}, Free software to use and distributed it."
 __credits__ = ["Vladimir Roncevic"]
@@ -8,19 +33,27 @@ __maintainer__ = "Vladimir Roncevic"
 __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
-from .model_base import Base
 
 class ${mod}(Base):
-	"""
-	Define class ${mod} with attribute(s) and method(s).
-	Model ${mod}.
-	It defines:
-		attribute:
-			
-		method:
-			None
-	"""
+    """
+        Define class ${mod} with attribute(s) and method(s).
+        Model ${mod}.
+        It defines:
+        attribute:
+            None
+        method:
+            None
+    """
 
-	class Meta:
-		db_table = "${modlc}"
+    class Meta:
+        """
+            Define class Meta with attribute(s) and method(s).
+            Meta class.
+            It defines:
+            attribute:
+                db_table - Database table
+            method:
+                None
+        """
+        db_table = "${modlc}"
 

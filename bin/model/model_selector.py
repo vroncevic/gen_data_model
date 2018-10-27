@@ -64,7 +64,7 @@ class ModelSelector(object):
         'Cancel',
         '__MODELS'
     )
-    VERBOSE = 'MODEL::MODEL_SELECTOR'
+    VERBOSE = 'GEN_DATA_MODEL::MODEL::MODEL_SELECTOR'
     Django, Flask, SQLAlchemy, Cancel = range(4)
     __MODELS = {
         Django: "Django model",

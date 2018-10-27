@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 # gen_data_model.py
 # Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
 #
@@ -69,8 +69,8 @@ class GenDataModel(CfgBase):
             :exceptions: None
         """
         verbose_message(GenDataModel.VERBOSE, verbose, 'Initial configuration')
-        module_dir = Path(__file__).resolve().parent
-        base_config_file = "{0}{1}".format(module_dir, GenDataModel.__CONFIG)
+        current_dir = Path(__file__).resolve().parent
+        base_config_file = "{0}{1}".format(current_dir, GenDataModel.__CONFIG)
         CfgBase.__init__(self, base_config_file, verbose=verbose)
         if self.tool_status:
             self.add_new_option(

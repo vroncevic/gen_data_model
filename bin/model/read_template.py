@@ -17,11 +17,14 @@
 #
 
 import sys
+from inspect import stack
+from os.path import isdir
 
 try:
     from pathlib import Path
 
     from model.model_selector import ModelSelector
+    from ats_utilities.config.file_checking import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
 except ImportError as e:
     msg = "\n{0}\n{1}\n".format(__file__, e)
@@ -38,7 +41,7 @@ __email__ = "elektron.ronca@gmail.com"
 __status__ = "Updated"
 
 
-class ReadTemplate(object):
+class ReadTemplate(FileChecking):
     """
         Define class ReadTemplate with attribute(s) and method(s).
         Read a model template file and return a content.
@@ -48,7 +51,7 @@ class ReadTemplate(object):
                 VERBOSE - Console text indicator for current process-phase
                 __TEMPLATE_DIR - Prefix path to templates
                 __TEMPLATES - Models (python module templates)
-                __template - Absolute file path of template
+                __template_dir - Absolute file path of template dir
             method:
                 __init__ - Initial constructor
                 read - Read templates and return a string representations
@@ -58,9 +61,9 @@ class ReadTemplate(object):
         'VERBOSE',
         '__TEMPLATE_DIR',
         '__TEMPLATES',
-        '__template'
+        '__template_dir'
     )
-    VERBOSE = 'MODEL::READ_TEMPLATE'
+    VERBOSE = 'GEN_DATA_MODEL::MODEL::READ_TEMPLATE'
     __TEMPLATE_DIR = '/../../conf/template'
     __TEMPLATES = {
         ModelSelector.Django: [
@@ -81,13 +84,19 @@ class ReadTemplate(object):
             :type verbose: <bool>
             :excptions: None
         """
-        module_dir = Path(__file__).parent
-        self.__template = "{0}{1}".format(
-            module_dir, ReadTemplate.__TEMPLATE_DIR
-        )
         verbose_message(
-            ReadTemplate.VERBOSE, verbose, 'Initial template dir path'
+            ReadTemplate.VERBOSE, verbose, 'Initial reader'
         )
+        FileChecking.__init__(self, verbose=verbose)
+        current_dir = Path(__file__).parent
+        template_dir = "{0}{1}".format(
+            current_dir, ReadTemplate.__TEMPLATE_DIR
+        )
+        check_template_dir = isdir(template_dir)
+        if check_template_dir:
+            self.__template_dir = template_dir
+        else:
+            self.__template_dir = None
 
     def read(self, model_type, verbose=False):
         """
@@ -96,7 +105,7 @@ class ReadTemplate(object):
             :type: <int>
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
-            :return: Template contents (base data model and data model)
+            :return: Template contents (base data model and data model) | None
             :rtype: <str> | <NoneType>
             :excptions: ATSBadCallError | ATSTypeError
         """
@@ -109,13 +118,13 @@ class ReadTemplate(object):
             raise ATSTypeError(model_type_msg)
         if model_type in ReadTemplate.__TEMPLATES.keys():
             templates = ReadTemplate.__TEMPLATES[model_type]
-            template = "{0}/{1}".format(self.__template, templates[0])
+            template = "{0}/{1}".format(self.__template_dir, templates[0])
             verbose_message(ReadTemplate.VERBOSE, verbose, 'Loading template')
-            template_base = "{0}/{1}".format(self.__template, templates[1])
+            template_base = "{0}/{1}".format(self.__template_dir, templates[1])
             verbose_message(
                 ReadTemplate.VERBOSE, verbose, 'Loading template base'
             )
-            try:
+            if template and template_base:
                 with open(template, 'r') as model_file:
                     model_content = model_file.read()
                 verbose_message(
@@ -126,7 +135,5 @@ class ReadTemplate(object):
                 verbose_message(
                     ReadTemplate.VERBOSE, verbose, 'Loading template base done'
                 )
-            except AttributeError:
-                pass
         return model_content, model_base_content
 
