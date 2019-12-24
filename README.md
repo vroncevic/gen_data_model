@@ -20,6 +20,34 @@ This module requires these other modules and libraries:
 
 * ats_utilities https://vroncevic.github.io/ats_utilities
 
+### Tool structure
+
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/python-tool-docs/gen_data_model.png)
+
+```
+├── bin
+│   ├── gen_data_model.py
+│   ├── gen_data_model_run.py
+│   └── model
+│       ├── gen_model.py
+│       ├── __init__.py
+│       ├── model_selector.py
+│       ├── read_template.py
+│       └── write_template.py
+├── conf
+│   ├── gen_data_model.cfg
+│   ├── gen_data_model_util.cfg
+│   └── template
+│       ├── django_base_model.template
+│       ├── django.template
+│       ├── flask_base_model.template
+│       ├── flask.template
+│       ├── sqlalchemy_base_model.template
+│       └── sqlalchemy.template
+└── log
+    └── gen_data_model.log
+```
+
 ### COPYRIGHT AND LICENCE
 
 Copyright (C) 2018 by https://vroncevic.github.io/gen_data_model/
