@@ -1,5 +1,12 @@
 # Generate Data Model (Django/Flask/SQLAlchemy).
 
+gen_data_model is toolset for generation data model for:
+* Django FWK
+* Flask FWK
+* SQLAlchemy FWK
+
+Developed in python code: 100%.
+
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
@@ -20,9 +27,19 @@ This module requires these other modules and libraries:
 
 * ats_utilities https://vroncevic.github.io/ats_utilities
 
+### GENERATION FLOW OF DATA MODEL
+
+Base flow of generation process:
+
+![alt tag](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/python-tool-docs/gen_data_model_flow.png)
+
 ### Tool structure
 
+gen_data_model is based on Template mechanism:
+
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/python-tool-docs/gen_data_model.png)
+
+Generator structure:
 
 ```
 ├── bin
