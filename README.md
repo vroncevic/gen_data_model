@@ -33,7 +33,7 @@ Base flow of generation process:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/python-tool-docs/gen_data_model_flow.png)
 
-### Tool structure
+### TOOL STRUCTURE
 
 gen_data_model is based on Template mechanism:
 
