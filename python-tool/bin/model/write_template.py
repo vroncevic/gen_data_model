@@ -1,20 +1,24 @@
 # -*- coding: UTF-8 -*-
-# write_template.py
-# Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-#
-# gen_data_model is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# gen_data_model is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program. If not, see <http://www.gnu.org/licenses/>.
-#
+
+"""
+ Module
+     write_template.py
+ Copyright
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+     gen_data_model is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     gen_data_model is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Define class WriteTemplate with attribute(s) and method(s).
+     Write a template content with parameters to a file.
+"""
 
 import sys
 from datetime import date
@@ -24,12 +28,13 @@ from inspect import stack
 
 try:
     from model.model_selector import ModelSelector
+
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as e:
-    msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ##################################
+except ImportError as error:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2018, Free software to use and distributed it."
@@ -48,13 +53,15 @@ class WriteTemplate(object):
         It defines:
             attribute:
                 __slots__ - Setting class slots
+                __check_status - Check status
                 VERBOSE - Console text indicator for current process-phase
             method:
                 __init__ - Initial constructor
+                get_check_status - Getter for check status
                 write - Write a template content with parameters to a file
     """
 
-    __slots__ = ('VERBOSE')
+    __slots__ = ('VERBOSE', '__check_status')
     VERBOSE = 'GEN_DATA_MODEL::MODEL::WRITE_TEMPLATE'
 
     def __init__(self, verbose=False):
@@ -67,6 +74,16 @@ class WriteTemplate(object):
         verbose_message(
             WriteTemplate.VERBOSE, verbose, 'Initial writer'
         )
+        self.__check_status = False
+
+    def get_check_status(self):
+        """
+            Getter for check status
+            :return: Getting check status
+            :rtype: <bool>
+            :excptions: None
+        """
+        return self.__check_status
 
     def write(self, model_content, model_name, verbose=False):
         """
@@ -93,6 +110,8 @@ class WriteTemplate(object):
             raise ATSBadCallError(model_name_msg)
         if not isinstance(model_name, str):
             raise ATSTypeError(model_name_msg)
+        verbose_message(WriteTemplate.VERBOSE, verbose, 'Writer template')
+        self.__check_status = True
         file_name = ModelSelector.format_name(model_name)
         if file_name:
             current_dir = getcwd()
@@ -113,4 +132,3 @@ class WriteTemplate(object):
                     chmod(module_file, 0o666)
                     status = True
         return True if status else False
-

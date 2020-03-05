@@ -3,4 +3,3 @@
 """
     Generate data model.
 """
-
