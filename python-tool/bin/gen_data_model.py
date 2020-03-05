@@ -1,20 +1,24 @@
 # -*- coding: utf-8 -*-
-# gen_data_model.py
-# Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-#
-# gen_data_model is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# gen_data_model is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program. If not, see <http://www.gnu.org/licenses/>.
-#
+
+"""
+ Module
+     gen_data_model.py
+ Copyright
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+     gen_data_model is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     gen_data_model is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Define class GenDataModel with attribute(s) and method(s).
+     Load a settings, create an interface and run operation(s).
+"""
 
 import sys
 from os import getcwd
@@ -22,14 +26,15 @@ from os import getcwd
 try:
     from pathlib import Path
 
-    from ats_utilities.cfg_base import CfgBase
     from model.gen_model import GenModel
+
+    from ats_utilities.cfg_base import CfgBase
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
-except ImportError as e:
-    msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ##################################
+except ImportError as error:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2017, Free software to use and distributed it."
@@ -91,8 +96,8 @@ class GenDataModel(CfgBase):
         if self.tool_status:
             self.show_base_info(verbose=verbose)
             if len(sys.argv) > 1:
-                op = sys.argv[1]
-                if op not in GenDataModel.__OPS:
+                operation = sys.argv[1]
+                if operation not in GenDataModel.__OPS:
                     sys.argv = []
                     sys.argv.append("-h")
             else:
@@ -104,10 +109,11 @@ class GenDataModel(CfgBase):
             model_exists = Path(model_path).exists()
             if num_of_args == 1 and opts.mod and not model_exists:
                 generator, gen_status = GenModel(verbose=verbose), False
-                message = "{0} {1} [{2}]".format(
-                    "[{0}]".format(self.name), 'Generating model', opts.mod
+                print(
+                    "{0} {1} [{2}]".format(
+                        "[{0}]".format(self.name), 'Generating model', opts.mod
+                    )
                 )
-                print(message)
                 gen_status = generator.gen_model("{0}".format(opts.mod))
                 if gen_status:
                     success_message(self.name, 'Done\n')
@@ -119,4 +125,3 @@ class GenDataModel(CfgBase):
         else:
             error_message('gen_data_model', 'Tool is not operational')
         return True if status else False
-

@@ -1,20 +1,24 @@
 # -*- coding: UTF-8 -*-
-# gen_model.py
-# Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
-#
-# gen_data_model is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# gen_data_model is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program. If not, see <http://www.gnu.org/licenses/>.
-#
+
+"""
+ Module
+     gen_model.py
+ Copyright
+     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+     gen_data_model is free software: you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation, either version 3 of the License, or
+     (at your option) any later version.
+     gen_data_model is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     See the GNU General Public License for more details.
+     You should have received a copy of the GNU General Public License along
+     with this program. If not, see <http://www.gnu.org/licenses/>.
+ Info
+     Define class GenModel with attribute(s) and method(s).
+     Generate data model by template and parameters.
+"""
 
 import sys
 from inspect import stack
@@ -23,14 +27,13 @@ try:
     from model.read_template import ReadTemplate
     from model.write_template import WriteTemplate
     from model.model_selector import ModelSelector
+
     from ats_utilities.console_io.verbose import verbose_message
-    from ats_utilities.console_io.error import error_message
-    from ats_utilities.console_io.success import success_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as e:
-    msg = "\n{0}\n{1}\n".format(__file__, e)
-    sys.exit(msg)  # Force close python ATS ##################################
+except ImportError as error:
+    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = "Vladimir Roncevic"
 __copyright__ = "Copyright 2018, Free software to use and distributed it."
@@ -54,6 +57,8 @@ class GenModel(object):
                 __writer - Writer API
             method:
                 __init__ - Initial constructor
+                get_reader - Getter for reader object
+                get_writer - Getter for writer object
                 gen_model - Generate module file with data model
     """
 
@@ -70,6 +75,24 @@ class GenModel(object):
         verbose_message(GenModel.VERBOSE, verbose, 'Initial data model')
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(verbose=verbose)
+
+    def get_reader(self):
+        """
+            Getter for reader object.
+            :return: Read Template object
+            :rtype: <ReadTemplate>
+            :exceptions: None
+        """
+        return self.__reader
+
+    def get_writer(self):
+        """
+            Getter for writer object.
+            :return: Write Template object
+            :rtype: <WriteTemplate>
+            :exceptions: None
+        """
+        return self.__writer
 
     def gen_model(self, model_name, verbose=False):
         """
@@ -93,7 +116,7 @@ class GenModel(object):
         verbose_message(
             GenModel.VERBOSE, verbose, 'Generating data model', model_name
         )
-        model_type = ModelSelector.choose_model()
+        model_type = ModelSelector.choose_model(verbose=verbose)
         if model_type == ModelSelector.Cancel:
             status = True
         else:
@@ -102,10 +125,13 @@ class GenModel(object):
             )
             if model_content and model_base_content:
                 status_of_generation = [
-                    self.__writer.write(model_content, model_name),
-                    self.__writer.write(model_base_content, 'base')
+                    self.__writer.write(
+                        model_content, model_name, verbose=verbose
+                    ),
+                    self.__writer.write(
+                        model_base_content, 'base', verbose=verbose
+                    )
                 ]
                 if all(status_of_generation):
                     status = True
         return True if status else False
-
