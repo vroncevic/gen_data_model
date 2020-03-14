@@ -21,4 +21,5 @@ MANIFEST
 *.manifest
 *.spec
 .python-version
-.idea
+.idea/
+.vscode/
