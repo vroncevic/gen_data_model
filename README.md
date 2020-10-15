@@ -28,6 +28,8 @@ other information that should be provided before the modules are installed.
 
 ### Installation
 
+![Install Python2 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python2%20Package%20gen_data_model/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python3%20Package%20gen_data_model/badge.svg?branch=master)
+
 Navigate to release **[page](https://github.com/vroncevic/gen_data_model/releases/tag/v1.0)** download and extract release archive.
 
 To install **gen_data_model** type the following:
