@@ -21,9 +21,8 @@ other information that should be provided before the modules are installed.
 - [Installation](#installation)
 - [Dependencies](#dependencies)
 - [Generation flow of data model](#generation-flow-of-data-model)
-- [Library structure](#library-structure)
-- [Docs](#docs)
-- [Copyright and Licence](#copyright-and-licence)
+- [Tool structure](#tool-structure)
+- [Copyright and licence](#copyright-and-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
