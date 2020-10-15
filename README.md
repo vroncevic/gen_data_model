@@ -22,6 +22,7 @@ other information that should be provided before the modules are installed.
 - [Dependencies](#dependencies)
 - [Generation flow of data model](#generation-flow-of-data-model)
 - [Tool structure](#tool-structure)
+- [Docs](#docs)
 - [Copyright and licence](#copyright-and-licence)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -157,6 +158,14 @@ Generator structure:
 └── run/
     └── gen_data_model_run.py
 ```
+
+### Docs
+
+[![Documentation Status](https://readthedocs.org/projects/gen_data_model/badge/?version=latest)](https://gen_data_model.readthedocs.io/projects/gen_data_model/en/latest/?badge=latest)
+
+More documentation and info at:
+* [gen_data_model.readthedocs.io](https://gen_data_model.readthedocs.io/en/latest/)
+* [www.python.org](https://www.python.org/)
 
 ### Copyright and licence
 
