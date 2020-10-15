@@ -158,6 +158,14 @@ Generator structure:
     └── gen_data_model_run.py
 ```
 
+### Docs
+
+[![Documentation Status](https://readthedocs.org/projects/gen_data_model/badge/?version=latest)](https://gen_data_model.readthedocs.io/projects/gen_data_model/en/latest/?badge=latest)
+
+More documentation and info at:
+* [gen_data_model.readthedocs.io](https://gen_data_model.readthedocs.io/en/latest/)
+* [www.python.org](https://www.python.org/)
+
 ### Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
