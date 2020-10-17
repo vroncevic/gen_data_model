@@ -30,9 +30,11 @@ RUN rm -f requirements.txt
 RUN mkdir /gen_data_model/
 COPY gen_data_model /gen_data_model/
 COPY setup.py /
+COPY README.md /
 RUN find /gen_data_model/ -name "*.editorconfig" -type f -exec rm -Rf {} \;
 RUN python setup.py install_lib && python setup.py install_egg_info && python setup.py install_data
 RUN rm -rf /gen_data_model/
 RUN rm -f setup.py
+RUN rm -f README.md
 RUN chmod -R 755 /usr/local/lib/python2.7/dist-packages/gen_data_model/
 RUN tree /usr/local/lib/python2.7/dist-packages/gen_data_model/
