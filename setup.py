@@ -39,7 +39,7 @@ with open(join(THIS_DIR, 'README.md')) as readme:
 setup(
     name='gen_data_model',
     version='1.1.0',
-    description='Python App/Tool/Script Utilities',
+    description='Data model generator for Django, Flask, SQLAlchemy',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
     url='https://vroncevic.github.io/gen_data_model/',
