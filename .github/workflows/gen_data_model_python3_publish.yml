@@ -1,11 +1,9 @@
 name: Install Python3 Package gen_data_model
-
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
