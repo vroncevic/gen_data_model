@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
  Module
      ${mod}.py
  Copyright
@@ -18,28 +18,28 @@
  Info
      Define class ${mod} with attribute(s) and method(s).
      Model ${mod}.
-"""
+'''
 
 import sys
 
 try:
     from app_server.models.model_base import Base
 except ImportError as error:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
-__author__ = "Vladimir Roncevic"
-__copyright__ = "Copyright ${year}, Free software to use and distributed it."
-__credits__ = ["Vladimir Roncevic"]
-__license__ = "GNU General Public License (GPL)"
-__version__ = "1.0.0"
-__maintainer__ = "Vladimir Roncevic"
-__email__ = "elektron.ronca@gmail.com"
-__status__ = "Updated"
+__author__ = 'Vladimir Roncevic'
+__copyright__ = 'Copyright ${year}, Free software to use and distributed it.'
+__credits__ = ['Vladimir Roncevic']
+__license__ = 'GNU General Public License (GPL)'
+__version__ = '1.0.0'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
 
 
 class ${mod}(Base):
-    """
+    '''
         Define class ${mod} with attribute(s) and method(s).
         Model ${mod}.
         It defines:
@@ -50,33 +50,33 @@ class ${mod}(Base):
                 | __init__ - Initial constructor
                 | get_id - Getting id
                 | __repr__ - Printable representation of the ${mod}
-    """
+    '''
 
-    __tablename__ = "${modlc}"
+    __tablename__ = '${modlc}'
 
     def __init__(self, verbose=False):
-        """
+        '''
             Loading configuration and setting argument options.
 
             :param verbose: Enable/disable verbose option
             :type verbose: <bool>
             :exceptions: None
-        """
+        '''
         pass
 
     def get_id(self):
-        """
+        '''
             Getting id from table
             :return: Getting id
             :type: <int>
-        """
+        '''
         return self.id
 
     def __repr__(self):
-        """
+        '''
             Printable representation of the ${mod}.
 
             :return: Printable representation of the ${mod}
             :type: <str>
-        """
+        '''
         pass

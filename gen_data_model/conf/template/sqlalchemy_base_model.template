@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
  Module
      base_model.py
  Copyright
@@ -18,7 +18,7 @@
  Info
      Define class Base with attribute(s) and method(s).
      Abstract Data Model.
-"""
+'''
 
 import sys
 
@@ -26,23 +26,23 @@ try:
     from sqlalchemy.ext.declarative import declarative_base
     from sqlalchemy import Column, Integer, DateTime
 except ImportError as error:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
-__author__ = "Vladimir Roncevic"
-__copyright__ = "Copyright ${year}, Free software to use and distributed it."
-__credits__ = ["Vladimir Roncevic"]
-__license__ = "GNU General Public License (GPL)"
-__version__ = "1.0.0"
-__maintainer__ = "Vladimir Roncevic"
-__email__ = "elektron.ronca@gmail.com"
-__status__ = "Updated"
+__author__ = 'Vladimir Roncevic'
+__copyright__ = 'Copyright ${year}, Free software to use and distributed it.'
+__credits__ = ['Vladimir Roncevic']
+__license__ = 'GNU General Public License (GPL)'
+__version__ = '1.0.0'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
 
 ModelBase = declarative_base()
 
 
 class Base(ModelBase):
-    """
+    '''
         Define class Base with attribute(s) and method(s).
         Abstract Data Model.
         It defines:
@@ -54,7 +54,7 @@ class Base(ModelBase):
                 | modified - Date of modification
             :methods:
                 | None
-    """
+    '''
 
     __abstract__ = True
     id = Column(Integer, primary_key=True, autoincrement=True)

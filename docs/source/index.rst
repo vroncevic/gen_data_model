@@ -60,7 +60,11 @@ To install **gen_data_model** type the following:
     python setup.py install_egg_info
     python setup.py install_data
 
-You can use Docker to create image/container.
+You can use Docker to create image/container, or You can use pip to install:
+
+.. code-block:: bash
+
+    pip install gen_data_model
 
 |GitHub docker checker|
 
@@ -84,19 +88,20 @@ Generation flow:
 
 .. image:: https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_flow.png
 
-Library structure
-------------------
+Tool structure
+---------------
 
 **gen_data_model** is based on OOP:
 
 .. image:: https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model.png
 
-Code structure:
+Generator structure:
 
 .. code-block:: bash
 
-    .
+    gen_data_model/
     ├── conf/
+    │   ├── data_model_types.yaml
     │   ├── gen_data_model.cfg
     │   ├── gen_data_model_util.cfg
     │   └── template/
@@ -104,13 +109,12 @@ Code structure:
     │       ├── django.template
     │       ├── flask_base_model.template
     │       ├── flask.template
-    │       ├── SQLAlchemy_base_model.template
-    │       └── SQLAlchemy.template
+    │       ├── sqlalchemy_base_model.template
+    │       └── sqlalchemy.template
     ├── __init__.py
     ├── log/
     │   └── gen_data_model.log
-    ├── model/
-    │   ├── gen_model.py
+    ├── pro/
     │   ├── __init__.py
     │   ├── model_selector.py
     │   ├── read_template.py

@@ -1,3 +1,5 @@
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_logo.png" width="25%">
+
 # Generate Data Model (Django/Flask/SQLAlchemy)
 
 **gen_data_model** is tool generator of data model for:
@@ -19,6 +21,9 @@ other information that should be provided before the modules are installed.
 **Table of Contents**
 
 - [Installation](#installation)
+    - [Install using pip](#install-using-pip)
+    - [Install using setuptools](#install-using-setuptools)
+    - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
 - [Generation flow of data model](#generation-flow-of-data-model)
 - [Tool structure](#tool-structure)
@@ -31,83 +36,37 @@ other information that should be provided before the modules are installed.
 
 ![Install Python2 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python2%20Package%20gen_data_model/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python3%20Package%20gen_data_model/badge.svg?branch=master)
 
-Navigate to release **[page](https://github.com/vroncevic/gen_data_model/releases/tag/v1.0)** download and extract release archive.
+Currently there are three ways to install tool:
+* Install process based on pip
+* Install process based on setup.py (setuptools)
+* Install process based on docker mechanism
 
-To install **gen_data_model** type the following:
+##### Install using pip
 
+Python package is located at **[pypi.org](https://pypi.org/project/gen_data_model/)**.
+
+You can install by using pip
+```
+pip install gen_data_model
+```
+
+##### Install using setuptools
+
+Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive.
+
+To install modules, locate and run setup.py, type the following:
 ```
 tar xvzf gen_data_model-x.y.z.tar.gz
 cd gen_data_model-x.y.z
 pip install -r requirements.txt
-```
-
-Install lib process
-```
 python setup.py install_lib
-running install_lib
-running build_py
-creating build
-creating build/lib.linux-x86_64-2.7
-creating build/lib.linux-x86_64-2.7/gen_data_model
-copying gen_data_model/__init__.py -> build/lib.linux-x86_64-2.7/gen_data_model
-creating build/lib.linux-x86_64-2.7/gen_data_model/model
-copying gen_data_model/model/__init__.py -> build/lib.linux-x86_64-2.7/gen_data_model/model
-copying gen_data_model/model/write_template.py -> build/lib.linux-x86_64-2.7/gen_data_model/model
-copying gen_data_model/model/gen_model.py -> build/lib.linux-x86_64-2.7/gen_data_model/model
-copying gen_data_model/model/read_template.py -> build/lib.linux-x86_64-2.7/gen_data_model/model
-copying gen_data_model/model/model_selector.py -> build/lib.linux-x86_64-2.7/gen_data_model/model
-creating /usr/local/lib/python2.7/dist-packages/gen_data_model
-creating /usr/local/lib/python2.7/dist-packages/gen_data_model/model
-copying build/lib.linux-x86_64-2.7/gen_data_model/model/__init__.py -> /usr/local/lib/python2.7/dist-packages/gen_data_model/model
-copying build/lib.linux-x86_64-2.7/gen_data_model/model/write_template.py -> /usr/local/lib/python2.7/dist-packages/gen_data_model/model
-copying build/lib.linux-x86_64-2.7/gen_data_model/model/gen_model.py -> /usr/local/lib/python2.7/dist-packages/gen_data_model/model
-copying build/lib.linux-x86_64-2.7/gen_data_model/model/read_template.py -> /usr/local/lib/python2.7/dist-packages/gen_data_model/model
-copying build/lib.linux-x86_64-2.7/gen_data_model/model/model_selector.py -> /usr/local/lib/python2.7/dist-packages/gen_data_model/model
-copying build/lib.linux-x86_64-2.7/gen_data_model/__init__.py -> /usr/local/lib/python2.7/dist-packages/gen_data_model
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_data_model/model/__init__.py to __init__.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_data_model/model/write_template.py to write_template.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_data_model/model/gen_model.py to gen_model.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_data_model/model/read_template.py to read_template.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_data_model/model/model_selector.py to model_selector.pyc
-byte-compiling /usr/local/lib/python2.7/dist-packages/gen_data_model/__init__.py to __init__.pyc
-```
-
-Install lib egg info
-```
 python setup.py install_egg_info
-running install_egg_info
-running egg_info
-creating gen_data_model.egg-info
-writing requirements to gen_data_model.egg-info/requires.txt
-writing gen_data_model.egg-info/PKG-INFO
-writing top-level names to gen_data_model.egg-info/top_level.txt
-writing dependency_links to gen_data_model.egg-info/dependency_links.txt
-writing manifest file 'gen_data_model.egg-info/SOURCES.txt'
-reading manifest file 'gen_data_model.egg-info/SOURCES.txt'
-writing manifest file 'gen_data_model.egg-info/SOURCES.txt'
-Copying gen_data_model.egg-info to /usr/local/lib/python2.7/dist-packages/gen_data_model-1.0.0-py2.7.egg-info
-```
-
-Install lib data
-```
 python setup.py install_data
-running install_data
-copying gen_data_model/run/gen_data_model_run.py -> /usr/local/bin/
-creating /usr/local/lib/python2.7/dist-packages/gen_data_model/conf
-copying gen_data_model/conf/gen_data_model.cfg -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/
-copying gen_data_model/conf/gen_data_model_util.cfg -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/
-creating /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/template
-copying gen_data_model/conf/template/django.template -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/template/
-copying gen_data_model/conf/template/flask.template -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/template/
-copying gen_data_model/conf/template/sqlalchemy.template -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/template/
-copying gen_data_model/conf/template/django_base_model.template -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/template/
-copying gen_data_model/conf/template/flask_base_model.template -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/template/
-copying gen_data_model/conf/template/sqlalchemy_base_model.template -> /usr/local/lib/python2.7/dist-packages/gen_data_model/conf/template/
-creating /usr/local/lib/python2.7/dist-packages/gen_data_model/log
-copying gen_data_model/log/gen_data_model.log -> /usr/local/lib/python2.7/dist-packages/gen_data_model/log/
 ```
 
-Or You can use docker to create image/container.
+##### Install using docker
+
+You can use Dockerfile to create image/container.
 
 [![gen_data_model docker checker](https://github.com/vroncevic/gen_data_model/workflows/gen_data_model%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_data_model/actions?query=workflow%3A%22gen_data_model+docker+checker%22)
 
@@ -128,15 +87,16 @@ Base flow of generation process:
 
 ### Tool structure
 
-**gen_data_model** is based on Template mechanism:
+**gen_data_model** is based on OOP:
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model.png)
 
 Generator structure:
 
 ```
-.
+gen_data_model/
 ├── conf/
+│   ├── data_model_types.yaml
 │   ├── gen_data_model.cfg
 │   ├── gen_data_model_util.cfg
 │   └── template/
@@ -149,8 +109,7 @@ Generator structure:
 ├── __init__.py
 ├── log/
 │   └── gen_data_model.log
-├── model/
-│   ├── gen_model.py
+├── pro/
 │   ├── __init__.py
 │   ├── model_selector.py
 │   ├── read_template.py
@@ -174,7 +133,7 @@ More documentation and info at:
 Copyright (C) 2018 by [vroncevic.github.io/gen_data_model](https://vroncevic.github.io/gen_data_model/)
 
 **gen_data_model** is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.7/3.4 or,
+it under the same terms as Python itself, either Python version 2.x/3.x or,
 at your option, any later version of Python 3 you may have available.
 
 Lets help and support PSF.

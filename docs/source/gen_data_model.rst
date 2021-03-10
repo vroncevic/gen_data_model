@@ -6,7 +6,7 @@ Subpackages
 
 .. toctree::
 
-    gen_data_model.model
+    gen_data_model.pro
 
 Module contents
 ---------------
