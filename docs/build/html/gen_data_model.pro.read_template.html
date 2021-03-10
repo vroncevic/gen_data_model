@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>gen_data_model.model.write_template module &mdash; gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</title>
+  <title>gen_data_model.pro.read_template module &mdash; gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</title>
   
 
   
@@ -36,7 +36,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="gen_data_model.model.read_template module" href="gen_data_model.model.read_template.html" /> 
+    <link rel="next" title="gen_data_model.pro.write_template module" href="gen_data_model.pro.write_template.html" />
+    <link rel="prev" title="gen_data_model.pro.model_selector module" href="gen_data_model.pro.model_selector.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,7 +61,7 @@
             
             
               <div class="version">
-                1.0.0
+                1.2.0
               </div>
             
           
@@ -91,7 +92,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">gen_data_model</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="gen_data_model.html">gen_data_model package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="gen_data_model.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="gen_data_model.model.html">gen_data_model.model package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="gen_data_model.pro.html">gen_data_model.pro package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gen_data_model.html#module-gen_data_model">Module contents</a></li>
@@ -149,15 +150,15 @@
         
           <li><a href="gen_data_model.html">gen_data_model package</a> &raquo;</li>
         
-          <li><a href="gen_data_model.model.html">gen_data_model.model package</a> &raquo;</li>
+          <li><a href="gen_data_model.pro.html">gen_data_model.pro package</a> &raquo;</li>
         
-      <li>gen_data_model.model.write_template module</li>
+      <li>gen_data_model.pro.read_template module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/gen_data_model.model.write_template.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/gen_data_model.pro.read_template.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,11 +171,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-gen_data_model.model.write_template">
-<span id="gen-data-model-model-write-template-module"></span><h1>gen_data_model.model.write_template module<a class="headerlink" href="#module-gen_data_model.model.write_template" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-gen_data_model.pro.read_template">
+<span id="gen-data-model-pro-read-template-module"></span><h1>gen_data_model.pro.read_template module<a class="headerlink" href="#module-gen_data_model.pro.read_template" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
 <dt>Module</dt>
-<dd>write_template.py</dd>
+<dd>read_template.py</dd>
 <dt>Copyright</dt>
 <dd>Copyright (C) 2018 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
 gen_data_model is free software: you can redistribute it and/or modify it
@@ -188,54 +189,52 @@ See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
-<dd>Define class WriteTemplate with attribute(s) and method(s).
-Write a template content with parameters to a file.</dd>
+<dd>Define class ReadTemplate with attribute(s) and method(s).
+Read a model template files and return a contents.</dd>
 </dl>
 <dl class="class">
-<dt id="gen_data_model.model.write_template.WriteTemplate">
-<em class="property">class </em><code class="descclassname">gen_data_model.model.write_template.</code><code class="descname">WriteTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/model/write_template.html#WriteTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.model.write_template.WriteTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Define class WriteTemplate with attribute(s) and method(s).
-Write a template content with parameters to a file.
+<dt id="gen_data_model.pro.read_template.ReadTemplate">
+<em class="property">class </em><code class="descclassname">gen_data_model.pro.read_template.</code><code class="descname">ReadTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro/read_template.html#ReadTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code></p>
+<p>Define class ReadTemplate with attribute(s) and method(s).
+Read a model template files and return a contents.
 It defines:</p>
 <blockquote>
-<div><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots</div>
-<div class="line">__check_status - Check status</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase</div>
+<div><dl class="docutils">
+<dt>attributes:</dt>
+<dd><div class="first last line-block">
+<div class="line">__slots__ - Setting class slots.</div>
+<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
+<div class="line">__MODEL_TYPES - Model types and descriptions.</div>
+<div class="line">__TEMPLATE_DIR - Prefix path to templates.</div>
+<div class="line">template_dir - Absolute path of template dir.</div>
 </div>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_check_status - Getter for check status</div>
-<div class="line">write - Write a template content with parameters to a file</div>
+</dd>
+<dt>methods:</dt>
+<dd><div class="first last line-block">
+<div class="line">__init__ - Initial constructor.</div>
+<div class="line">get_config - Get model types, templates, configurations.</div>
+<div class="line">read - Read templates and return a string representations.</div>
 </div>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </div></blockquote>
 <dl class="attribute">
-<dt id="gen_data_model.model.write_template.WriteTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::MODEL::WRITE_TEMPLATE'</em><a class="headerlink" href="#gen_data_model.model.write_template.WriteTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_data_model.pro.read_template.ReadTemplate.VERBOSE">
+<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="gen_data_model.model.write_template.WriteTemplate.get_check_status">
-<code class="descname">get_check_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/model/write_template.html#WriteTemplate.get_check_status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.model.write_template.WriteTemplate.get_check_status" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for check status.</p>
+<dt id="gen_data_model.pro.read_template.ReadTemplate.get_config">
+<code class="descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro/read_template.html#ReadTemplate.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get model types, templates, configurations.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Getting check status</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with configurations.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;bool&gt;</td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;dict&gt;</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Excptions:</th><td class="field-body">None</td>
 </tr>
@@ -244,31 +243,29 @@ It defines:</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="gen_data_model.model.write_template.WriteTemplate.write">
-<code class="descname">write</code><span class="sig-paren">(</span><em>model_content</em>, <em>model_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/model/write_template.html#WriteTemplate.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.model.write_template.WriteTemplate.write" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dt id="gen_data_model.pro.read_template.ReadTemplate.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro/read_template.html#ReadTemplate.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read templates and return a string representations.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>model_content</strong> (<em>&lt;str&gt;</em>) – Template content for model.</li>
-<li><strong>model_name</strong> (<em>&lt;str&gt;</em>) – Parameter model name</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Boolean status</p>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Template contents (base data model and data model) | None</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; &lt;str&gt; | &lt;NoneType&gt; &lt;NoneType&gt;</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Excptions:</th><td class="field-body"><p class="first last">ATSBadCallError | ATSTypeError</p>
-</td>
+<tr class="field-even field"><th class="field-name">Excptions:</th><td class="field-body">None</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="gen_data_model.pro.read_template.ReadTemplate.template_dir">
+<code class="descname">template_dir</code><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.template_dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -282,8 +279,10 @@ It defines:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="gen_data_model.pro.write_template.html" class="btn btn-neutral float-right" title="gen_data_model.pro.write_template module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="gen_data_model.model.read_template.html" class="btn btn-neutral float-left" title="gen_data_model.model.read_template module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="gen_data_model.pro.model_selector.html" class="btn btn-neutral float-left" title="gen_data_model.pro.model_selector module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

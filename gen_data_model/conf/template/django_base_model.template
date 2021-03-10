@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
  Module
      base_model.py
  Copyright
@@ -18,28 +18,28 @@
  Info
      Define class Base with attribute(s) and method(s).
      Abstract Data Model.
-"""
+'''
 
 import sys
 
 try:
     from django.db import models
 except ImportError as error:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
-__author__ = "Vladimir Roncevic"
-__copyright__ = "Copyright ${year}, Free software to use and distributed it."
-__credits__ = ["Vladimir Roncevic"]
-__license__ = "GNU General Public License (GPL)"
-__version__ = "1.0.0"
-__maintainer__ = "Vladimir Roncevic"
-__email__ = "elektron.ronca@gmail.com"
-__status__ = "Updated"
+__author__ = 'Vladimir Roncevic'
+__copyright__ = 'Copyright ${year}, Free software to use and distributed it.'
+__credits__ = ['Vladimir Roncevic']
+__license__ = 'GNU General Public License (GPL)'
+__version__ = '1.0.0'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
 
 
 class Base(models.Model):
-    """
+    '''
         Define class Base with attribute(s) and method(s).
         Abstract Data Model.
         It defines:
@@ -49,7 +49,7 @@ class Base(models.Model):
                 | modified - Date of modification
             :methods:
                 | None
-    """
+    '''
     class Meta:
         abstract = True
 

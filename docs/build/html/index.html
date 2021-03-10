@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.0.0
+                1.2.0
               </div>
             
           
@@ -174,7 +174,7 @@ other information that should be provided before the modules are installed.</p>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">gen_data_model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gen_data_model.html">gen_data_model package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gen_data_model.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="gen_data_model.model.html">gen_data_model.model package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_data_model.pro.html">gen_data_model.pro package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gen_data_model.html#module-gen_data_model">Module contents</a></li>
@@ -198,7 +198,10 @@ python setup.py install_egg_info
 python setup.py install_data
 </pre></div>
 </div>
-<p>You can use Docker to create image/container.</p>
+<p>You can use Docker to create image/container, or You can use pip to install:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install gen_data_model
+</pre></div>
+</div>
 <p><a class="reference external" href="https://github.com/vroncevic/gen_data_model/actions?query=workflow%3A%22gen_data_model+docker+checker%22"><img alt="GitHub docker checker" src="https://github.com/vroncevic/gen_data_model/workflows/gen_data_model%20docker%20checker/badge.svg" /></a></p>
 </div>
 <div class="section" id="dependencies">
@@ -216,13 +219,14 @@ python setup.py install_data
 <p>Generation flow:</p>
 <img alt="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_flow.png" src="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_flow.png" />
 </div>
-<div class="section" id="library-structure">
-<h1>Library structure<a class="headerlink" href="#library-structure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tool-structure">
+<h1>Tool structure<a class="headerlink" href="#tool-structure" title="Permalink to this headline">¶</a></h1>
 <p><strong>gen_data_model</strong> is based on OOP:</p>
 <img alt="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model.png" src="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model.png" />
-<p>Code structure:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+<p>Generator structure:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gen_data_model/
 ├── conf/
+│   ├── data_model_types.yaml
 │   ├── gen_data_model.cfg
 │   ├── gen_data_model_util.cfg
 │   └── template/
@@ -230,13 +234,12 @@ python setup.py install_data
 │       ├── django.template
 │       ├── flask_base_model.template
 │       ├── flask.template
-│       ├── SQLAlchemy_base_model.template
-│       └── SQLAlchemy.template
+│       ├── sqlalchemy_base_model.template
+│       └── sqlalchemy.template
 ├── __init__.py
 ├── log/
 │   └── gen_data_model.log
-├── model/
-│   ├── gen_model.py
+├── pro/
 │   ├── __init__.py
 │   ├── model_selector.py
 │   ├── read_template.py

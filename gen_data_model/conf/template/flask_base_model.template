@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+'''
  Module
      base_model.py
  Copyright
@@ -18,28 +18,28 @@
  Info
      Define class Base with attribute(s) and method(s).
      Abstract Data Model.
-"""
+'''
 
 import sys
 
 try:
     from app_server import db
 except ImportError as error:
-    MESSAGE = "\n{0}\n{1}\n".format(__file__, error)
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
-__author__ = "Vladimir Roncevic"
-__copyright__ = "Copyright ${year}, Free software to use and distributed it."
-__credits__ = ["Vladimir Roncevic"]
-__license__ = "GNU General Public License (GPL)"
-__version__ = "1.0.0"
-__maintainer__ = "Vladimir Roncevic"
-__email__ = "elektron.ronca@gmail.com"
-__status__ = "Updated"
+__author__ = 'Vladimir Roncevic'
+__copyright__ = 'Copyright ${year}, Free software to use and distributed it.'
+__credits__ = ['Vladimir Roncevic']
+__license__ = 'GNU General Public License (GPL)'
+__version__ = '1.0.0'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
 
 
 class Base(db.Model):
-    """
+    '''
         Define class Base with attribute(s) and method(s).
         Abstract Data Model.
         It defines:
@@ -53,7 +53,7 @@ class Base(db.Model):
                 | is_authenticated - Authentication status
                 | is_active - Getting status
                 | is_anonymous - Getting info
-    """
+    '''
 
     __abstract__ = True
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -61,28 +61,28 @@ class Base(db.Model):
     modified = db.Column(db.DateTime, nullable=False)
 
     def is_authenticated(self):
-        """
+        '''
             Getting Authentication status.
 
             :return: Authentication status
             :type: bool
-        """
+        '''
         return True
 
     def is_active(self):
-        """
+        '''
             Getting status.
 
             :return: Getting status
             :type: <bool>
-        """
+        '''
         return True
 
     def is_anonymous(self):
-        """
+        '''
             Getting info.
 
             :return: Getting info
             :type: <bool>
-        """
+        '''
         return False

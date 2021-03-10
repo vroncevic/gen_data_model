@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.0.0
+                1.2.0
               </div>
             
           
@@ -154,7 +154,7 @@
   <h1>Source code for gen_data_model</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 <span class="sd"> Module</span>
 <span class="sd">     gen_data_model.py</span>
 <span class="sd"> Copyright</span>
@@ -171,117 +171,122 @@
 <span class="sd">     with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <span class="sd"> Info</span>
 <span class="sd">     Define class GenDataModel with attribute(s) and method(s).</span>
-<span class="sd">     Load a settings, create an interface and run operation(s).</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     Load a base info, create an CLI interface and run operation(s).</span>
+<span class="sd">&#39;&#39;&#39;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">exists</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-    <span class="kn">from</span> <span class="nn">gen_data_model.model.gen_model</span> <span class="kn">import</span> <span class="n">GenModel</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.cfg_base</span> <span class="kn">import</span> <span class="n">CfgBase</span>
+    <span class="kn">from</span> <span class="nn">gen_data_model.pro</span> <span class="kn">import</span> <span class="n">GenModel</span>
+    <span class="kn">from</span> <span class="nn">ats_utilities.cli.cfg_cli</span> <span class="kn">import</span> <span class="n">CfgCLI</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.error</span> <span class="kn">import</span> <span class="n">error_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.success</span> <span class="kn">import</span> <span class="n">success_message</span>
-<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
-<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Vladimir Roncevic&quot;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s2">&quot;Copyright 2017, Free software to use and distributed it.&quot;</span>
-<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Vladimir Roncevic&quot;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s2">&quot;GNU General Public License (GPL)&quot;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.0.0&quot;</span>
-<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s2">&quot;Vladimir Roncevic&quot;</span>
-<span class="n">__email__</span> <span class="o">=</span> <span class="s2">&quot;elektron.ronca@gmail.com&quot;</span>
-<span class="n">__status__</span> <span class="o">=</span> <span class="s2">&quot;Updated&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2017, Free software to use and distributed it.&#39;</span>
+<span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.2.0&#39;</span>
+<span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
+<span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
+<span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
-<div class="viewcode-block" id="GenDataModel"><a class="viewcode-back" href="../gen_data_model.html#gen_data_model.GenDataModel">[docs]</a><span class="k">class</span> <span class="nc">GenDataModel</span><span class="p">(</span><span class="n">CfgBase</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="GenDataModel"><a class="viewcode-back" href="../gen_data_model.html#gen_data_model.GenDataModel">[docs]</a><span class="k">class</span> <span class="nc">GenDataModel</span><span class="p">(</span><span class="n">CfgCLI</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Define class GenDataModel with attribute(s) and method(s).</span>
-<span class="sd">        Load a settings, create an interface and run operation(s).</span>
+<span class="sd">        Load a base info, create an CLI interface and run operation(s).</span>
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | __slots__ - Setting class slots</span>
-<span class="sd">                | VERBOSE - Console text indicator for current process-phase</span>
-<span class="sd">                | __CONFIG - Configuration file path</span>
-<span class="sd">                | __OPS - Tool options (list)</span>
+<span class="sd">                | __slots__ - Setting class slots.</span>
+<span class="sd">                | VERBOSE - Console text indicator for current process-phase.</span>
+<span class="sd">                | __CONFIG - Configuration file path.</span>
+<span class="sd">                | __OPS - Tool options (list).</span>
 <span class="sd">            :methods:</span>
-<span class="sd">                | __init__ - Initial constructor</span>
-<span class="sd">                | process - Process and run tool option</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">                | __init__ - Initial constructor.</span>
+<span class="sd">                | process - Process and run tool option(s).</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__CONFIG&#39;</span><span class="p">,</span> <span class="s1">&#39;__OPS&#39;</span><span class="p">)</span>
     <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_DATA_MODEL&#39;</span>
     <span class="n">__CONFIG</span> <span class="o">=</span> <span class="s1">&#39;/conf/gen_data_model.cfg&#39;</span>
-    <span class="n">__OPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-g&#39;</span><span class="p">,</span> <span class="s1">&#39;--gen&#39;</span><span class="p">,</span> <span class="s1">&#39;-h&#39;</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">]</span>
+    <span class="n">__OPS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;-g&#39;</span><span class="p">,</span> <span class="s1">&#39;--gen&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Loading configuration and setting argument options.</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Initial constructor.</span>
 
-<span class="sd">            :param verbose: Enable/disable verbose option</span>
+<span class="sd">            :param verbose: Enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;Initial configuration&#39;</span><span class="p">)</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init configuration&#39;</span><span class="p">)</span>
         <span class="n">current_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
-        <span class="n">base_config_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__CONFIG</span><span class="p">)</span>
-        <span class="n">CfgBase</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_config_file</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_status</span><span class="p">:</span>
+        <span class="n">base_info</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__CONFIG</span><span class="p">)</span>
+        <span class="n">CfgCLI</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_info</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_operational</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_new_option</span><span class="p">(</span>
-                <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__OPS</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__OPS</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;mod&quot;</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s2">&quot;generate data model&quot;</span>
+                <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__OPS</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__OPS</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;gen&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;generate data model&#39;</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_new_option</span><span class="p">(</span>
+                <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__OPS</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">help</span><span class="o">=</span><span class="s1">&#39;activate verbose mode for generation&#39;</span>
             <span class="p">)</span>
 
 <div class="viewcode-block" id="GenDataModel.process"><a class="viewcode-back" href="../gen_data_model.html#gen_data_model.GenDataModel.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+        <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Process and run operation.</span>
 
-<span class="sd">            :param verbose: Enable/disable verbose option</span>
+<span class="sd">            :param verbose: Enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
-<span class="sd">            :return: True (success) | False</span>
+<span class="sd">            :return: True (success) | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_status</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">show_base_info</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">operation</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                <span class="k">if</span> <span class="n">operation</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__OPS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tool_operational</span><span class="p">:</span>
+            <span class="n">num_of_args_sys</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">num_of_args_sys</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">option</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">option</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">GenDataModel</span><span class="o">.</span><span class="n">__OPS</span><span class="p">:</span>
                     <span class="n">sys</span><span class="o">.</span><span class="n">argv</span> <span class="o">=</span> <span class="p">[]</span>
-                    <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
+                    <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-h&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;-h&quot;</span><span class="p">)</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-h&#39;</span><span class="p">)</span>
             <span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;model_</span><span class="si">{0}{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">mod</span><span class="p">,</span> <span class="s2">&quot;.py&quot;</span><span class="p">)</span>
-            <span class="n">current_dir</span><span class="p">,</span> <span class="n">num_of_args</span> <span class="o">=</span> <span class="n">getcwd</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-            <span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">/</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_dir</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-            <span class="n">model_exists</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">num_of_args</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">opts</span><span class="o">.</span><span class="n">mod</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">model_exists</span><span class="p">:</span>
-                <span class="n">generator</span><span class="p">,</span> <span class="n">gen_status</span> <span class="o">=</span> <span class="n">GenModel</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">),</span> <span class="kc">False</span>
-                <span class="nb">print</span><span class="p">(</span>
-                    <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2"> [</span><span class="si">{2}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                        <span class="s2">&quot;[</span><span class="si">{0}</span><span class="s2">]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">),</span>
-                        <span class="s1">&#39;Generating model&#39;</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">mod</span>
+            <span class="n">num_of_args</span><span class="p">,</span> <span class="n">pro_exists</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">),</span> <span class="n">exists</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">gen</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">pro_exists</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">num_of_args</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">bool</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">gen</span><span class="p">):</span>
+                    <span class="nb">print</span><span class="p">(</span>
+                        <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> </span><span class="si">{1}</span><span class="s1"> [</span><span class="si">{2}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                            <span class="s1">&#39;[</span><span class="si">{0}</span><span class="s1">]&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="o">.</span><span class="n">lower</span><span class="p">()),</span>
+                            <span class="s1">&#39;generating model&#39;</span><span class="p">,</span> <span class="n">opts</span><span class="o">.</span><span class="n">gen</span>
+                        <span class="p">)</span>
                     <span class="p">)</span>
-                <span class="p">)</span>
-                <span class="n">gen_status</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_model</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">mod</span><span class="p">))</span>
-                <span class="k">if</span> <span class="n">gen_status</span><span class="p">:</span>
-                    <span class="n">success_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;Done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-                    <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">generator</span> <span class="o">=</span> <span class="n">GenModel</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">gen</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">v</span> <span class="ow">or</span> <span class="n">verbose</span><span class="p">)</span>
+                    <span class="n">status</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">gen_model</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">v</span> <span class="ow">or</span> <span class="n">verbose</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">status</span><span class="p">:</span>
+                        <span class="n">success_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;done</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">error_message</span><span class="p">(</span>
+                            <span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;failed to generate model&#39;</span>
+                        <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">error_message</span><span class="p">(</span>
-                        <span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;Failed to generate model&#39;</span>
+                        <span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;provide model name&#39;</span>
                     <span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">error_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;model already exist !&#39;</span><span class="p">)</span>
+                <span class="n">error_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;model already exist&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">error_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;Tool is not operational&#39;</span><span class="p">)</span>
+            <span class="n">error_message</span><span class="p">(</span><span class="n">GenDataModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="s1">&#39;tool is not operational&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">False</span></div></div>
 </pre></div>
 

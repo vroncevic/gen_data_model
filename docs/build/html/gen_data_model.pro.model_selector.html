@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>gen_data_model.model.gen_model module &mdash; gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</title>
+  <title>gen_data_model.pro.model_selector module &mdash; gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</title>
   
 
   
@@ -36,8 +36,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="gen_data_model.model.model_selector module" href="gen_data_model.model.model_selector.html" />
-    <link rel="prev" title="gen_data_model.model package" href="gen_data_model.model.html" /> 
+    <link rel="next" title="gen_data_model.pro.read_template module" href="gen_data_model.pro.read_template.html" />
+    <link rel="prev" title="gen_data_model.pro package" href="gen_data_model.pro.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.0.0
+                1.2.0
               </div>
             
           
@@ -92,7 +92,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">gen_data_model</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="gen_data_model.html">gen_data_model package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="gen_data_model.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="gen_data_model.model.html">gen_data_model.model package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="gen_data_model.pro.html">gen_data_model.pro package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="gen_data_model.html#module-gen_data_model">Module contents</a></li>
@@ -150,15 +150,15 @@
         
           <li><a href="gen_data_model.html">gen_data_model package</a> &raquo;</li>
         
-          <li><a href="gen_data_model.model.html">gen_data_model.model package</a> &raquo;</li>
+          <li><a href="gen_data_model.pro.html">gen_data_model.pro package</a> &raquo;</li>
         
-      <li>gen_data_model.model.gen_model module</li>
+      <li>gen_data_model.pro.model_selector module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/gen_data_model.model.gen_model.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/gen_data_model.pro.model_selector.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -171,11 +171,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-gen_data_model.model.gen_model">
-<span id="gen-data-model-model-gen-model-module"></span><h1>gen_data_model.model.gen_model module<a class="headerlink" href="#module-gen_data_model.model.gen_model" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-gen_data_model.pro.model_selector">
+<span id="gen-data-model-pro-model-selector-module"></span><h1>gen_data_model.pro.model_selector module<a class="headerlink" href="#module-gen_data_model.pro.model_selector" title="Permalink to this headline">¶</a></h1>
 <dl class="docutils">
 <dt>Module</dt>
-<dd>gen_model.py</dd>
+<dd>model_selector.py</dd>
 <dt>Copyright</dt>
 <dd>Copyright (C) 2018 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
 gen_data_model is free software: you can redistribute it and/or modify it
@@ -189,15 +189,15 @@ See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
-<dd>Define class GenModel with attribute(s) and method(s).
-Generate data model by template and parameters.</dd>
+<dd>Define class ModelSelector with attribute(s) and method(s).
+Selecting data model type for generating process.</dd>
 </dl>
 <dl class="class">
-<dt id="gen_data_model.model.gen_model.GenModel">
-<em class="property">class </em><code class="descclassname">gen_data_model.model.gen_model.</code><code class="descname">GenModel</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/model/gen_model.html#GenModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.model.gen_model.GenModel" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_data_model.pro.model_selector.ModelSelector">
+<em class="property">class </em><code class="descclassname">gen_data_model.pro.model_selector.</code><code class="descname">ModelSelector</code><a class="reference internal" href="_modules/gen_data_model/pro/model_selector.html#ModelSelector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.model_selector.ModelSelector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Define class GenModel with attribute(s) and method(s).
-Generate data model by template and parameters.
+<p>Define class ModelSelector with attribute(s) and method(s).
+Selecting data model type for generating process.
 It defines:</p>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
@@ -207,16 +207,12 @@ It defines:</p>
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
 <div class="line">__slots__ - Setting class slots</div>
 <div class="line">VERBOSE - Console text indicator for current process-phase</div>
-<div class="line">__reader - Reader API</div>
-<div class="line">__writer - Writer API</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor</div>
-<div class="line">get_reader - Getter for reader object</div>
-<div class="line">get_writer - Getter for writer object</div>
-<div class="line">gen_model - Generate module file with data model</div>
+<div class="line">choose_model - Selecting type of model for generating process</div>
+<div class="line">format_name - Formatting name for file module</div>
 </div>
 </td>
 </tr>
@@ -224,68 +220,59 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
-<dt id="gen_data_model.model.gen_model.GenModel.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::MODEL::GEN_MODEL'</em><a class="headerlink" href="#gen_data_model.model.gen_model.GenModel.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_data_model.pro.model_selector.ModelSelector.VERBOSE">
+<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::MODEL_SELECTOR'</em><a class="headerlink" href="#gen_data_model.pro.model_selector.ModelSelector.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="gen_data_model.model.gen_model.GenModel.gen_model">
-<code class="descname">gen_model</code><span class="sig-paren">(</span><em>model_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/model/gen_model.html#GenModel.gen_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.model.gen_model.GenModel.gen_model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate setup.py for python package.</p>
+<dl class="classmethod">
+<dt id="gen_data_model.pro.model_selector.ModelSelector.choose_model">
+<em class="property">classmethod </em><code class="descname">choose_model</code><span class="sig-paren">(</span><em>data_model_types</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro/model_selector.html#ModelSelector.choose_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.model_selector.ModelSelector.choose_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose type of data model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>model_name</strong> (<em>&lt;str&gt;</em>) – Parameter model name</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option</li>
+<li><strong>data_model_types</strong> (<em>&lt;dict&gt;</em>) – Data model types.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">True (success) | False</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Type of data model (1, 2, 3, …)</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;int&gt;</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">ATSTypeError | ATSBadCallError</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="gen_data_model.pro.model_selector.ModelSelector.format_name">
+<em class="property">classmethod </em><code class="descname">format_name</code><span class="sig-paren">(</span><em>model_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro/model_selector.html#ModelSelector.format_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.model_selector.ModelSelector.format_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format file name (Format: model_&lt;name&gt;.py).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model_name</strong> (<em>&lt;str&gt;</em>) – Postfix name for data model file.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">File name with extension (lower case).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;str&gt;</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first last">ATSBadCallError | ATSTypeError</p>
 </td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="gen_data_model.model.gen_model.GenModel.get_reader">
-<code class="descname">get_reader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/model/gen_model.html#GenModel.get_reader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.model.gen_model.GenModel.get_reader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for reader object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Read Template object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;ReadTemplate&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="gen_data_model.model.gen_model.GenModel.get_writer">
-<code class="descname">get_writer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/model/gen_model.html#GenModel.get_writer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.model.gen_model.GenModel.get_writer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Getter for writer object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Write Template object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;WriteTemplate&gt;</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Exceptions:</th><td class="field-body">None</td>
 </tr>
 </tbody>
 </table>
@@ -303,10 +290,10 @@ It defines:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gen_data_model.model.model_selector.html" class="btn btn-neutral float-right" title="gen_data_model.model.model_selector module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gen_data_model.pro.read_template.html" class="btn btn-neutral float-right" title="gen_data_model.pro.read_template module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="gen_data_model.model.html" class="btn btn-neutral float-left" title="gen_data_model.model package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="gen_data_model.pro.html" class="btn btn-neutral float-left" title="gen_data_model.pro package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
