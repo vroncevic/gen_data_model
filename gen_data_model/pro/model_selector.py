@@ -88,10 +88,15 @@ class ModelSelector(object):
                 )
         while True:
             try:
-                input_type = raw_input(' select model: ')
+                try:
+                    input_type = raw_input(' select model: ')
+                except NameError:
+                    input_type = input(' select model: ')
+                options = xrange(
+                    1, len(data_model_types['model_types']) + 1, 1
+                )
             except NameError:
-                input_type = input(' select model: ')
-            options = xrange(1, len(data_model_types['model_types']) + 1, 1)
+                options = range(1, len(data_model_types['model_types']) + 1, 1)
             try:
                 if int(input_type) in list(options):
                     break
