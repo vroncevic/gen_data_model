@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.2.0
+                1.3.0
               </div>
             
           
@@ -160,7 +160,7 @@
 <span class="sd"> Module</span>
 <span class="sd">     __init__.py</span>
 <span class="sd"> Copyright</span>
-<span class="sd">     Copyright (C) 2018 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
+<span class="sd">     Copyright (C) 2017 Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;</span>
 <span class="sd">     gen_data_model is free software: you can redistribute it and/or modify it</span>
 <span class="sd">     under the terms of the GNU General Public License as published by the</span>
 <span class="sd">     Free Software Foundation, either version 3 of the License, or</span>
@@ -172,7 +172,7 @@
 <span class="sd">     You should have received a copy of the GNU General Public License along</span>
 <span class="sd">     with this program. If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
 <span class="sd"> Info</span>
-<span class="sd">     Define class GenModel with attribute(s) and method(s).</span>
+<span class="sd">     Defined class GenModel with attribute(s) and method(s).</span>
 <span class="sd">     Generate data model by templates and parameters.</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
@@ -180,23 +180,23 @@
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-    <span class="kn">from</span> <span class="nn">ats_utilities.checker</span> <span class="kn">import</span> <span class="n">ATSChecker</span>
     <span class="kn">from</span> <span class="nn">gen_data_model.pro.read_template</span> <span class="kn">import</span> <span class="n">ReadTemplate</span>
     <span class="kn">from</span> <span class="nn">gen_data_model.pro.write_template</span> <span class="kn">import</span> <span class="n">WriteTemplate</span>
     <span class="kn">from</span> <span class="nn">gen_data_model.pro.model_selector</span> <span class="kn">import</span> <span class="n">ModelSelector</span>
+    <span class="kn">from</span> <span class="nn">ats_utilities.checker</span> <span class="kn">import</span> <span class="n">ATSChecker</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.success</span> <span class="kn">import</span> <span class="n">success_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.console_io.verbose</span> <span class="kn">import</span> <span class="n">verbose_message</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_type_error</span> <span class="kn">import</span> <span class="n">ATSTypeError</span>
     <span class="kn">from</span> <span class="nn">ats_utilities.exceptions.ats_bad_call_error</span> <span class="kn">import</span> <span class="n">ATSBadCallError</span>
-<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">error_message</span><span class="p">:</span>
-    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">error_message</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ats_error_message</span><span class="p">:</span>
+    <span class="n">MESSAGE</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">{0}</span><span class="se">\n</span><span class="si">{1}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">ats_error_message</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">MESSAGE</span><span class="p">)</span>  <span class="c1"># Force close python ATS ##############################</span>
 
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
-<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2018, Free software to use and distributed it.&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2017, https://vroncevic.github.io/gen_data_model&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GNU General Public License (GPL)&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.2.0&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_data_model/blob/master/LICENSE&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.3.0&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -204,7 +204,7 @@
 
 <div class="viewcode-block" id="GenModel"><a class="viewcode-back" href="../../gen_data_model.pro.html#gen_data_model.pro.GenModel">[docs]</a><span class="k">class</span> <span class="nc">GenModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Define class GenModel with attribute(s) and method(s).</span>
+<span class="sd">        Defined class GenModel with attribute(s) and method(s).</span>
 <span class="sd">        Generate data model by templates and parameters.</span>
 <span class="sd">        It defines:</span>
 
@@ -212,7 +212,6 @@
 <span class="sd">                | __slots__ - Setting class slots.</span>
 <span class="sd">                | VERBOSE - Console text indicator for current process-phase.</span>
 <span class="sd">                | __MODEL_TYPES - Data model types.</span>
-<span class="sd">                | __config - Configuration structure.</span>
 <span class="sd">                | __reader - Reader API.</span>
 <span class="sd">                | __writer - Writer API.</span>
 <span class="sd">            :methods:</span>
@@ -220,9 +219,10 @@
 <span class="sd">                | get_reader - Get reader object.</span>
 <span class="sd">                | get_writer - Get writer object.</span>
 <span class="sd">                | gen_model - Generate data model.</span>
+<span class="sd">                | __str__ - Dunder method for GenModel.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__config&#39;</span><span class="p">,</span> <span class="s1">&#39;__reader&#39;</span><span class="p">,</span> <span class="s1">&#39;__writer&#39;</span><span class="p">,</span> <span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__reader&#39;</span><span class="p">,</span> <span class="s1">&#39;__writer&#39;</span><span class="p">,</span> <span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
     <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_DATA_MODEL::PRO::GEN_MODEL&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -236,11 +236,11 @@
 <span class="sd">            :exceptions: ATSTypeError | ATSBadCallError</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">checker</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">ATSChecker</span><span class="p">(),</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span>
-        <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">(</span>
-            <span class="p">[(</span><span class="s1">&#39;str:model_name&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)]</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span> <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="n">error</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="n">checker</span><span class="o">.</span><span class="n">check_params</span><span class="p">([(</span><span class="s1">&#39;str:model_name&#39;</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">TYPE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init generator&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span> <span class="o">=</span> <span class="n">ReadTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
@@ -276,7 +276,7 @@
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">status</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">verbose_message</span><span class="p">(</span>
             <span class="n">GenModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;generate model&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span>
         <span class="p">)</span>
@@ -296,7 +296,20 @@
                 <span class="p">]</span>
                 <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">model_generated</span><span class="p">):</span>
                     <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">False</span></div></div>
+        <span class="k">return</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">status</span> <span class="k">else</span> <span class="kc">False</span></div>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Dunder method for GenModel.</span>
+
+<span class="sd">            :return: Object in a human-readable format.</span>
+<span class="sd">            :rtype: &lt;str&gt;</span>
+<span class="sd">            :exceptions: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="p">),</span>
+            <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
+        <span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -310,7 +323,7 @@
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
+        &copy; Copyright 2017, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
 
     </p>
   </div>

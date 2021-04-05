@@ -4,7 +4,7 @@
  Module
      gen_data_model.py
  Copyright
-     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2017 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_data_model is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -16,7 +16,7 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class GenDataModel with attribute(s) and method(s).
+     Defined class GenDataModel with attribute(s) and method(s).
      Load a base info, create an CLI interface and run operation(s).
 '''
 
@@ -30,15 +30,15 @@ try:
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2017, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.2.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
+__version__ = '1.3.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -46,7 +46,7 @@ __status__ = 'Updated'
 
 class GenDataModel(CfgCLI):
     '''
-        Define class GenDataModel with attribute(s) and method(s).
+        Defined class GenDataModel with attribute(s) and method(s).
         Load a base info, create an CLI interface and run operation(s).
         It defines:
 
@@ -58,6 +58,7 @@ class GenDataModel(CfgCLI):
             :methods:
                 | __init__ - Initial constructor.
                 | process - Process and run tool option(s).
+                | __str__ - Dunder method for GenDataModel.
     '''
 
     __slots__ = ('VERBOSE', '__CONFIG', '__OPS')
@@ -80,7 +81,7 @@ class GenDataModel(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 GenDataModel.__OPS[0], GenDataModel.__OPS[1],
-                dest='gen', help='generate data model'
+                dest='pro', help='generate data model'
             )
             self.add_new_option(
                 GenDataModel.__OPS[2], action='store_true', default=False,
@@ -108,16 +109,16 @@ class GenDataModel(CfgCLI):
             else:
                 sys.argv.append('-h')
             opts, args = self.parse_args(sys.argv)
-            num_of_args, pro_exists = len(args), exists(opts.gen)
+            num_of_args, pro_exists = len(args), exists(opts.pro)
             if not pro_exists:
-                if num_of_args >= 1 and bool(opts.gen):
+                if num_of_args >= 1 and bool(opts.pro):
                     print(
                         '{0} {1} [{2}]'.format(
                             '[{0}]'.format(GenDataModel.VERBOSE.lower()),
-                            'generating model', opts.gen
+                            'generating model', opts.pro
                         )
                     )
-                    generator = GenModel(opts.gen, verbose=opts.v or verbose)
+                    generator = GenModel(opts.pro, verbose=opts.v or verbose)
                     status = generator.gen_model(verbose=opts.v or verbose)
                     if status:
                         success_message(GenDataModel.VERBOSE, 'done\n')
@@ -134,3 +135,15 @@ class GenDataModel(CfgCLI):
         else:
             error_message(GenDataModel.VERBOSE, 'tool is not operational')
         return True if status else False
+
+    def __str__(self):
+        '''
+            Dunder method for GenDataModel.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1})'.format(
+            self.__class__.__name__, CfgCLI.__str__(self)
+        )

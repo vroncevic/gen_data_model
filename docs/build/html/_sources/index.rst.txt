@@ -54,17 +54,26 @@ To install **gen_data_model** type the following:
 .. code-block:: bash
 
     tar xvzf gen_data_model-x.y.z.tar.gz
-    cd gen_data_model-x.y.z/
+    cd gen_data_model-x.y.z
+    #python2
     pip install -r requirements.txt
     python setup.py install_lib
     python setup.py install_egg_info
     python setup.py install_data
+    #python3
+    pip3 install -r requirements.txt
+    python3 setup.py install_lib
+    python3 setup.py install_egg_info
+    python3 setup.py install_data
 
 You can use Docker to create image/container, or You can use pip to install:
 
 .. code-block:: bash
 
+    #python2
     pip install gen_data_model
+    #python3
+    pip3 install gen_data_model
 
 |GitHub docker checker|
 
@@ -133,7 +142,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2018 by `vroncevic.github.io/gen_data_model <https://vroncevic.github.io/gen_data_model>`_
+Copyright (C) 2017 by `vroncevic.github.io/gen_data_model <https://vroncevic.github.io/gen_data_model>`_
 
 **gen_data_model** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,

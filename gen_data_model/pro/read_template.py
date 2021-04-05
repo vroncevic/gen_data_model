@@ -4,7 +4,7 @@
  Module
      read_template.py
  Copyright
-     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2017 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_data_model is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -16,8 +16,8 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class ReadTemplate with attribute(s) and method(s).
-     Read a model template files and return a contents.
+     Defined class ReadTemplate with attribute(s) and method(s).
+     Created API for read a model template files and return a contents.
 '''
 
 import sys
@@ -29,18 +29,15 @@ try:
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.config_io.yaml.yaml2object import Yaml2Object
-    from ats_utilities.exceptions.ats_type_error import ATSTypeError
-    from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
-
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2018, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.2.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
+__version__ = '1.3.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -48,8 +45,8 @@ __status__ = 'Updated'
 
 class ReadTemplate(FileChecking):
     '''
-        Define class ReadTemplate with attribute(s) and method(s).
-        Read a model template files and return a contents.
+        Defined class ReadTemplate with attribute(s) and method(s).
+        Created API for read a model template files and return a contents.
         It defines:
 
             attributes:
@@ -57,14 +54,19 @@ class ReadTemplate(FileChecking):
                 | VERBOSE - Console text indicator for current process-phase.
                 | __MODEL_TYPES - Model types and descriptions.
                 | __TEMPLATE_DIR - Prefix path to templates.
+                | __config - Cotainer object for configuration.
                 | template_dir - Absolute path of template dir.
             methods:
                 | __init__ - Initial constructor.
                 | get_config - Get model types, templates, configurations.
                 | read - Read templates and return a string representations.
+                | __str__ - Dunder method for ReadTemplate.
     '''
 
-    __slots__ = ('VERBOSE', '__MODEL_TYPES', '__TEMPLATE_DIR', 'template_dir')
+    __slots__ = (
+        'VERBOSE', '__MODEL_TYPES', '__TEMPLATE_DIR',
+        '__config', 'template_dir'
+    )
     VERBOSE = 'GEN_DATA_MODEL::PRO::READ_TEMPLATE'
     __MODEL_TYPES = '../conf/data_model_types.yaml'
     __TEMPLATE_DIR = '/../conf/template/'
@@ -113,7 +115,7 @@ class ReadTemplate(FileChecking):
 
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
-            :return: Template contents (base data model and data model) | None
+            :return: Template contents (base data model and data model) | None.
             :rtype: <str> <str> | <NoneType> <NoneType>
             :excptions: None
         '''
@@ -142,3 +144,16 @@ class ReadTemplate(FileChecking):
         else:
             model_base_content, model_content = 'Cancel', 'Cancel'
         return model_base_content, model_content
+
+    def __str__(self):
+        '''
+            Dunder method for ReadTemplate.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1}, {2}, {3})'.format(
+            self.__class__.__name__, FileChecking.__str__(self),
+            str(self.__config), str(self.template_dir)
+        )
