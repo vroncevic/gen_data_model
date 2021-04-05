@@ -142,7 +142,7 @@ Copyright and licence
 .. |License: Apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2018 by `vroncevic.github.io/gen_data_model <https://vroncevic.github.io/gen_data_model>`_
+Copyright (C) 2017 by `vroncevic.github.io/gen_data_model <https://vroncevic.github.io/gen_data_model>`_
 
 **gen_data_model** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 2.x/3.x or,

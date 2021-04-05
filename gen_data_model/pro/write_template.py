@@ -27,6 +27,7 @@ from string import Template
 
 try:
     from gen_data_model.pro.model_selector import ModelSelector
+    from ats_utilities.checker import ATSChecker
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError

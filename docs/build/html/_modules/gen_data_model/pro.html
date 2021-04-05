@@ -212,7 +212,6 @@
 <span class="sd">                | __slots__ - Setting class slots.</span>
 <span class="sd">                | VERBOSE - Console text indicator for current process-phase.</span>
 <span class="sd">                | __MODEL_TYPES - Data model types.</span>
-<span class="sd">                | __config - Configuration structure.</span>
 <span class="sd">                | __reader - Reader API.</span>
 <span class="sd">                | __writer - Writer API.</span>
 <span class="sd">            :methods:</span>
@@ -223,7 +222,7 @@
 <span class="sd">                | __str__ - Dunder method for GenModel.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__config&#39;</span><span class="p">,</span> <span class="s1">&#39;__reader&#39;</span><span class="p">,</span> <span class="s1">&#39;__writer&#39;</span><span class="p">,</span> <span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__reader&#39;</span><span class="p">,</span> <span class="s1">&#39;__writer&#39;</span><span class="p">,</span> <span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
     <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_DATA_MODEL::PRO::GEN_MODEL&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -277,7 +276,7 @@
 <span class="sd">            :rtype: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">status</span><span class="p">,</span> <span class="n">model_type</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">verbose_message</span><span class="p">(</span>
             <span class="n">GenModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;generate model&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span>
         <span class="p">)</span>
@@ -307,8 +306,8 @@
 <span class="sd">            :rtype: &lt;str&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">, </span><span class="si">{4}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__config</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="p">),</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> (</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">, </span><span class="si">{3}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="p">),</span>
             <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__writer</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
         <span class="p">)</span></div>
 </pre></div>

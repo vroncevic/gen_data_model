@@ -56,7 +56,6 @@ class GenModel(object):
                 | __slots__ - Setting class slots.
                 | VERBOSE - Console text indicator for current process-phase.
                 | __MODEL_TYPES - Data model types.
-                | __config - Configuration structure.
                 | __reader - Reader API.
                 | __writer - Writer API.
             :methods:
@@ -67,7 +66,7 @@ class GenModel(object):
                 | __str__ - Dunder method for GenModel.
     '''
 
-    __slots__ = ('VERBOSE', '__config', '__reader', '__writer', 'model_name')
+    __slots__ = ('VERBOSE', '__reader', '__writer', 'model_name')
     VERBOSE = 'GEN_DATA_MODEL::PRO::GEN_MODEL'
 
     def __init__(self, model_name, verbose=False):
@@ -121,7 +120,7 @@ class GenModel(object):
             :rtype: <bool>
             :exceptions: None
         '''
-        status, model_type = False, None
+        status = False
         verbose_message(
             GenModel.VERBOSE, verbose, 'generate model', self.model_name
         )
@@ -151,7 +150,7 @@ class GenModel(object):
             :rtype: <str>
             :exceptions: None
         '''
-        return '{0} ({1}, {2}, {3}, {4})'.format(
-            self.__class__.__name__, str(self.__config), str(self.__reader),
+        return '{0} ({1}, {2}, {3})'.format(
+            self.__class__.__name__, str(self.__reader),
             str(self.__writer), str(self.model_name)
         )

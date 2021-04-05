@@ -86,8 +86,10 @@ class ModelSelector(object):
         for index, model_type in enumerate(data_model_types['model_types']):
             option = index + 1
             for mode_type_key, model_type_params in model_type.iteritems():
-                print('{0} {1} {2}'.format(
-                    option, mode_type_key, model_type_params['name'])
+                print(
+                    '{0} {1} {2}'.format(
+                        option, mode_type_key, model_type_params['name']
+                    )
                 )
         while True:
             try:
@@ -113,14 +115,12 @@ class ModelSelector(object):
         return input_type
 
     @classmethod
-    def format_name(cls, model_name, verbose=False):
+    def format_name(cls, model_name):
         '''
             Format file name (Format: model_<name>.py).
 
             :param model_name: Postfix name for data model file.
             :type model_name: <str>
-            :param verbose: Enable/disable verbose option.
-            :type verbose: <bool>
             :return: File name with extension (lower case).
             :rtype: <str>
             :exceptions: ATSBadCallError | ATSTypeError
