@@ -4,7 +4,7 @@
  Module
      model_selector.py
  Copyright
-     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2017 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_data_model is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -16,7 +16,7 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class ModelSelector with attribute(s) and method(s).
+     Defined class ModelSelector with attribute(s) and method(s).
      Selecting data model type for generating process.
 '''
 
@@ -28,15 +28,15 @@ try:
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2018, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.2.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
+__version__ = '1.3.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -44,16 +44,17 @@ __status__ = 'Updated'
 
 class ModelSelector(object):
     '''
-        Define class ModelSelector with attribute(s) and method(s).
+        Defined class ModelSelector with attribute(s) and method(s).
         Selecting data model type for generating process.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots
-                | VERBOSE - Console text indicator for current process-phase
+                | __slots__ - Setting class slots.
+                | VERBOSE - Console text indicator for current process-phase.
             :methods:
-                | choose_model - Selecting type of model for generating process
-                | format_name - Formatting name for file module
+                | choose_model - Selecting type of model for generation.
+                | format_name - Formatting name for file module.
+                | __str__ - Dunder method for ModelSelector.
     '''
 
     __slots__ = ('VERBOSE',)
@@ -68,16 +69,18 @@ class ModelSelector(object):
             :type data_model_types: <dict>
             :param verbose: Enable/disable verbose option.
             :type verbose: <bool>
-            :return: Type of data model (1, 2, 3, ...)
+            :return: Type of data model (1, 2, 3, ...).
             :rtype: <int>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status, input_type = ATSChecker(), None, False, -1
-        error, status = checker.check_params(
-            [('dict:data_model_types', data_model_types)]
-        )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        error, status = checker.check_params([
+            ('dict:data_model_types', data_model_types)
+        ])
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         verbose_message(cls.VERBOSE, verbose, 'loading options')
         print('\n {0}'.format('model option list:'))
         for index, model_type in enumerate(data_model_types['model_types']):
@@ -124,6 +127,18 @@ class ModelSelector(object):
         '''
         checker, error, status = ATSChecker(), None, False
         error, status = checker.check_params([('str:model_name', model_name)])
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         return 'model_{0}.py'.format(model_name.lower())
+
+    def __str__(self):
+        '''
+            Dunder method for ModelSelector.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ()'.format(self.__class__.__name__)

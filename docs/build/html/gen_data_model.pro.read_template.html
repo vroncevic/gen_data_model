@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.2.0
+                1.3.0
               </div>
             
           
@@ -177,7 +177,7 @@
 <dt>Module</dt>
 <dd>read_template.py</dd>
 <dt>Copyright</dt>
-<dd>Copyright (C) 2018 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
+<dd>Copyright (C) 2017 Vladimir Roncevic &lt;<a class="reference external" href="mailto:elektron&#46;ronca&#37;&#52;&#48;gmail&#46;com">elektron<span>&#46;</span>ronca<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;
 gen_data_model is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the
 Free Software Foundation, either version 3 of the License, or
@@ -189,15 +189,15 @@ See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program. If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</dd>
 <dt>Info</dt>
-<dd>Define class ReadTemplate with attribute(s) and method(s).
-Read a model template files and return a contents.</dd>
+<dd>Defined class ReadTemplate with attribute(s) and method(s).
+Created API for read a model template files and return a contents.</dd>
 </dl>
 <dl class="class">
 <dt id="gen_data_model.pro.read_template.ReadTemplate">
 <em class="property">class </em><code class="descclassname">gen_data_model.pro.read_template.</code><code class="descname">ReadTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro/read_template.html#ReadTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code></p>
-<p>Define class ReadTemplate with attribute(s) and method(s).
-Read a model template files and return a contents.
+<p>Defined class ReadTemplate with attribute(s) and method(s).
+Created API for read a model template files and return a contents.
 It defines:</p>
 <blockquote>
 <div><dl class="docutils">
@@ -207,6 +207,7 @@ It defines:</p>
 <div class="line">VERBOSE - Console text indicator for current process-phase.</div>
 <div class="line">__MODEL_TYPES - Model types and descriptions.</div>
 <div class="line">__TEMPLATE_DIR - Prefix path to templates.</div>
+<div class="line">__config - Cotainer object for configuration.</div>
 <div class="line">template_dir - Absolute path of template dir.</div>
 </div>
 </dd>
@@ -215,6 +216,7 @@ It defines:</p>
 <div class="line">__init__ - Initial constructor.</div>
 <div class="line">get_config - Get model types, templates, configurations.</div>
 <div class="line">read - Read templates and return a string representations.</div>
+<div class="line">__str__ - Dunder method for ReadTemplate.</div>
 </div>
 </dd>
 </dl>
@@ -252,7 +254,7 @@ It defines:</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Template contents (base data model and data model) | None</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Template contents (base data model and data model) | None.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; &lt;str&gt; | &lt;NoneType&gt; &lt;NoneType&gt;</td>
 </tr>
@@ -292,7 +294,7 @@ It defines:</p>
   <div role="contentinfo">
     <p>
         
-        &copy; Copyright 2020, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
+        &copy; Copyright 2017, Vladimir Roncevic &lt;elektron.ronca@gmail.com&gt;
 
     </p>
   </div>

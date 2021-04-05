@@ -4,7 +4,7 @@
  Module
      __init__.py
  Copyright
-     Copyright (C) 2018 Vladimir Roncevic <elektron.ronca@gmail.com>
+     Copyright (C) 2017 Vladimir Roncevic <elektron.ronca@gmail.com>
      gen_data_model is free software: you can redistribute it and/or modify it
      under the terms of the GNU General Public License as published by the
      Free Software Foundation, either version 3 of the License, or
@@ -16,7 +16,7 @@
      You should have received a copy of the GNU General Public License along
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
-     Define class GenModel with attribute(s) and method(s).
+     Defined class GenModel with attribute(s) and method(s).
      Generate data model by templates and parameters.
 '''
 
@@ -24,23 +24,23 @@ import sys
 
 try:
     from pathlib import Path
-    from ats_utilities.checker import ATSChecker
     from gen_data_model.pro.read_template import ReadTemplate
     from gen_data_model.pro.write_template import WriteTemplate
     from gen_data_model.pro.model_selector import ModelSelector
+    from ats_utilities.checker import ATSChecker
     from ats_utilities.console_io.success import success_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
-except ImportError as error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, error_message)
+except ImportError as ats_error_message:
+    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
     sys.exit(MESSAGE)  # Force close python ATS ##############################
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2018, Free software to use and distributed it.'
+__copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'GNU General Public License (GPL)'
-__version__ = '1.2.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
+__version__ = '1.3.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -48,7 +48,7 @@ __status__ = 'Updated'
 
 class GenModel(object):
     '''
-        Define class GenModel with attribute(s) and method(s).
+        Defined class GenModel with attribute(s) and method(s).
         Generate data model by templates and parameters.
         It defines:
 
@@ -64,6 +64,7 @@ class GenModel(object):
                 | get_reader - Get reader object.
                 | get_writer - Get writer object.
                 | gen_model - Generate data model.
+                | __str__ - Dunder method for GenModel.
     '''
 
     __slots__ = ('VERBOSE', '__config', '__reader', '__writer', 'model_name')
@@ -80,11 +81,11 @@ class GenModel(object):
             :exceptions: ATSTypeError | ATSBadCallError
         '''
         checker, error, status = ATSChecker(), None, False
-        error, status = checker.check_params(
-            [('str:model_name', model_name)]
-        )
-        if status == ATSChecker.TYPE_ERROR: raise ATSTypeError(error)
-        if status == ATSChecker.VALUE_ERROR: raise ATSBadCallError(error)
+        error, status = checker.check_params([('str:model_name', model_name)])
+        if status == ATSChecker.TYPE_ERROR:
+            raise ATSTypeError(error)
+        if status == ATSChecker.VALUE_ERROR:
+            raise ATSBadCallError(error)
         verbose_message(GenModel.VERBOSE, verbose, 'init generator')
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(verbose=verbose)
@@ -141,3 +142,16 @@ class GenModel(object):
                 if all(model_generated):
                     status = True
         return True if status else False
+
+    def __str__(self):
+        '''
+            Dunder method for GenModel.
+
+            :return: Object in a human-readable format.
+            :rtype: <str>
+            :exceptions: None
+        '''
+        return '{0} ({1}, {2}, {3}, {4})'.format(
+            self.__class__.__name__, str(self.__config), str(self.__reader),
+            str(self.__writer), str(self.model_name)
+        )
