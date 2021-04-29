@@ -129,7 +129,7 @@ setup(
     data_files=[
         (
             '/usr/local/bin/', [
-                '{0}{1}'.format(TOOL_DIR, 'run/gen_data_model_run.py'
+                '{0}{1}'.format(TOOL_DIR, 'run/gen_data_model_run.py')
             ]
         ),
         (
