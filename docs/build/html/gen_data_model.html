@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.3.0
+                1.4.0
               </div>
             
           
@@ -220,17 +220,19 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__CONFIG - Configuration file path.</div>
-<div class="line">__OPS - Tool options (list).</div>
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">CONFIG - configuration file path.</div>
+<div class="line">LOG - tool log file path.</div>
+<div class="line">OPS - tool options (list).</div>
+<div class="line">logger - logger object API.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">process - Process and run tool option(s).</div>
-<div class="line">__str__ - Dunder method for GenDataModel.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">process - process and run tool option(s).</div>
+<div class="line">__str__ - dunder method for GenDataModel.</div>
 </div>
 </td>
 </tr>
@@ -238,8 +240,28 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
+<dt id="gen_data_model.GenDataModel.CONFIG">
+<code class="descname">CONFIG</code><em class="property"> = '/conf/gen_data_model.cfg'</em><a class="headerlink" href="#gen_data_model.GenDataModel.CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_data_model.GenDataModel.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL'</em><a class="headerlink" href="#gen_data_model.GenDataModel.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_data_model.GenDataModel.LOG">
+<code class="descname">LOG</code><em class="property"> = '/log/gen_data_model.log'</em><a class="headerlink" href="#gen_data_model.GenDataModel.LOG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_data_model.GenDataModel.OPS">
+<code class="descname">OPS</code><em class="property"> = ['-g', '--gen', '-v', '--verbose', '--version']</em><a class="headerlink" href="#gen_data_model.GenDataModel.OPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="gen_data_model.GenDataModel.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL'</em><a class="headerlink" href="#gen_data_model.GenDataModel.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_data_model.GenDataModel.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -250,7 +272,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True (success) | False.</td>
 </tr>

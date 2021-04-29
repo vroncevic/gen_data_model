@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                1.3.0
+                1.4.0
               </div>
             
           
@@ -194,7 +194,7 @@ Created API for write a template content with parameters to a file.</dd>
 <dl class="class">
 <dt id="gen_data_model.pro.write_template.WriteTemplate">
 <em class="property">class </em><code class="descclassname">gen_data_model.pro.write_template.</code><code class="descname">WriteTemplate</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro/write_template.html#WriteTemplate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.write_template.WriteTemplate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.config_io.base_check.FileChecking</span></code></p>
 <p>Defined class WriteTemplate with attribute(s) and method(s).
 Created API for write a template content with parameters to a file.
 It defines:</p>
@@ -204,17 +204,17 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__check_status - Check status.</div>
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">VERBOSE - console text indicator for current process-phase.</div>
+<div class="line">__check_status - check status.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">get_check_status - Get check status.</div>
-<div class="line">write - Write a template content with parameters to a file.</div>
-<div class="line">__str__ - Dunder method for WriteTemplate.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">get_check_status - get check status.</div>
+<div class="line">write - write a template content with parameters to a file.</div>
+<div class="line">__str__ - dunder method for WriteTemplate.</div>
 </div>
 </td>
 </tr>
@@ -223,7 +223,7 @@ It defines:</p>
 </div></blockquote>
 <dl class="attribute">
 <dt id="gen_data_model.pro.write_template.WriteTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::WRITE_TEMPLATE'</em><a class="headerlink" href="#gen_data_model.pro.write_template.WriteTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_data_model.pro.write_template.WriteTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -234,7 +234,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Getting check status.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">getting check status.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;bool&gt;</td>
 </tr>
@@ -253,13 +253,13 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>model_content</strong> (<em>&lt;str&gt;</em>) – Template content for model.</li>
-<li><strong>model_name</strong> (<em>&lt;str&gt;</em>) – Parameter model name.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+<li><strong>model_content</strong> (<em>&lt;str&gt;</em>) – template content for model.</li>
+<li><strong>model_name</strong> (<em>&lt;str&gt;</em>) – parameter model name.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Boolean status True (success) | False.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">boolean status True (success) | False.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;bool&gt;</p>

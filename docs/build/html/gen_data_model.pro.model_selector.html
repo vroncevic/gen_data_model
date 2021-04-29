@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.3.0
+                1.4.0
               </div>
             
           
@@ -195,8 +195,7 @@ Selecting data model type for generating process.</dd>
 <dl class="class">
 <dt id="gen_data_model.pro.model_selector.ModelSelector">
 <em class="property">class </em><code class="descclassname">gen_data_model.pro.model_selector.</code><code class="descname">ModelSelector</code><a class="reference internal" href="_modules/gen_data_model/pro/model_selector.html#ModelSelector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.model_selector.ModelSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defined class ModelSelector with attribute(s) and method(s).
+<dd><p>Defined class ModelSelector with attribute(s) and method(s).
 Selecting data model type for generating process.
 It defines:</p>
 <blockquote>
@@ -205,15 +204,14 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">choose_model - Selecting type of model for generation.</div>
-<div class="line">format_name - Formatting name for file module.</div>
-<div class="line">__str__ - Dunder method for ModelSelector.</div>
+<div class="line">choose_model - selecting type of model for generation.</div>
+<div class="line">format_name - formatting name for file module.</div>
+<div class="line">__str__ - dunder method for ModelSelector.</div>
 </div>
 </td>
 </tr>
@@ -221,8 +219,8 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
-<dt id="gen_data_model.pro.model_selector.ModelSelector.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::MODEL_SELECTOR'</em><a class="headerlink" href="#gen_data_model.pro.model_selector.ModelSelector.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_data_model.pro.model_selector.ModelSelector.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::MODEL_SELECTOR'</em><a class="headerlink" href="#gen_data_model.pro.model_selector.ModelSelector.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
@@ -234,12 +232,12 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>data_model_types</strong> (<em>&lt;dict&gt;</em>) – Data model types.</li>
-<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</li>
+<li><strong>data_model_types</strong> (<em>&lt;dict&gt;</em>) – data model types.</li>
+<li><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Type of data model (1, 2, 3, …).</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">type of data model (1, 2, 3, …).</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">&lt;int&gt;</p>
@@ -260,9 +258,9 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_name</strong> (<em>&lt;str&gt;</em>) – Postfix name for data model file.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model_name</strong> (<em>&lt;str&gt;</em>) – postfix name for data model file.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">File name with extension (lower case).</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">file name with extension (lower case).</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt;</td>
 </tr>

@@ -36,40 +36,38 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
-__version__ = '1.3.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class ModelSelector(object):
+class ModelSelector:
     '''
         Defined class ModelSelector with attribute(s) and method(s).
         Selecting data model type for generating process.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
+                | GEN_VERBOSE - console text indicator for process-phase.
             :methods:
-                | choose_model - Selecting type of model for generation.
-                | format_name - Formatting name for file module.
-                | __str__ - Dunder method for ModelSelector.
+                | choose_model - selecting type of model for generation.
+                | format_name - formatting name for file module.
+                | __str__ - dunder method for ModelSelector.
     '''
 
-    __slots__ = ('VERBOSE',)
-    VERBOSE = 'GEN_DATA_MODEL::PRO::MODEL_SELECTOR'
+    GEN_VERBOSE = 'GEN_DATA_MODEL::PRO::MODEL_SELECTOR'
 
     @classmethod
     def choose_model(cls, data_model_types, verbose=False):
         '''
             Choose type of data model.
 
-            :param data_model_types: Data model types.
+            :param data_model_types: data model types.
             :type data_model_types: <dict>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Type of data model (1, 2, 3, ...).
+            :return: type of data model (1, 2, 3, ...).
             :rtype: <int>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
@@ -81,7 +79,7 @@ class ModelSelector(object):
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        verbose_message(cls.VERBOSE, verbose, 'loading options')
+        verbose_message(cls.GEN_VERBOSE, verbose, 'loading options')
         print('\n {0}'.format('model option list:'))
         for index, model_type in enumerate(data_model_types['model_types']):
             option = index + 1
@@ -108,9 +106,9 @@ class ModelSelector(object):
                 else:
                     raise ValueError
             except ValueError:
-                error_message(cls.VERBOSE, 'not an appropriate choice.')
+                error_message(cls.GEN_VERBOSE, 'not an appropriate choice.')
         verbose_message(
-            cls.VERBOSE, verbose, 'selected option', input_type
+            cls.GEN_VERBOSE, verbose, 'selected option', input_type
         )
         return input_type
 
@@ -119,9 +117,9 @@ class ModelSelector(object):
         '''
             Format file name (Format: model_<name>.py).
 
-            :param model_name: Postfix name for data model file.
+            :param model_name: postfix name for data model file.
             :type model_name: <str>
-            :return: File name with extension (lower case).
+            :return: file name with extension (lower case).
             :rtype: <str>
             :exceptions: ATSBadCallError | ATSTypeError
         '''
@@ -137,7 +135,7 @@ class ModelSelector(object):
         '''
             Dunder method for ModelSelector.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

@@ -25,6 +25,7 @@ from os.path import exists
 
 try:
     from pathlib import Path
+    from ats_utilities.cooperative import CooperativeMeta
     from gen_data_model.pro.model_selector import ModelSelector
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -37,7 +38,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
-__version__ = '1.3.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -50,39 +51,36 @@ class ReadTemplate(FileChecking):
         It defines:
 
             attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __MODEL_TYPES - Model types and descriptions.
-                | __TEMPLATE_DIR - Prefix path to templates.
-                | __config - Cotainer object for configuration.
-                | template_dir - Absolute path of template dir.
+                | __metaclass__ - setting cooperative metaclasses.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | MODEL_TYPES - model types and descriptions.
+                | TEMPLATE_DIR - prefix path to templates.
+                | __config - cotainer object for configuration.
+                | template_dir - absolute path of template dir.
             methods:
-                | __init__ - Initial constructor.
-                | get_config - Get model types, templates, configurations.
-                | read - Read templates and return a string representations.
-                | __str__ - Dunder method for ReadTemplate.
+                | __init__ - initial constructor.
+                | get_config - get model types, templates, configurations.
+                | read - read templates and return a string representations.
+                | __str__ - dunder method for ReadTemplate.
     '''
 
-    __slots__ = (
-        'VERBOSE', '__MODEL_TYPES', '__TEMPLATE_DIR',
-        '__config', 'template_dir'
-    )
-    VERBOSE = 'GEN_DATA_MODEL::PRO::READ_TEMPLATE'
-    __MODEL_TYPES = '../conf/data_model_types.yaml'
-    __TEMPLATE_DIR = '/../conf/template/'
+    __metaclass__ = CooperativeMeta
+    GEN_VERBOSE = 'GEN_DATA_MODEL::PRO::READ_TEMPLATE'
+    MODEL_TYPES = '../conf/data_model_types.yaml'
+    TEMPLATE_DIR = '/../conf/template/'
 
     def __init__(self, verbose=False):
         '''
             Initial constructor.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :excptions: None
         '''
-        verbose_message(ReadTemplate.VERBOSE, verbose, 'init reader')
         FileChecking.__init__(self, verbose=verbose)
+        verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'init reader')
         models = '{0}/{1}'.format(
-            Path(__file__).parent, ReadTemplate.__MODEL_TYPES
+            Path(__file__).parent, ReadTemplate.MODEL_TYPES
         )
         self.check_path(file_path=models, verbose=verbose)
         self.check_mode(file_mode='r', verbose=verbose)
@@ -96,14 +94,14 @@ class ReadTemplate(FileChecking):
             self.__config = None
         if bool(self.__config):
             self.template_dir = '{0}{1}'.format(
-                Path(__file__).parent, ReadTemplate.__TEMPLATE_DIR
+                Path(__file__).parent, ReadTemplate.TEMPLATE_DIR
             )
 
     def get_config(self):
         '''
             Get model types, templates, configurations.
 
-            :return: Dictionary with configurations.
+            :return: dictionary with configurations.
             :rtype: <dict>
             :excptions: None
         '''
@@ -113,9 +111,9 @@ class ReadTemplate(FileChecking):
         '''
             Read templates and return a string representations.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: Template contents (base data model and data model) | None.
+            :return: template contents (base data model and data model) | None.
             :rtype: <str> <str> | <NoneType> <NoneType>
             :excptions: None
         '''
@@ -132,12 +130,12 @@ class ReadTemplate(FileChecking):
             )
             if all([exists(template_base), exists(template)]):
                 verbose_message(
-                    ReadTemplate.VERBOSE, verbose, 'loading base model'
+                    ReadTemplate.GEN_VERBOSE, verbose, 'loading base model'
                 )
                 with open(template_base, 'r') as model_base_file:
                     model_base_content = model_base_file.read()
                 verbose_message(
-                    ReadTemplate.VERBOSE, verbose, 'loading model'
+                    ReadTemplate.GEN_VERBOSE, verbose, 'loading model'
                 )
                 with open(template, 'r') as model_file:
                     model_content = model_file.read()
@@ -149,7 +147,7 @@ class ReadTemplate(FileChecking):
         '''
             Dunder method for ReadTemplate.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''
