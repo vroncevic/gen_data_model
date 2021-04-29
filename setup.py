@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
-__version__ = '1.3.0'
+__version__ = '1.4.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -38,7 +38,7 @@ def install_directory():
     '''
         Return the installation directory, or None.
 
-        :return: Path (success) | None.
+        :return: path (success) | None.
         :rtype: <str> | <NoneType>
         :exceptions: None
     '''
@@ -99,7 +99,7 @@ PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 
 setup(
     name='gen_data_model',
-    version='1.3.0',
+    version='1.4.0',
     description='Python App/Tool/Script Utilities',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',

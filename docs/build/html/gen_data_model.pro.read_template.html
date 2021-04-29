@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.3.0
+                1.4.0
               </div>
             
           
@@ -203,27 +203,42 @@ It defines:</p>
 <div><dl class="docutils">
 <dt>attributes:</dt>
 <dd><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__MODEL_TYPES - Model types and descriptions.</div>
-<div class="line">__TEMPLATE_DIR - Prefix path to templates.</div>
-<div class="line">__config - Cotainer object for configuration.</div>
-<div class="line">template_dir - Absolute path of template dir.</div>
+<div class="line">__metaclass__ - setting cooperative metaclasses.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">MODEL_TYPES - model types and descriptions.</div>
+<div class="line">TEMPLATE_DIR - prefix path to templates.</div>
+<div class="line">__config - cotainer object for configuration.</div>
+<div class="line">template_dir - absolute path of template dir.</div>
 </div>
 </dd>
 <dt>methods:</dt>
 <dd><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">get_config - Get model types, templates, configurations.</div>
-<div class="line">read - Read templates and return a string representations.</div>
-<div class="line">__str__ - Dunder method for ReadTemplate.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">get_config - get model types, templates, configurations.</div>
+<div class="line">read - read templates and return a string representations.</div>
+<div class="line">__str__ - dunder method for ReadTemplate.</div>
 </div>
 </dd>
 </dl>
 </div></blockquote>
 <dl class="attribute">
+<dt id="gen_data_model.pro.read_template.ReadTemplate.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_data_model.pro.read_template.ReadTemplate.MODEL_TYPES">
+<code class="descname">MODEL_TYPES</code><em class="property"> = '../conf/data_model_types.yaml'</em><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.MODEL_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gen_data_model.pro.read_template.ReadTemplate.TEMPLATE_DIR">
+<code class="descname">TEMPLATE_DIR</code><em class="property"> = '/../conf/template/'</em><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.TEMPLATE_DIR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="gen_data_model.pro.read_template.ReadTemplate.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::READ_TEMPLATE'</em><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<code class="descname">VERBOSE</code><em class="property"> = 'ATS_UTILITIES'</em><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -234,7 +249,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with configurations.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dictionary with configurations.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;dict&gt;</td>
 </tr>
@@ -252,9 +267,9 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Template contents (base data model and data model) | None.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">template contents (base data model and data model) | None.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">&lt;str&gt; &lt;str&gt; | &lt;NoneType&gt; &lt;NoneType&gt;</td>
 </tr>
@@ -263,11 +278,6 @@ It defines:</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="gen_data_model.pro.read_template.ReadTemplate.template_dir">
-<code class="descname">template_dir</code><a class="headerlink" href="#gen_data_model.pro.read_template.ReadTemplate.template_dir" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
