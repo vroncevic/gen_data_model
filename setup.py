@@ -20,16 +20,16 @@
      Defined setup for gen_data_model tool package.
 '''
 
-from sys import argv, version_info, prefix, exit
+from __future__ import print_function
+import sys
 from os.path import abspath, dirname, join, exists
-from site import getusersitepackages
 from setuptools import setup
 
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
-__version__ = '1.4.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
+__version__ = '1.5.0'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -42,47 +42,52 @@ def install_directory():
         :rtype: <str> | <NoneType>
         :exceptions: None
     '''
-    py_version = '{0}.{1}'.format(version_info[0], version_info[1])
-    if '--github' in argv:
-        index = argv.index('--github')
-        argv.pop(index)
+    py_version = '{0}.{1}'.format(sys.version_info[0], sys.version_info[1])
+    if '--github' in sys.argv:
+        index = sys.argv.index('--github')
+        sys.argv.pop(index)
         paths = (
-            '{0}/lib/python{1}/dist-packages/'.format(prefix, py_version),
-            '{0}/lib/python{1}/site-packages/'.format(prefix, py_version)
+            '{0}/lib/python{1}/dist-packages/'.format(sys.prefix, py_version),
+            '{0}/lib/python{1}/site-packages/'.format(sys.prefix, py_version)
         )
     else:
         paths = (s for s in (
             '{0}/local/lib/python{1}/dist-packages/'.format(
-                prefix, py_version
+                sys.prefix, py_version
             ),
             '{0}/local/lib/python{1}/site-packages/'.format(
-                prefix, py_version
+                sys.prefix, py_version
             )
         ))
+    message = None
     for path in paths:
-        print('[setup] check path {0}'.format(path))
+        message = '[setup] check path {0}'.format(path)
+        print(message)
         if exists(path):
-            print('[setup] using path {0}'.format(path))
+            message = '[setup] use path {0}'.format(path)
+            print(message)
             return path
-    print('[setup] no installation path found, check {0}\n'.format(prefix))
+    message = '[setup] no installation path found, check {0}\n'.format(
+        sys.prefix
+    )
+    print(message)
     return None
 
 INSTALL_DIR = install_directory()
-
-if not INSTALL_DIR:
+TOOL_DIR = 'gen_data_model/'
+CONF_DIR = '{0}{1}'.format(TOOL_DIR, 'conf/')
+TEMPLATE_DIR = '{0}{1}'.format(CONF_DIR, 'template/')
+if not bool(INSTALL_DIR):
     print('[setup] force exit from install process')
     exit(127)
-
 THIS_DIR, LONG_DESCRIPTION = abspath(dirname(__file__)), None
 with open(join(THIS_DIR, 'README.md')) as readme:
     LONG_DESCRIPTION = readme.read()
-
 PROGRAMMING_LANG = 'Programming Language :: Python ::'
 VERSIONS = ['2.7', '3', '3.2', '3.3', '3.4']
 SUPPORTED_PY_VERSIONS = [
     '{0} {1}'.format(PROGRAMMING_LANG, VERSION) for VERSION in VERSIONS
 ]
-
 LICENSE_PREFIX = 'License :: OSI Approved ::'
 LICENSES = [
     'GNU Lesser General Public License v2 (LGPLv2)',
@@ -94,12 +99,11 @@ LICENSES = [
 APPROVED_LICENSES = [
     '{0} {1}'.format(LICENSE_PREFIX, LICENSE) for LICENSE in LICENSES
 ]
-
 PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 
 setup(
     name='gen_data_model',
-    version='1.4.0',
+    version='1.5.0',
     description='Python App/Tool/Script Utilities',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -129,46 +133,53 @@ setup(
         'SQLAlchemy'
     ],
     data_files=[
-        ('/usr/local/bin/', ['gen_data_model/run/gen_data_model_run.py']),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/'),
-            ['gen_data_model/conf/gen_data_model.cfg']
+            '/usr/local/bin/', [
+                '{0}{1}'.format(TOOL_DIR, 'run/gen_data_model_run.py')
+            ]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/'),
-            ['gen_data_model/conf/gen_data_model_util.cfg']
+            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
+                '{0}{1}'.format(CONF_DIR, 'gen_data_model.cfg')
+            ]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/'),
-            ['gen_data_model/conf/data_model_types.yaml']
+            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
+                '{0}{1}'.format(CONF_DIR, 'gen_data_model_util.cfg')
+            ]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/template/'),
-            ['gen_data_model/conf/template/django.template']
+            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
+                '{0}{1}'.format(CONF_DIR, 'data_model_types.yaml')
+            ]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/template/'),
-            ['gen_data_model/conf/template/flask.template']
+            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
+            ['{0}{1}'.format(TEMPLATE_DIR, 'django.template')]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/template/'),
-            ['gen_data_model/conf/template/sqlalchemy.template']
+            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
+            ['{0}{1}'.format(TEMPLATE_DIR, 'flask.template')]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/template/'),
-            ['gen_data_model/conf/template/django_base_model.template']
+            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
+            ['{0}{1}'.format(TEMPLATE_DIR, 'sqlalchemy.template')]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/template/'),
-            ['gen_data_model/conf/template/flask_base_model.template']
+            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
+            ['{0}{1}'.format(TEMPLATE_DIR, 'django_base_model.template')]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/conf/template/'),
-            ['gen_data_model/conf/template/sqlalchemy_base_model.template']
+            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
+            ['{0}{1}'.format(TEMPLATE_DIR, 'flask_base_model.template')]
         ),
         (
-            '{0}{1}'.format(INSTALL_DIR, 'gen_data_model/log/'),
-            ['gen_data_model/log/gen_data_model.log']
+            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
+            ['{0}{1}'.format(TEMPLATE_DIR, 'sqlalchemy_base_model.template')]
+        ),
+        (
+            '{0}{1}{2}'.format(INSTALL_DIR, TOOL_DIR, 'log/'),
+            ['{0}{1}'.format(TOOL_DIR, 'log/gen_data_model.log')]
         )
     ]
 )
