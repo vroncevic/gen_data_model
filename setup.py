@@ -42,29 +42,35 @@ def install_directory():
         :rtype: <str> | <NoneType>
         :exceptions: None
     '''
-    py_version = '{0}.{1}'.format(version_info[0], version_info[1])
-    if '--github' in argv:
-        index = argv.index('--github')
-        argv.pop(index)
+    py_version = '{0}.{1}'.format(sys.version_info[0], sys.version_info[1])
+    if '--github' in sys.argv:
+        index = sys.argv.index('--github')
+        sys.argv.pop(index)
         paths = (
-            '{0}/lib/python{1}/dist-packages/'.format(prefix, py_version),
-            '{0}/lib/python{1}/site-packages/'.format(prefix, py_version)
+            '{0}/lib/python{1}/dist-packages/'.format(sys.prefix, py_version),
+            '{0}/lib/python{1}/site-packages/'.format(sys.prefix, py_version)
         )
     else:
         paths = (s for s in (
             '{0}/local/lib/python{1}/dist-packages/'.format(
-                prefix, py_version
+                sys.prefix, py_version
             ),
             '{0}/local/lib/python{1}/site-packages/'.format(
-                prefix, py_version
+                sys.prefix, py_version
             )
         ))
+    message = None
     for path in paths:
-        print('[setup] check path {0}'.format(path))
+        message = '[setup] check path {0}'.format(path)
+        print(message)
         if exists(path):
-            print('[setup] using path {0}'.format(path))
+            message = '[setup] use path {0}'.format(path)
+            print(message)
             return path
-    print('[setup] no installation path found, check {0}\n'.format(prefix))
+    message = '[setup] no installation path found, check {0}\n'.format(
+        sys.prefix
+    )
+    print(message)
     return None
 
 INSTALL_DIR = install_directory()
