@@ -17,7 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class Base with attribute(s) and method(s).
-     Abstract Data Model.
+     Abstract data model.
 '''
 
 import sys
@@ -41,12 +41,12 @@ __status__ = 'Updated'
 class Base(models.Model):
     '''
         Define class Base with attribute(s) and method(s).
-        Abstract Data Model.
+        Abstract data model.
         It defines:
 
             :attributes:
-                | created - Date of creation
-                | modified - Date of modification
+                | created - date of creation.
+                | modified - date of modification.
             :methods:
                 | None
     '''

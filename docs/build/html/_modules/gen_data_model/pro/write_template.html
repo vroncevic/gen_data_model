@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -198,8 +198,8 @@
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2017, https://vroncevic.github.io/gen_data_model&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_data_model/blob/master/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.5.0&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.5.1&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
@@ -213,7 +213,7 @@
 
 <span class="sd">            :attributes:</span>
 <span class="sd">                | __metaclass__ - setting cooperative metaclasses.</span>
-<span class="sd">                | VERBOSE - console text indicator for current process-phase.</span>
+<span class="sd">                | GEN_VERBOSE - console text indicator for process-phase.</span>
 <span class="sd">                | __check_status - check status.</span>
 <span class="sd">            :methods:</span>
 <span class="sd">                | __init__ - initial constructor.</span>
@@ -223,7 +223,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">CooperativeMeta</span>
-    <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_DATA_MODEL::PRO::WRITE_TEMPLATE&#39;</span>
+    <span class="n">GEN_VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_DATA_MODEL::PRO::WRITE_TEMPLATE&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -234,7 +234,7 @@
 <span class="sd">            :excptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">FileChecking</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">WriteTemplate</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init writer&#39;</span><span class="p">)</span>
+        <span class="n">verbose_message</span><span class="p">(</span><span class="n">WriteTemplate</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init writer&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__check_status</span> <span class="o">=</span> <span class="kc">False</span>
 
 <div class="viewcode-block" id="WriteTemplate.get_check_status"><a class="viewcode-back" href="../../../gen_data_model.pro.write_template.html#gen_data_model.pro.write_template.WriteTemplate.get_check_status">[docs]</a>    <span class="k">def</span> <span class="nf">get_check_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -271,7 +271,7 @@
         <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="n">status</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">WriteTemplate</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;writer template&#39;</span><span class="p">)</span>
+        <span class="n">verbose_message</span><span class="p">(</span><span class="n">WriteTemplate</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;writer template&#39;</span><span class="p">)</span>
         <span class="n">file_name</span> <span class="o">=</span> <span class="n">ModelSelector</span><span class="o">.</span><span class="n">format_name</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">file_name</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__check_status</span><span class="p">,</span> <span class="n">current_dir</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">getcwd</span><span class="p">()</span>
@@ -284,7 +284,7 @@
             <span class="p">}</span>
             <span class="n">template</span> <span class="o">=</span> <span class="n">Template</span><span class="p">(</span><span class="n">model_content</span><span class="p">)</span>
             <span class="n">verbose_message</span><span class="p">(</span>
-                <span class="n">WriteTemplate</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;write model&#39;</span><span class="p">,</span> <span class="n">module_file</span>
+                <span class="n">WriteTemplate</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;write model&#39;</span><span class="p">,</span> <span class="n">module_file</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">template</span><span class="p">:</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">module_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model_file</span><span class="p">:</span>

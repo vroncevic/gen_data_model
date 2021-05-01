@@ -39,8 +39,8 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
-__version__ = '1.5.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -57,7 +57,7 @@ class GenDataModel(CfgCLI):
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | CONFIG - configuration file path.
                 | LOG - tool log file path.
-                | OPS - tool options (list).
+                | OPS - list of tool options.
                 | logger - logger object API.
             :methods:
                 | __init__ - initial constructor.

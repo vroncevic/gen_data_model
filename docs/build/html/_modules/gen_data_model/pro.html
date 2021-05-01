@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -195,43 +195,40 @@
 <span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2017, https://vroncevic.github.io/gen_data_model&#39;</span>
 <span class="n">__credits__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Vladimir Roncevic&#39;</span><span class="p">]</span>
-<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_data_model/blob/master/LICENSE&#39;</span>
-<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.5.0&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE&#39;</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;1.5.1&#39;</span>
 <span class="n">__maintainer__</span> <span class="o">=</span> <span class="s1">&#39;Vladimir Roncevic&#39;</span>
 <span class="n">__email__</span> <span class="o">=</span> <span class="s1">&#39;elektron.ronca@gmail.com&#39;</span>
 <span class="n">__status__</span> <span class="o">=</span> <span class="s1">&#39;Updated&#39;</span>
 
 
-<div class="viewcode-block" id="GenModel"><a class="viewcode-back" href="../../gen_data_model.pro.html#gen_data_model.pro.GenModel">[docs]</a><span class="k">class</span> <span class="nc">GenModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="GenModel"><a class="viewcode-back" href="../../gen_data_model.pro.html#gen_data_model.pro.GenModel">[docs]</a><span class="k">class</span> <span class="nc">GenModel</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        Defined class GenModel with attribute(s) and method(s).</span>
 <span class="sd">        Generate data model by templates and parameters.</span>
 <span class="sd">        It defines:</span>
 
 <span class="sd">            :attributes:</span>
-<span class="sd">                | __slots__ - Setting class slots.</span>
-<span class="sd">                | VERBOSE - Console text indicator for current process-phase.</span>
-<span class="sd">                | __MODEL_TYPES - Data model types.</span>
-<span class="sd">                | __reader - Reader API.</span>
-<span class="sd">                | __writer - Writer API.</span>
+<span class="sd">                | GEN_VERBOSE - console text indicator for process-phase.</span>
+<span class="sd">                | __reader - reader API.</span>
+<span class="sd">                | __writer - writer API.</span>
 <span class="sd">            :methods:</span>
-<span class="sd">                | __init__ - Initial constructor.</span>
-<span class="sd">                | get_reader - Get reader object.</span>
-<span class="sd">                | get_writer - Get writer object.</span>
-<span class="sd">                | gen_model - Generate data model.</span>
-<span class="sd">                | __str__ - Dunder method for GenModel.</span>
+<span class="sd">                | __init__ - initial constructor.</span>
+<span class="sd">                | get_reader - get reader object.</span>
+<span class="sd">                | get_writer - get writer object.</span>
+<span class="sd">                | gen_model - generate data model.</span>
+<span class="sd">                | __str__ - dunder method for GenModel.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;__reader&#39;</span><span class="p">,</span> <span class="s1">&#39;__writer&#39;</span><span class="p">,</span> <span class="s1">&#39;model_name&#39;</span><span class="p">)</span>
-    <span class="n">VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_DATA_MODEL::PRO::GEN_MODEL&#39;</span>
+    <span class="n">GEN_VERBOSE</span> <span class="o">=</span> <span class="s1">&#39;GEN_DATA_MODEL::PRO::GEN_MODEL&#39;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Initial constructor.</span>
 
-<span class="sd">            :param model_name: Data model name.</span>
+<span class="sd">            :param model_name: data model name.</span>
 <span class="sd">            :type model_name: &lt;str&gt;</span>
-<span class="sd">            :param verbose: Enable/disable verbose option.</span>
+<span class="sd">            :param verbose: enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :exceptions: ATSTypeError | ATSBadCallError</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -241,7 +238,7 @@
             <span class="k">raise</span> <span class="n">ATSTypeError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">ATSChecker</span><span class="o">.</span><span class="n">VALUE_ERROR</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ATSBadCallError</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-        <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init generator&#39;</span><span class="p">)</span>
+        <span class="n">verbose_message</span><span class="p">(</span><span class="n">GenModel</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;init generator&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span> <span class="o">=</span> <span class="n">ReadTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__writer</span> <span class="o">=</span> <span class="n">WriteTemplate</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="n">model_name</span>
@@ -250,7 +247,7 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Get reader object.</span>
 
-<span class="sd">            :return: Read template object.</span>
+<span class="sd">            :return: read template object.</span>
 <span class="sd">            :rtype: &lt;ReadTemplate&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -260,7 +257,7 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Get writer object.</span>
 
-<span class="sd">            :return: Write template object.</span>
+<span class="sd">            :return: write template object.</span>
 <span class="sd">            :rtype: &lt;WriteTemplate&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -270,7 +267,7 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Generate data model.</span>
 
-<span class="sd">            :param verbose: Enable/disable verbose option.</span>
+<span class="sd">            :param verbose: enable/disable verbose option.</span>
 <span class="sd">            :type verbose: &lt;bool&gt;</span>
 <span class="sd">            :return: True (success) | False.</span>
 <span class="sd">            :rtype: &lt;bool&gt;</span>
@@ -278,7 +275,7 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">status</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">verbose_message</span><span class="p">(</span>
-            <span class="n">GenModel</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;generate model&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span>
+            <span class="n">GenModel</span><span class="o">.</span><span class="n">GEN_VERBOSE</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="s1">&#39;generate model&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span>
         <span class="p">)</span>
         <span class="n">base_content</span><span class="p">,</span> <span class="n">model_content</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
         <span class="n">base_content</span><span class="p">,</span> <span class="n">model_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
@@ -302,7 +299,7 @@
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Dunder method for GenModel.</span>
 
-<span class="sd">            :return: Object in a human-readable format.</span>
+<span class="sd">            :return: object in a human-readable format.</span>
 <span class="sd">            :rtype: &lt;str&gt;</span>
 <span class="sd">            :exceptions: None</span>
 <span class="sd">        &#39;&#39;&#39;</span>

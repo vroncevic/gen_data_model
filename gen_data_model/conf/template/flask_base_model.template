@@ -17,7 +17,7 @@
      with this program. If not, see <http://www.gnu.org/licenses/>.
  Info
      Define class Base with attribute(s) and method(s).
-     Abstract Data Model.
+     Abstract data model.
 '''
 
 import sys
@@ -41,18 +41,18 @@ __status__ = 'Updated'
 class Base(db.Model):
     '''
         Define class Base with attribute(s) and method(s).
-        Abstract Data Model.
+        Abstract data model.
         It defines:
 
             :attributes:
-                | __abstract__ - Setting abstract
-                | id - Table id
-                | created - Date of creation
-                | modified - Date of modification
+                | __abstract__ - setting abstract.
+                | id - table id.
+                | created - date of creation.
+                | modified - date of modification.
             :methods:
-                | is_authenticated - Authentication status
-                | is_active - Getting status
-                | is_anonymous - Getting info
+                | is_authenticated - authentication status.
+                | is_active - getting status.
+                | is_anonymous - getting info.
     '''
 
     __abstract__ = True
@@ -62,9 +62,9 @@ class Base(db.Model):
 
     def is_authenticated(self):
         '''
-            Getting Authentication status.
+            Getting authentication status.
 
-            :return: Authentication status
+            :return: authentication status.
             :type: bool
         '''
         return True
@@ -73,7 +73,7 @@ class Base(db.Model):
         '''
             Getting status.
 
-            :return: Getting status
+            :return: getting status.
             :type: <bool>
         '''
         return True
@@ -82,7 +82,7 @@ class Base(db.Model):
         '''
             Getting info.
 
-            :return: Getting info
+            :return: getting info.
             :type: <bool>
         '''
         return False
