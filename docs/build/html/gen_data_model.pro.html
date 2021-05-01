@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                1.5.0
+                1.5.1
               </div>
             
           
@@ -205,8 +205,7 @@ Generate data model by templates and parameters.</dd>
 <dl class="class">
 <dt id="gen_data_model.pro.GenModel">
 <em class="property">class </em><code class="descclassname">gen_data_model.pro.</code><code class="descname">GenModel</code><span class="sig-paren">(</span><em>model_name</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model/pro.html#GenModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gen_data_model.pro.GenModel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Defined class GenModel with attribute(s) and method(s).
+<dd><p>Defined class GenModel with attribute(s) and method(s).
 Generate data model by templates and parameters.
 It defines:</p>
 <blockquote>
@@ -215,20 +214,18 @@ It defines:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">attributes:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__slots__ - Setting class slots.</div>
-<div class="line">VERBOSE - Console text indicator for current process-phase.</div>
-<div class="line">__MODEL_TYPES - Data model types.</div>
-<div class="line">__reader - Reader API.</div>
-<div class="line">__writer - Writer API.</div>
+<div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
+<div class="line">__reader - reader API.</div>
+<div class="line">__writer - writer API.</div>
 </div>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">methods:</th><td class="field-body"><div class="first last line-block">
-<div class="line">__init__ - Initial constructor.</div>
-<div class="line">get_reader - Get reader object.</div>
-<div class="line">get_writer - Get writer object.</div>
-<div class="line">gen_model - Generate data model.</div>
-<div class="line">__str__ - Dunder method for GenModel.</div>
+<div class="line">__init__ - initial constructor.</div>
+<div class="line">get_reader - get reader object.</div>
+<div class="line">get_writer - get writer object.</div>
+<div class="line">gen_model - generate data model.</div>
+<div class="line">__str__ - dunder method for GenModel.</div>
 </div>
 </td>
 </tr>
@@ -236,8 +233,8 @@ It defines:</p>
 </table>
 </div></blockquote>
 <dl class="attribute">
-<dt id="gen_data_model.pro.GenModel.VERBOSE">
-<code class="descname">VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::GEN_MODEL'</em><a class="headerlink" href="#gen_data_model.pro.GenModel.VERBOSE" title="Permalink to this definition">¶</a></dt>
+<dt id="gen_data_model.pro.GenModel.GEN_VERBOSE">
+<code class="descname">GEN_VERBOSE</code><em class="property"> = 'GEN_DATA_MODEL::PRO::GEN_MODEL'</em><a class="headerlink" href="#gen_data_model.pro.GenModel.GEN_VERBOSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -248,7 +245,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – Enable/disable verbose option.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<em>&lt;bool&gt;</em>) – enable/disable verbose option.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True (success) | False.</td>
 </tr>
@@ -268,7 +265,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Read template object.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">read template object.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;ReadTemplate&gt;</td>
 </tr>
@@ -286,7 +283,7 @@ It defines:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Write template object.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">write template object.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">&lt;WriteTemplate&gt;</td>
 </tr>
@@ -295,11 +292,6 @@ It defines:</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="gen_data_model.pro.GenModel.model_name">
-<code class="descname">model_name</code><a class="headerlink" href="#gen_data_model.pro.GenModel.model_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 

@@ -52,12 +52,12 @@ class ${mod}(Base):
 
     class Meta:
         '''
-            Define class Meta with attribute(s) and method(s).
+            Define class meta with attribute(s) and method(s).
             Meta class.
             It defines:
 
                 :attributes:
-                    | db_table - Database table
+                    | db_table - database table.
                 :methods:
                     | None
         '''

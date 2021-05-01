@@ -45,11 +45,11 @@ class ${mod}(Base):
         It defines:
 
             :attributes:
-                | __tablename__ - Database table name
+                | __tablename__ - database table name.
             :methods:
-                | __init__ - Initial constructor
-                | get_id - Getting id
-                | __repr__ - Printable representation of the ${mod}
+                | __init__ - initial constructor.
+                | get_id - getting id.
+                | __repr__ - printable representation of the ${mod}.
     '''
 
     __tablename__ = '${modlc}'
@@ -58,7 +58,7 @@ class ${mod}(Base):
         '''
             Loading configuration and setting argument options.
 
-            :param verbose: Enable/disable verbose option
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: None
         '''
@@ -68,7 +68,7 @@ class ${mod}(Base):
         '''
             Getting id.
 
-            :return: Getting id
+            :return: getting id.
             :type: <int>
         '''
         return self.id
@@ -77,7 +77,7 @@ class ${mod}(Base):
         '''
             Printable representation of the ${mod}.
 
-            :return: Printable representation of the ${mod}
+            :return: printable representation of the ${mod}.
             :type: <str>
         '''
         pass

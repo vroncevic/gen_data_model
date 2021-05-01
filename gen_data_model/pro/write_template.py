@@ -40,8 +40,8 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
-__version__ = '1.5.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -55,7 +55,7 @@ class WriteTemplate(FileChecking):
 
             :attributes:
                 | __metaclass__ - setting cooperative metaclasses.
-                | VERBOSE - console text indicator for current process-phase.
+                | GEN_VERBOSE - console text indicator for process-phase.
                 | __check_status - check status.
             :methods:
                 | __init__ - initial constructor.
@@ -65,7 +65,7 @@ class WriteTemplate(FileChecking):
     '''
 
     __metaclass__ = CooperativeMeta
-    VERBOSE = 'GEN_DATA_MODEL::PRO::WRITE_TEMPLATE'
+    GEN_VERBOSE = 'GEN_DATA_MODEL::PRO::WRITE_TEMPLATE'
 
     def __init__(self, verbose=False):
         '''
@@ -76,7 +76,7 @@ class WriteTemplate(FileChecking):
             :excptions: None
         '''
         FileChecking.__init__(self, verbose=verbose)
-        verbose_message(WriteTemplate.VERBOSE, verbose, 'init writer')
+        verbose_message(WriteTemplate.GEN_VERBOSE, verbose, 'init writer')
         self.__check_status = False
 
     def get_check_status(self):
@@ -113,7 +113,7 @@ class WriteTemplate(FileChecking):
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
         status, file_name = False, None
-        verbose_message(WriteTemplate.VERBOSE, verbose, 'writer template')
+        verbose_message(WriteTemplate.GEN_VERBOSE, verbose, 'writer template')
         file_name = ModelSelector.format_name(model_name)
         if file_name:
             self.__check_status, current_dir = True, getcwd()
@@ -126,7 +126,7 @@ class WriteTemplate(FileChecking):
             }
             template = Template(model_content)
             verbose_message(
-                WriteTemplate.VERBOSE, verbose, 'write model', module_file
+                WriteTemplate.GEN_VERBOSE, verbose, 'write model', module_file
             )
             if template:
                 with open(module_file, 'w') as model_file:

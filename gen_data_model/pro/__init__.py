@@ -39,43 +39,40 @@ except ImportError as ats_error_message:
 __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
-__license__ = 'https://github.com/vroncevic/gen_data_model/blob/master/LICENSE'
-__version__ = '1.5.0'
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-class GenModel(object):
+class GenModel:
     '''
         Defined class GenModel with attribute(s) and method(s).
         Generate data model by templates and parameters.
         It defines:
 
             :attributes:
-                | __slots__ - Setting class slots.
-                | VERBOSE - Console text indicator for current process-phase.
-                | __MODEL_TYPES - Data model types.
-                | __reader - Reader API.
-                | __writer - Writer API.
+                | GEN_VERBOSE - console text indicator for process-phase.
+                | __reader - reader API.
+                | __writer - writer API.
             :methods:
-                | __init__ - Initial constructor.
-                | get_reader - Get reader object.
-                | get_writer - Get writer object.
-                | gen_model - Generate data model.
-                | __str__ - Dunder method for GenModel.
+                | __init__ - initial constructor.
+                | get_reader - get reader object.
+                | get_writer - get writer object.
+                | gen_model - generate data model.
+                | __str__ - dunder method for GenModel.
     '''
 
-    __slots__ = ('VERBOSE', '__reader', '__writer', 'model_name')
-    VERBOSE = 'GEN_DATA_MODEL::PRO::GEN_MODEL'
+    GEN_VERBOSE = 'GEN_DATA_MODEL::PRO::GEN_MODEL'
 
     def __init__(self, model_name, verbose=False):
         '''
             Initial constructor.
 
-            :param model_name: Data model name.
+            :param model_name: data model name.
             :type model_name: <str>
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :exceptions: ATSTypeError | ATSBadCallError
         '''
@@ -85,7 +82,7 @@ class GenModel(object):
             raise ATSTypeError(error)
         if status == ATSChecker.VALUE_ERROR:
             raise ATSBadCallError(error)
-        verbose_message(GenModel.VERBOSE, verbose, 'init generator')
+        verbose_message(GenModel.GEN_VERBOSE, verbose, 'init generator')
         self.__reader = ReadTemplate(verbose=verbose)
         self.__writer = WriteTemplate(verbose=verbose)
         self.model_name = model_name
@@ -94,7 +91,7 @@ class GenModel(object):
         '''
             Get reader object.
 
-            :return: Read template object.
+            :return: read template object.
             :rtype: <ReadTemplate>
             :exceptions: None
         '''
@@ -104,7 +101,7 @@ class GenModel(object):
         '''
             Get writer object.
 
-            :return: Write template object.
+            :return: write template object.
             :rtype: <WriteTemplate>
             :exceptions: None
         '''
@@ -114,7 +111,7 @@ class GenModel(object):
         '''
             Generate data model.
 
-            :param verbose: Enable/disable verbose option.
+            :param verbose: enable/disable verbose option.
             :type verbose: <bool>
             :return: True (success) | False.
             :rtype: <bool>
@@ -122,7 +119,7 @@ class GenModel(object):
         '''
         status = False
         verbose_message(
-            GenModel.VERBOSE, verbose, 'generate model', self.model_name
+            GenModel.GEN_VERBOSE, verbose, 'generate model', self.model_name
         )
         base_content, model_content = None, None
         base_content, model_content = self.__reader.read(verbose=verbose)
@@ -146,7 +143,7 @@ class GenModel(object):
         '''
             Dunder method for GenModel.
 
-            :return: Object in a human-readable format.
+            :return: object in a human-readable format.
             :rtype: <str>
             :exceptions: None
         '''

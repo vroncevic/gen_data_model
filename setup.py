@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.5.0'
+__version__ = '1.5.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -75,8 +75,6 @@ def install_directory():
 
 INSTALL_DIR = install_directory()
 TOOL_DIR = 'gen_data_model/'
-CONF_DIR = '{0}{1}'.format(TOOL_DIR, 'conf/')
-TEMPLATE_DIR = '{0}{1}'.format(CONF_DIR, 'template/')
 if not bool(INSTALL_DIR):
     print('[setup] force exit from install process')
     exit(127)
@@ -103,7 +101,7 @@ PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 
 setup(
     name='gen_data_model',
-    version='1.5.0',
+    version='1.5.1',
     description='Python App/Tool/Script Utilities',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -132,54 +130,25 @@ setup(
         'Django',
         'SQLAlchemy'
     ],
+    package_data = {
+        'gen_data_model': [
+            'conf/gen_data_model.cfg',
+            'conf/gen_data_model_util.cfg',
+            'conf/data_model_types.yaml',
+            'conf/template/django.template',
+            'conf/template/flask.template',
+            'conf/template/sqlalchemy.template',
+            'conf/template/django_base_model.template',
+            'conf/template/flask_base_model.template',
+            'conf/template/sqlalchemy_base_model.template',
+            'log/gen_data_model.log'
+        ]
+    },
     data_files=[
         (
             '/usr/local/bin/', [
                 '{0}{1}'.format(TOOL_DIR, 'run/gen_data_model_run.py')
             ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'gen_data_model.cfg')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'gen_data_model_util.cfg')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, CONF_DIR), [
-                '{0}{1}'.format(CONF_DIR, 'data_model_types.yaml')
-            ]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'django.template')]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'flask.template')]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'sqlalchemy.template')]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'django_base_model.template')]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'flask_base_model.template')]
-        ),
-        (
-            '{0}{1}'.format(INSTALL_DIR, TEMPLATE_DIR),
-            ['{0}{1}'.format(TEMPLATE_DIR, 'sqlalchemy_base_model.template')]
-        ),
-        (
-            '{0}{1}{2}'.format(INSTALL_DIR, TOOL_DIR, 'log/'),
-            ['{0}{1}'.format(TOOL_DIR, 'log/gen_data_model.log')]
         )
     ]
 )
