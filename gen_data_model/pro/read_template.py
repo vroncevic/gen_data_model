@@ -25,7 +25,6 @@ from os.path import exists
 
 try:
     from pathlib import Path
-    from ats_utilities.cooperative import CooperativeMeta
     from gen_data_model.pro.model_selector import ModelSelector
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -38,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -51,7 +50,6 @@ class ReadTemplate(FileChecking):
         It defines:
 
             attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | MODEL_TYPES - model types and descriptions.
                 | TEMPLATE_DIR - prefix path to templates.
@@ -64,7 +62,6 @@ class ReadTemplate(FileChecking):
                 | __str__ - dunder method for ReadTemplate.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_DATA_MODEL::PRO::READ_TEMPLATE'
     MODEL_TYPES = '../conf/data_model_types.yaml'
     TEMPLATE_DIR = '/../conf/template/'

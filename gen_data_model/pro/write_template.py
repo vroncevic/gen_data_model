@@ -28,7 +28,6 @@ from string import Template
 try:
     from gen_data_model.pro.model_selector import ModelSelector
     from ats_utilities.checker import ATSChecker
-    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
@@ -41,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -54,7 +53,6 @@ class WriteTemplate(FileChecking):
         It defines:
 
             :attributes:
-                | __metaclass__ - setting cooperative metaclasses.
                 | GEN_VERBOSE - console text indicator for process-phase.
                 | __check_status - check status.
             :methods:
@@ -64,7 +62,6 @@ class WriteTemplate(FileChecking):
                 | __str__ - dunder method for WriteTemplate.
     '''
 
-    __metaclass__ = CooperativeMeta
     GEN_VERBOSE = 'GEN_DATA_MODEL::PRO::WRITE_TEMPLATE'
 
     def __init__(self, verbose=False):
@@ -99,7 +96,7 @@ class WriteTemplate(FileChecking):
             :type model_name: <str>
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: boolean status True (success) | False.
+            :return: boolean status, True (success) | False.
             :rtype: <bool>
             :excptions: ATSTypeError | ATSBadCallError
         '''
