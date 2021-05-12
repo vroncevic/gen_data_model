@@ -40,7 +40,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.6.1'
+__version__ = '1.7.1'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -93,7 +93,7 @@ class GenDataModel(CfgCLI):
         if self.tool_operational:
             self.add_new_option(
                 GenDataModel.OPS[0], GenDataModel.OPS[1],
-                dest='pro', help='generate data model'
+                dest='gen', help='generate data model'
             )
             self.add_new_option(
                 GenDataModel.OPS[2], GenDataModel.OPS[3],
@@ -110,7 +110,7 @@ class GenDataModel(CfgCLI):
 
             :param verbose: enable/disable verbose option.
             :type verbose: <bool>
-            :return: True (success) | False.
+            :return: boolean status, True (success) | False.
             :rtype: <bool>
             :exceptions: None
         '''
@@ -124,17 +124,17 @@ class GenDataModel(CfgCLI):
             else:
                 sys.argv.append('-h')
             args = self.parse_args(sys.argv[1:])
-            pro_exists = exists(getattr(args, 'pro'))
+            pro_exists = exists(getattr(args, 'gen'))
             if not pro_exists:
-                if bool(getattr(args, 'pro')):
+                if bool(getattr(args, 'gen')):
                     print(
                         '{0} {1} [{2}]'.format(
                             '[{0}]'.format(GenDataModel.GEN_VERBOSE.lower()),
-                            'generating model', getattr(args, 'pro')
+                            'generating model', getattr(args, 'gen')
                         )
                     )
                     generator = GenModel(
-                        getattr(args, 'pro'),
+                        getattr(args, 'gen'),
                         verbose=getattr(args, 'verbose') or verbose
                     )
                     status = generator.gen_model(
@@ -144,7 +144,7 @@ class GenDataModel(CfgCLI):
                         success_message(GenDataModel.GEN_VERBOSE, 'done\n')
                         self.logger.write_log(
                             '{0} {1} done'.format(
-                                'generating data model', getattr(args, 'pro')
+                                'generating data model', getattr(args, 'gen')
                             ), ATSLogger.ATS_INFO
                         )
                     else:
