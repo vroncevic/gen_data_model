@@ -24,7 +24,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
  python-pip \
  python-wheel \
  python3 \
- python-dev \
+ python3-dev \
  python3-pip \
  python3-wheel \
  libyaml-dev \
