@@ -25,7 +25,8 @@ RUN DEBIAN_FRONTEND=noninteractive \
  python3 \
  python3-pip \
  python3-wheel \
- libyaml-dev
+ libyaml-dev \
+ build-essential
 
 RUN pip install --upgrade setuptools
 RUN pip3 install --upgrade setuptools
