@@ -19,13 +19,17 @@ RUN DEBIAN_FRONTEND=noninteractive \
  apt-get install -yq --no-install-recommends \
  tree \
  htop \
+ libffi-dev \
  python \
+ python-dev \
  python-pip \
  python-wheel \
  python3 \
+ python3-dev \
  python3-pip \
  python3-wheel \
- libyaml-dev
+ libyaml-dev \
+ build-essential
 
 RUN pip install --upgrade setuptools
 RUN pip3 install --upgrade setuptools
