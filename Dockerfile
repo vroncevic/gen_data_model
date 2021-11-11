@@ -19,6 +19,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
  apt-get install -yq --no-install-recommends \
  tree \
  htop \
+ libffi-dev \
  python \
  python-dev \
  python-pip \
