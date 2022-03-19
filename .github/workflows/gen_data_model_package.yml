@@ -2,14 +2,26 @@ name: Python package gen_data_model
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'gen_data_model/**'
+      - 'MANIFEST.in'
+      - 'pyproject.toml'
+      - 'setup.cfg'
+      - 'setup.py'
   pull_request:
     branches: [ master ]
+    paths:
+      - 'gen_data_model/**'
+      - 'MANIFEST.in'
+      - 'pyproject.toml'
+      - 'setup.cfg'
+      - 'setup.py'
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+        python-version: [2.7, 3.6, 3.7, 3.8]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}

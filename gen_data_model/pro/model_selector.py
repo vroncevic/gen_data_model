@@ -36,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.7.2'
+__version__ = '1.8.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -90,16 +90,8 @@ class ModelSelector:
                     )
                 )
         while True:
-            try:
-                try:
-                    input_type = raw_input(' select model: ')
-                except NameError:
-                    input_type = input(' select model: ')
-                options = xrange(
-                    1, len(data_model_types['model_types']) + 1, 1
-                )
-            except NameError:
-                options = range(1, len(data_model_types['model_types']) + 1, 1)
+            input_type = input(' select model: ')
+            options = range(1, len(data_model_types['model_types']) + 1, 1)
             try:
                 if int(input_type) in list(options):
                     break

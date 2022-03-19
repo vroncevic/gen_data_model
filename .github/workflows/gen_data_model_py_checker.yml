@@ -2,8 +2,14 @@ name: gen_data_model py checker
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'gen_data_model/**'
+      - 'setup.py'
   pull_request:
     branches: [ master ]
+    paths:
+      - 'gen_data_model/**'
+      - 'setup.py'
 jobs:
   build:
     runs-on: ubuntu-latest

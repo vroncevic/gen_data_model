@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.7.2'
+__version__ = '1.8.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -101,7 +101,7 @@ PYP_CLASSIFIERS = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 
 setup(
     name='gen_data_model',
-    version='1.7.2',
+    version='1.8.2',
     description='Python App/Tool/Script Utilities',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -132,6 +132,7 @@ setup(
     ],
     package_data = {
         'gen_data_model': [
+            'conf/gen_data_model.logo',
             'conf/gen_data_model.cfg',
             'conf/gen_data_model_util.cfg',
             'conf/data_model_types.yaml',
