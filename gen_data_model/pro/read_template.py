@@ -21,10 +21,9 @@
 '''
 
 import sys
-from os.path import exists
+from os.path import exists, dirname, realpath
 
 try:
-    from pathlib import Path
     from gen_data_model.pro.model_selector import ModelSelector
     from ats_utilities.config_io.base_check import FileChecking
     from ats_utilities.console_io.verbose import verbose_message
@@ -37,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.7.2'
+__version__ = '1.8.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -77,7 +76,7 @@ class ReadTemplate(FileChecking):
         FileChecking.__init__(self, verbose=verbose)
         verbose_message(ReadTemplate.GEN_VERBOSE, verbose, 'init reader')
         models = '{0}/{1}'.format(
-            Path(__file__).parent, ReadTemplate.MODEL_TYPES
+            dirname(realpath(__file__)), ReadTemplate.MODEL_TYPES
         )
         self.check_path(file_path=models, verbose=verbose)
         self.check_mode(file_mode='r', verbose=verbose)
@@ -91,7 +90,7 @@ class ReadTemplate(FileChecking):
             self.__config = None
         if bool(self.__config):
             self.template_dir = '{0}{1}'.format(
-                Path(__file__).parent, ReadTemplate.TEMPLATE_DIR
+                dirname(realpath(__file__)), ReadTemplate.TEMPLATE_DIR
             )
 
     def get_config(self):

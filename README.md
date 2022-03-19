@@ -36,7 +36,7 @@ other information that should be provided before the modules are installed.
 
 ![Install Python2 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python2%20Package%20gen_data_model/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python3%20Package%20gen_data_model/badge.svg?branch=master)
 
-Currently there are three ways to install tool:
+Currently there are three ways to install tool
 * Install process based on pip
 * Install process based on setup.py (setuptools)
 * Install process based on docker mechanism
@@ -57,7 +57,7 @@ pip3 install gen_data_model
 
 Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive.
 
-To install modules, locate and run setup.py, type the following:
+To install modules, locate and run setup.py, type the following
 ```
 tar xvzf gen_data_model-x.y.z.tar.gz
 cd gen_data_model-x.y.z
@@ -81,7 +81,7 @@ You can use Dockerfile to create image/container.
 
 ### Dependencies
 
-**gen_data_model** requires next modules and libraries:
+**gen_data_model** requires next modules and libraries
 
 * [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/ats_utilities)
 * [Flask-WTF - Simple integration of Flask and WTForms](https://pypi.org/project/Flask-WTF/)
@@ -96,7 +96,7 @@ Base flow of generation process:
 
 ### Tool structure
 
-**gen_data_model** is based on OOP:
+**gen_data_model** is based on OOP
 
 ![alt tag](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model.png)
 
@@ -105,6 +105,7 @@ Generator structure:
 ```
 gen_data_model/
 ├── conf/
+|   ├── gen_data_model.logo
 │   ├── data_model_types.yaml
 │   ├── gen_data_model.cfg
 │   ├── gen_data_model_util.cfg
@@ -131,7 +132,7 @@ gen_data_model/
 
 [![Documentation Status](https://readthedocs.org/projects/gen_data_model/badge/?version=latest)](https://gen_data_model.readthedocs.io/projects/gen_data_model/en/latest/?badge=latest)
 
-More documentation and info at:
+More documentation and info at
 * [gen_data_model.readthedocs.io](https://gen_data_model.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
 

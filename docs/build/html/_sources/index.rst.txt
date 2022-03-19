@@ -1,7 +1,7 @@
 Generate Data Model (Django/Flask/SQLAlchemy)
 ---------------------------------------------
 
-**gen_data_model** is tool generator of form model for:
+**gen_data_model** is tool generator of form model for
 
 * Django FWK
 * Flask FWK
@@ -29,7 +29,7 @@ other information that should be provided before the modules are installed.
 
 .. toctree::
    :maxdepth: 4
-   :caption: Contents:
+   :caption: Contents
 
    self
    modules
@@ -49,7 +49,7 @@ Navigate to release `page`_ download and extract release archive.
 
 .. _page: https://github.com/vroncevic/gen_data_model/releases
 
-To install **gen_data_model** type the following:
+To install **gen_data_model** type the following
 
 .. code-block:: bash
 
@@ -66,7 +66,7 @@ To install **gen_data_model** type the following:
     python3 setup.py install_egg_info
     python3 setup.py install_data
 
-You can use Docker to create image/container, or You can use pip to install:
+You can use Docker to create image/container, or You can use pip to install
 
 .. code-block:: bash
 
@@ -83,7 +83,7 @@ You can use Docker to create image/container, or You can use pip to install:
 Dependencies
 -------------
 
-**gen_data_model** requires next modules and libraries:
+**gen_data_model** requires next modules and libraries
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 * `Flask-WTF - Simple integration of Flask and WTForms <https://pypi.org/project/Flask-WTF/>`_
@@ -93,23 +93,24 @@ Dependencies
 Generation process
 -------------------
 
-Generation flow:
+Generation flow
 
 .. image:: https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_flow.png
 
 Tool structure
 ---------------
 
-**gen_data_model** is based on OOP:
+**gen_data_model** is based on OOP
 
 .. image:: https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model.png
 
-Generator structure:
+Generator structure
 
 .. code-block:: bash
 
     gen_data_model/
     ├── conf/
+    |   ├── gen_data_model.logo
     │   ├── data_model_types.yaml
     │   ├── gen_data_model.cfg
     │   ├── gen_data_model_util.cfg

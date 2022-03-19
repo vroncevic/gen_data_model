@@ -23,12 +23,9 @@
 import sys
 
 try:
-    from pathlib import Path
     from gen_data_model.pro.read_template import ReadTemplate
     from gen_data_model.pro.write_template import WriteTemplate
-    from gen_data_model.pro.model_selector import ModelSelector
     from ats_utilities.checker import ATSChecker
-    from ats_utilities.console_io.success import success_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.exceptions.ats_type_error import ATSTypeError
     from ats_utilities.exceptions.ats_bad_call_error import ATSBadCallError
@@ -40,7 +37,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '1.7.2'
+__version__ = '1.8.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'

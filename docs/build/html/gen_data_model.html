@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>gen_data_model package &mdash; gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -29,7 +30,7 @@
             <a href="index.html" class="icon icon-home"> gen_data_model
           </a>
               <div class="version">
-                1.7.2
+                1.8.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -39,7 +40,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Generate Data Model (Django/Flask/SQLAlchemy)</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">gen_data_model</a><ul class="current">
@@ -80,9 +81,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="gen-data-model-package">
+  <section id="gen-data-model-package">
 <h1>gen_data_model package<a class="headerlink" href="#gen-data-model-package" title="Permalink to this headline"></a></h1>
-<div class="section" id="subpackages">
+<section id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
@@ -98,8 +99,8 @@
 </li>
 </ul>
 </div>
-</div>
-<div class="section" id="module-gen_data_model">
+</section>
+<section id="module-gen_data_model">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gen_data_model" title="Permalink to this headline"></a></h2>
 <dl class="simple">
 <dt>Module</dt><dd><p>gen_data_model.py</p>
@@ -122,7 +123,7 @@ Load a base info, create an CLI interface and run operation(s).</p>
 </dl>
 <dl class="py class">
 <dt class="sig sig-object py" id="gen_data_model.GenDataModel">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">gen_data_model.</span></span><span class="sig-name descname"><span class="pre">GenDataModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model.html#GenDataModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_data_model.GenDataModel" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gen_data_model.</span></span><span class="sig-name descname"><span class="pre">GenDataModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gen_data_model.html#GenDataModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gen_data_model.GenDataModel" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ats_utilities.cli.cfg_cli.CfgCLI</span></code></p>
 <p>Defined class GenDataModel with attribute(s) and method(s).
 Load a base info, create an CLI interface and run operation(s).
@@ -134,6 +135,7 @@ It defines:</p>
 <div class="line">GEN_VERBOSE - console text indicator for process-phase.</div>
 <div class="line">CONFIG - configuration file path.</div>
 <div class="line">LOG - tool log file path.</div>
+<div class="line">LOGO - logo for splash screen.</div>
 <div class="line">OPS - list of tool options.</div>
 <div class="line">logger - logger object API.</div>
 </div>
@@ -149,27 +151,32 @@ It defines:</p>
 </div></blockquote>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gen_data_model.GenDataModel.CONFIG">
-<span class="sig-name descname"><span class="pre">CONFIG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/conf/gen_data_model.cfg'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.CONFIG" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/conf/gen_data_model.cfg'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.CONFIG" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gen_data_model.GenDataModel.GEN_VERBOSE">
-<span class="sig-name descname"><span class="pre">GEN_VERBOSE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'GEN_DATA_MODEL'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.GEN_VERBOSE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">GEN_VERBOSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GEN_DATA_MODEL'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.GEN_VERBOSE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gen_data_model.GenDataModel.LOG">
-<span class="sig-name descname"><span class="pre">LOG</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'/log/gen_data_model.log'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.LOG" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">LOG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/log/gen_data_model.log'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.LOG" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gen_data_model.GenDataModel.LOGO">
+<span class="sig-name descname"><span class="pre">LOGO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'/conf/gen_data_model.logo'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.LOGO" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gen_data_model.GenDataModel.OPS">
-<span class="sig-name descname"><span class="pre">OPS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">['-g',</span> <span class="pre">'--gen',</span> <span class="pre">'-v',</span> <span class="pre">'--verbose',</span> <span class="pre">'--version']</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.OPS" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">OPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['-g',</span> <span class="pre">'--gen',</span> <span class="pre">'-v',</span> <span class="pre">'--verbose',</span> <span class="pre">'--version']</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.OPS" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="gen_data_model.GenDataModel.VERBOSE">
-<span class="sig-name descname"><span class="pre">VERBOSE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'ATS_UTILITIES'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.VERBOSE" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">VERBOSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ATS_UTILITIES'</span></em><a class="headerlink" href="#gen_data_model.GenDataModel.VERBOSE" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -194,8 +201,8 @@ It defines:</p>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
