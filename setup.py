@@ -58,7 +58,8 @@ def install_directory():
             ),
             '{0}/local/lib/python{1}/site-packages/'.format(
                 sys.prefix, py_version
-            )
+            ),
+            sys.prefix
         ))
     message = None
     for path in paths:
