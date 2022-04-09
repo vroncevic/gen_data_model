@@ -7,7 +7,7 @@ Generate Data Model (Django/Flask/SQLAlchemy)
 * Flask FWK
 * SQLAlchemy
 
-Developed in `python <https://www.python.org/>`_ code: **100%**.
+Developed in `python <https://www.python.org/>`_ code.
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
