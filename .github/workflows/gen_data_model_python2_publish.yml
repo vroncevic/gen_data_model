@@ -1,4 +1,4 @@
-name: Install Python2 Package gen_data_model
+name: Install python Package gen_data_model
 on:
   push:
     branches: [ master ]
@@ -31,10 +31,10 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install --upgrade build
         python -m pip install --upgrade wheel
-        pip install -r requirements.txt
+        pip2 install -r requirements.txt
     - name: Build by python build
       run: |
-        python -m build --no-isolation --wheel
+        python -m build
     - name: Build and publish
       run: |
         python setup.py --github sdist bdist_wheel
