@@ -34,7 +34,7 @@ jobs:
         pip2 install -r requirements.txt
     - name: Build by python build
       run: |
-        python2 -m build --no-isolation --wheel
+        python2 -m build -s --no-isolation --wheel
     - name: Build and publish
       run: |
         python2 setup.py --github sdist bdist_wheel
