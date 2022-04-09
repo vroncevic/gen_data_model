@@ -34,7 +34,7 @@ jobs:
         pip3 install -r requirements.txt
     - name: Build by python build
       run: |
-        python3 -m build
+        python3 -m build --no-isolation --wheel
     - name: Build and publish
       run: |
         python3 setup.py --github sdist bdist_wheel
