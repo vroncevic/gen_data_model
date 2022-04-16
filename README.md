@@ -14,7 +14,7 @@ The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-![Python package](https://github.com/vroncevic/gen_data_model/workflows/Python%20package%20gen_data_model/badge.svg?branch=master) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/graphs/contributors)
+[![gen_data_model python package](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package.yml/badge.svg?branch=master)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -40,7 +40,7 @@ Used next development environment
 
 ![Development environment](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/ubuntuxis.png)
 
-![Install Python2 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python2%20Package%20gen_data_model/badge.svg?branch=master) ![Install Python3 Package](https://github.com/vroncevic/gen_data_model/workflows/Install%20Python3%20Package%20gen_data_model/badge.svg?branch=master)
+[![gen_data_model build python3 package](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python2_publish.yml) [![gen_data_model build python3 package](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_publish.yml)
 
 Currently there are three ways to install tool
 * Install process based on using pip mechanism
@@ -117,7 +117,7 @@ python3 setup.py install_data
 
 You can use Dockerfile to create image/container 🚢.
 
-[![gen_data_model docker checker](https://github.com/vroncevic/gen_data_model/workflows/gen_data_model%20docker%20checker/badge.svg)](https://github.com/vroncevic/gen_data_model/actions?query=workflow%3A%22gen_data_model+docker+checker%22)
+[![gen_data_model docker checker](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_docker_checker.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_docker_checker.yml)
 
 ### Dependencies
 
