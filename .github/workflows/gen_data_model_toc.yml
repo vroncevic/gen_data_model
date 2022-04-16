@@ -1,11 +1,11 @@
-name: TOC Generator gen_data_model
+name: gen_data_model toc generator
 on: push
   push:
     paths:
       - '**.md'
 jobs:
   generateTOC:
-    name: TOC Generator
+    name: gen_data_model toc generator
     runs-on: ubuntu-latest
     steps:
       - uses: technote-space/toc-generator@v2

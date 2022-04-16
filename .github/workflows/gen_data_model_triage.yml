@@ -1,14 +1,14 @@
-name: Triage gen_data_model
+name: gen_data_model triage
 on:
   issues:
     types: [opened]
 jobs:
   commentOnNewIssues:
-    name: Comment On New Issues
+    name: gen_data_model triage
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Comment On New Issues
+      - name: gen_data_model triage
         uses: actions/github@v1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
