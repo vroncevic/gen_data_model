@@ -4,7 +4,7 @@ on:
     types: [opened]
 jobs:
   applyTriageLabel:
-    name:gen_data_model triage label
+    name: gen_data_model triage label
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
