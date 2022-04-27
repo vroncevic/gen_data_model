@@ -1,14 +1,14 @@
-name: gen_data_model triage label
+name: gen_data_model_triage_label
 on:
   issues:
     types: [opened]
 jobs:
   applyTriageLabel:
-    name: gen_data_model triage label
+    name: gen_data_model_triage_label
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: gen_data_model triage label
+      - name: gen_data_model_triage_label
         uses: actions/github@v1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
