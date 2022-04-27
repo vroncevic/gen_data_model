@@ -14,7 +14,7 @@ The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-[![gen_data_model python package](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package.yml/badge.svg?branch=master)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/graphs/contributors)
+[![gen_data_model python checker](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_python_checker?style=flat&label=gen_data_model%20python%20checker)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python_checker.yml) [![gen_data_model package checker](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_package_checker?style=flat&label=gen_data_model%20package%20checker)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -40,7 +40,7 @@ Used next development environment
 
 ![Development environment](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/ubuntuxis.png)
 
-[![gen_data_model build python3 package](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python2_publish.yml) [![gen_data_model build python3 package](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_publish.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_publish.yml)
+[![gen_data_model python2 build](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_python2_build?style=flat&label=gen_data_model%20python2%20build)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python2_build.yml) [![gen_data_model python3 build](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_python3_build?style=flat&label=gen_data_model%20python3%20build)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_build.yml)
 
 Currently there are three ways to install tool
 * Install process based on using pip mechanism
@@ -65,7 +65,7 @@ pip3 install gen_data_model
 
 Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive 📦.
 
-To install **gen_data_model**, run
+To install **gen_data_model** 📦 run
 
 ```bash
 tar xvzf gen_data_model-x.y.z.tar.gz
@@ -96,7 +96,7 @@ rm -f get-pip.py
 
 Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive 📦.
 
-To install modules, locate and run setup.py, type the following
+To install **gen_data_model** 📦 locate and run setup.py
 
 ```bash
 tar xvzf gen_data_model-x.y.z.tar.gz
@@ -117,7 +117,7 @@ python3 setup.py install_data
 
 You can use Dockerfile to create image/container 🚢.
 
-[![gen_data_model docker checker](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_docker_checker.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_docker_checker.yml)
+[![gen_data_model docker checker](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_docker_checker?style=flat&label=gen_data_model%20docker%20checker)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_docker_checker.yml)
 
 ### Dependencies
 
@@ -173,6 +173,7 @@ gen_data_model/
 [![Documentation Status](https://readthedocs.org/projects/gen_data_model/badge/?version=latest)](https://gen_data_model.readthedocs.io/projects/gen_data_model/en/latest/?badge=latest)
 
 📗 More documentation and info at
+
 * [gen_data_model.readthedocs.io](https://gen_data_model.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
 
