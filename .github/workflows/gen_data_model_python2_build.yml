@@ -1,4 +1,4 @@
-name: gen_data_model install python 2 package
+name: gen_data_model_python2_build
 on:
   push:
     branches: [ master ]
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: set up Python
+    - name: set up python
       uses: actions/setup-python@v1
       with:
         python-version: '2.7'
