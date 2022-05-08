@@ -1,5 +1,5 @@
 name: gen_data_model_toc
-on: push
+on:
   push:
     paths:
       - '**.md'
