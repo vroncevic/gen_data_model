@@ -1,0 +1,13 @@
+model_types:
+  - django:
+      name: Django model
+      base_template: django_base_model.template
+      model_template: django.template
+  - flask:
+      name: Flask model
+      base_template: flask_base_model.template
+      model_template: flask.template
+  - sqlalchemy:
+      name: SQLAlchemy model
+      base_template: sqlalchemy_base_model.template
+      model_template: sqlalchemy.template

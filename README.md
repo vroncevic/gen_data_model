@@ -2,19 +2,19 @@
 
 # Generate Data Model (Django/Flask/SQLAlchemy)
 
-☯️ **gen_data_model** is tool generator of data model for
+**gen_data_model** is tool generator of data model for
 
 * Django FWK
 * Flask FWK
 * SQLAlchemy FWK
 
-Developed in 🐍 **[python](https://www.python.org/)** code.
+Developed in **[python](https://www.python.org/)** code.
 
 The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-[![gen_data_model python checker](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_python_checker?style=flat&label=gen_data_model%20python%20checker)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python_checker.yml) [![gen_data_model package checker](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_package_checker?style=flat&label=gen_data_model%20package%20checker)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package_checker.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/graphs/contributors)
+[![gen_data_model python checker](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python_checker.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python_checker.yml) [![gen_data_model package checker](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package_checker.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package.yml) [![GitHub issues open](https://img.shields.io/github/issues/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/issues) [![GitHub contributors](https://img.shields.io/github/contributors/vroncevic/gen_data_model.svg)](https://github.com/vroncevic/gen_data_model/graphs/contributors)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -26,7 +26,6 @@ other information that should be provided before the modules are installed.
     - [Install using py setup](#install-using-py-setup)
     - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
-- [Generation flow of data model](#generation-flow-of-data-model)
 - [Tool structure](#tool-structure)
 - [Docs](#docs)
 - [Contributing](#contributing)
@@ -38,9 +37,9 @@ other information that should be provided before the modules are installed.
 
 Used next development environment
 
-![Development environment](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/ubuntuxis.png)
+![debian linux os](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/debtux.png)
 
-[![gen_data_model python2 build](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_python2_build?style=flat&label=gen_data_model%20python2%20build)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python2_build.yml) [![gen_data_model python3 build](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_python3_build?style=flat&label=gen_data_model%20python3%20build)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_build.yml)
+[![gen_data_model python3 build](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_build.yml/badge.svg)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python3_build.yml)
 
 Currently there are three ways to install tool
 * Install process based on using pip mechanism
@@ -50,36 +49,24 @@ Currently there are three ways to install tool
 
 ##### Install using pip
 
-Python 📦 is located at **[pypi.org](https://pypi.org/project/gen_data_model/)**.
+Python is located at **[pypi.org](https://pypi.org/project/gen_data_model/)**.
 
 You can install by using pip
 
 ```bash
-#python2
-pip install gen_data_model
 #python3
 pip3 install gen_data_model
 ```
 
 ##### Install using build
 
-Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive 📦.
+Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive.
 
-To install **gen_data_model** 📦 run
+To install **gen_data_model** run
 
 ```bash
 tar xvzf gen_data_model-x.y.z.tar.gz
 cd gen_data_model-x.y.z
-# python2
-wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
-python2 get-pip.py
-python2 -m pip install --upgrade setuptools
-python2 -m pip install --upgrade pip
-python2 -m pip install --upgrade build
-pip2 install -r requirements.txt
-python2 -m build --no-isolation --wheel
-pip2 install dist/gen_data_model-x.y.z-py2-none-any.whl
-rm -f get-pip.py
 # python3
 wget https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py 
@@ -94,9 +81,9 @@ rm -f get-pip.py
 
 ##### Install using py setup
 
-Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive 📦.
+Navigate to **[release page](https://github.com/vroncevic/gen_data_model/releases)** download and extract release archive.
 
-To install **gen_data_model** 📦 locate and run setup.py
+To install **gen_data_model** locate and run setup.py
 
 ```bash
 tar xvzf gen_data_model-x.y.z.tar.gz
@@ -115,84 +102,72 @@ python3 setup.py install_data
 
 ##### Install using docker
 
-You can use Dockerfile to create image/container 🚢.
-
-[![gen_data_model docker checker](https://img.shields.io/github/workflow/status/vroncevic/gen_data_model/gen_data_model_docker_checker?style=flat&label=gen_data_model%20docker%20checker)](https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_docker_checker.yml)
+You can use Dockerfile to create image/container.
 
 ### Dependencies
 
 **gen_data_model** requires next modules and libraries
 
-* [gen_data_model - Python App/Tool/Script Utilities](https://vroncevic.github.io/gen_data_model)
-* [Flask-WTF - Simple integration of Flask and WTForms](https://pypi.org/project/Flask-WTF/)
-* [Django - High-level Python Web framework](https://pypi.org/project/Django/)
-* [SQLAlchemy -  SQL Toolkit and Object Relational Mapper](https://pypi.org/project/SQLAlchemy/)
-
-### Generation flow of data model
-
-Base flow of generation process
-
-![Data model generation flow](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_flow.png)
+* [ats-utilities - Python App/Tool/Script Utilities](https://vroncevic.github.io/gen_data_model)
 
 ### Tool structure
 
 **gen_data_model** is based on OOP
 
-![Data Model Flow](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model.png)
-
-🧰 Generator structure
+Generator structure
 
 ```bash
 gen_data_model/
-├── conf/
-|   ├── gen_data_model.logo
-│   ├── data_model_types.yaml
-│   ├── gen_data_model.cfg
-│   ├── gen_data_model_util.cfg
-│   └── template/
-│       ├── django_base_model.template
-│       ├── django.template
-│       ├── flask_base_model.template
-│       ├── flask.template
-│       ├── sqlalchemy_base_model.template
-│       └── sqlalchemy.template
-├── __init__.py
-├── log/
-│   └── gen_data_model.log
-├── pro/
-│   ├── __init__.py
-│   ├── model_selector.py
-│   ├── read_template.py
-│   └── write_template.py
-└── run/
-    └── gen_data_model_run.py
+    ├── conf/
+    │   ├── gen_data_model.cfg
+    │   ├── gen_data_model.logo
+    │   ├── gen_data_model_util.cfg
+    │   ├── model_types.yaml
+    │   └── template/
+    │       ├── django_base_model.template
+    │       ├── django.template
+    │       ├── flask_base_model.template
+    │       ├── flask.template
+    │       ├── sqlalchemy_base_model.template
+    │       └── sqlalchemy.template
+    ├── __init__.py
+    ├── log/
+    │   └── gen_data_model.log
+    ├── pro/
+    │   ├── __init__.py
+    │   ├── read_template.py
+    │   └── write_template.py
+    └── run/
+        └── gen_data_model_run.py
+    
+    6 directories, 16 files
 ```
 
 ### Docs
 
-[![Documentation Status](https://readthedocs.org/projects/gen_data_model/badge/?version=latest)](https://gen_data_model.readthedocs.io/projects/gen_data_model/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/gen_data_model/badge/?version=latest)](https://gen-data-model.readthedocs.io/projects/gen_data_model/en/latest/?badge=latest)
 
-📗 More documentation and info at
+More documentation and info at
 
-* [gen_data_model.readthedocs.io](https://gen_data_model.readthedocs.io/en/latest/)
+* [gen_data_model.readthedocs.io](https://gen-data-model.readthedocs.io/en/latest/)
 * [www.python.org](https://www.python.org/)
 
 ### Contributing
 
-🌎 🌍 🌏 [Contributing to gen_data_model](CONTRIBUTING.md)
+[Contributing to gen_data_model](CONTRIBUTING.md)
 
 ### Copyright and licence
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2017 by [vroncevic.github.io/gen_data_model](https://vroncevic.github.io/gen_data_model/)
+Copyright (C) 2017 - 2024 by [vroncevic.github.io/gen_data_model](https://vroncevic.github.io/gen_data_model/)
 
 **gen_data_model** is free software; you can redistribute it and/or modify
-it under the same terms as Python itself, either Python version 2.x/3.x or,
+it under the same terms as Python itself, either Python version 3.x or,
 at your option, any later version of Python 3 you may have available.
 
 Lets help and support PSF.
 
 [![Python Software Foundation](https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/psf-logo-alpha.png)](https://www.python.org/psf/)
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://psfmember.org/index.php?q=civicrm/contribute/transact&reset=1&id=2)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.python.org/psf/donations/)
