@@ -1,6 +1,7 @@
 name: gen_data_model_toc
 on:
   push:
+    branches: [ master ]
     paths:
       - '**.md'
 jobs:
@@ -8,4 +9,4 @@ jobs:
     name: gen_data_model_toc
     runs-on: ubuntu-latest
     steps:
-      - uses: technote-space/toc-generator@v2
+      - uses: technote-space/toc-generator@v4

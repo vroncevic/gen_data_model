@@ -1,196 +1,220 @@
 # -*- coding: utf-8 -*-
 
 '''
- Module
-     gen_data_model.py
- Copyright
-     Copyright (C) 2017 Vladimir Roncevic <elektron.ronca@gmail.com>
-     gen_data_model is free software: you can redistribute it and/or modify it
-     under the terms of the GNU General Public License as published by the
-     Free Software Foundation, either version 3 of the License, or
-     (at your option) any later version.
-     gen_data_model is distributed in the hope that it will be useful, but
-     WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-     See the GNU General Public License for more details.
-     You should have received a copy of the GNU General Public License along
-     with this program. If not, see <http://www.gnu.org/licenses/>.
- Info
-     Defined class GenDataModel with attribute(s) and method(s).
-     Load a base info, create an CLI interface and run operation(s).
+Module
+    gen_data_model.py
+Copyright
+    Copyright (C) 2017 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    gen_data_model is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by the
+    Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    gen_data_model is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+Info
+    Defines class GenDataModel with attribute(s) and method(s).
+    Loads a base info, creates an CLI interface and runs operations.
 '''
 
 import sys
+from typing import Any, List, Dict
 from os.path import exists, dirname, realpath
+from argparse import Namespace
 
 try:
-    from six import add_metaclass
-    from gen_data_model.pro import GenModel
     from ats_utilities.splash import Splash
     from ats_utilities.logging import ATSLogger
     from ats_utilities.cli.cfg_cli import CfgCLI
-    from ats_utilities.cooperative import CooperativeMeta
     from ats_utilities.console_io.error import error_message
     from ats_utilities.console_io.verbose import verbose_message
     from ats_utilities.console_io.success import success_message
+    from ats_utilities.exceptions.ats_type_error import ATSTypeError
+    from ats_utilities.exceptions.ats_value_error import ATSValueError
+    from gen_data_model.pro import GenModel
 except ImportError as ats_error_message:
-    MESSAGE = '\n{0}\n{1}\n'.format(__file__, ats_error_message)
-    sys.exit(MESSAGE)  # Force close python ATS ##############################
+    # Force close python ATS ##################################################
+    sys.exit(f'\n{__file__}\n{ats_error_message}\n')
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = 'Copyright 2017, https://vroncevic.github.io/gen_data_model'
-__credits__ = ['Vladimir Roncevic']
+__copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
+__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.2.2'
+__version__ = '2.3.2'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
 
 
-@add_metaclass(CooperativeMeta)
 class GenDataModel(CfgCLI):
     '''
-        Defined class GenDataModel with attribute(s) and method(s).
-        Load a base info, create an CLI interface and run operation(s).
+        Defines class GenDataModel with attribute(s) and method(s).
+        Loads a base info, creates an CLI interface and runs operations.
+
         It defines:
 
             :attributes:
-                | GEN_VERBOSE - console text indicator for process-phase.
-                | CONFIG - configuration file path.
-                | LOG - tool log file path.
-                | LOGO - logo for splash screen.
-                | OPS - list of tool options.
-                | logger - logger object API.
+                | _GEN_VERBOSE - Console text indicator for process-phase.
+                | _CONFIG - Configuration file path.
+                | _LOG - Tool log file path.
+                | _LOGO - Logo for splash screen.
+                | _OPS - List of tool options.
+                | _logger - Logger object API.
             :methods:
-                | __init__ - initial constructor.
-                | process - process and run tool option(s).
-                | __str__ - dunder method for GenDataModel.
+                | __init__ - Initials GenDataModel constructor.
+                | process - Processes and runs tool options.
     '''
 
-    GEN_VERBOSE = 'GEN_DATA_MODEL'
-    CONFIG = '/conf/gen_data_model.cfg'
-    LOG = '/log/gen_data_model.log'
-    LOGO = '/conf/gen_data_model.logo'
-    OPS = ['-g', '--gen', '-v', '--verbose', '--version']
+    _GEN_VERBOSE: str = 'GEN_DATA_MODEL'
+    _CONFIG: str = '/conf/gen_data_model.cfg'
+    _LOG: str = '/log/gen_data_model.log'
+    _LOGO: str = '/conf/gen_data_model.logo'
+    _OPS: List[str] = [
+        '-g', '--gen', '-t', '--type', '-v', '--verbose', '--version'
+    ]
 
-    def __init__(self, verbose=False):
+    def __init__(self, verbose: bool = False) -> None:
         '''
-            Initial constructor.
+            Initials GenDataModel constructor.
 
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :exceptions: None
         '''
-        current_dir = dirname(realpath(__file__))
-        gen_data_model_property = {
+        current_dir: str = dirname(realpath(__file__))
+        gen_data_model_property: Dict[str, str | bool] = {
             'ats_organization': 'vroncevic',
-            'ats_repository': 'gen_data_model',
-            'ats_name': 'gen_data_model',
-            'ats_logo_path': '{0}{1}'.format(current_dir, GenDataModel.LOGO),
+            'ats_repository': f'{self._GEN_VERBOSE.lower()}',
+            'ats_name': f'{self._GEN_VERBOSE.lower()}',
+            'ats_logo_path': f'{current_dir}{self._LOGO}',
             'ats_use_github_infrastructure': True
         }
-        splash = Splash(gen_data_model_property, verbose=verbose)
-        base_info = '{0}{1}'.format(current_dir, GenDataModel.CONFIG)
-        CfgCLI.__init__(self, base_info, verbose=verbose)
+        Splash(gen_data_model_property, verbose)
+        base_info: str = f'{current_dir}{self._CONFIG}'
+        super().__init__(base_info, verbose)
         verbose_message(
-            GenDataModel.GEN_VERBOSE, verbose, 'init configuration'
+            verbose, [f'{self._GEN_VERBOSE.lower()} init configuration']
         )
-        self.logger = ATSLogger(
-            GenDataModel.GEN_VERBOSE.lower(),
-            '{0}{1}'.format(current_dir, GenDataModel.LOG),
-            verbose=verbose
+        self._logger: ATSLogger = ATSLogger(
+            self._GEN_VERBOSE.lower(), f'{current_dir}{self._LOG}', verbose
         )
         if self.tool_operational:
             self.add_new_option(
-                GenDataModel.OPS[0], GenDataModel.OPS[1],
-                dest='gen', help='generate data model'
+                self._OPS[0], self._OPS[1],
+                dest='gen', help='generate model (provide project name)'
             )
             self.add_new_option(
-                GenDataModel.OPS[2], GenDataModel.OPS[3],
+                self._OPS[2], self._OPS[3],
+                dest='type', help='model type (django | flask | sqlalchemy)'
+            )
+            self.add_new_option(
+                self._OPS[4], self._OPS[5],
                 action='store_true', default=False,
                 help='activate verbose mode for generation'
             )
             self.add_new_option(
-                GenDataModel.OPS[4], action='version', version=__version__
+                self._OPS[6], action='version', version=__version__
             )
 
-    def process(self, verbose=False):
+    def process(self, verbose: bool = False) -> bool:
         '''
             Process and run operation.
 
-            :param verbose: enable/disable verbose option.
+            :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
-            :return: boolean status, True (success) | False.
+            :return: True (success operation) | False
             :rtype: <bool>
             :exceptions: None
         '''
-        status = False
+        status: bool = False
         if self.tool_operational:
-            num_of_args_sys = len(sys.argv)
-            if num_of_args_sys > 1:
-                operation = sys.argv[1]
-                if operation not in GenDataModel.OPS:
-                    sys.argv.append('-h')
+            if len(sys.argv) >= 6:
+                options: List[str] = [
+                    arg for i, arg in enumerate(sys.argv) if i % 2 == 0
+                ]
+                if any(arg not in self._OPS for arg in options[1:]):
+                    error_message(
+                        [
+                            f'{self._GEN_VERBOSE.lower()}',
+                            'provide name (-g name) and',
+                            'type (-t django | flask | sqlalchemy)'
+                        ]
+                    )
+                    self._logger.write_log(
+                        'missing model name or type', self._logger.ATS_ERROR
+                    )
+                    return status
             else:
-                sys.argv.append('-h')
-            args = self.parse_args(sys.argv[1:])
-            pro_exists = exists(getattr(args, 'gen'))
-            if not pro_exists:
-                if bool(getattr(args, 'gen')):
-                    print(
-                        '{0} {1} [{2}]'.format(
-                            '[{0}]'.format(GenDataModel.GEN_VERBOSE.lower()),
-                            'generating model', getattr(args, 'gen')
-                        )
-                    )
-                    generator = GenModel(
-                        getattr(args, 'gen'),
-                        verbose=getattr(args, 'verbose') or verbose
-                    )
+                error_message(
+                    [
+                        f'{self._GEN_VERBOSE.lower()}',
+                        'provide name (-g name) and',
+                        'type (-t django | flask | sqlalchemy)'
+                    ]
+                )
+                self._logger.write_log(
+                    'missing model name or type', self._logger.ATS_ERROR
+                )
+                return status
+            args: Any | Namespace = self.parse_args(sys.argv[2:])
+            if not exists(getattr(args, 'gen')):
+                print(
+                    " ".join([
+                        f'[{self._GEN_VERBOSE.lower()}]',
+                        'gen model skeleton',
+                        str(getattr(args, 'gen'))
+                    ])
+                )
+                generator: GenModel = GenModel(
+                    getattr(args, 'verbose') or verbose
+                )
+                try:
                     status = generator.gen_model(
-                        verbose=getattr(args, 'verbose') or verbose
+                        f'{getattr(args, "gen")}',
+                        f'{getattr(args, "type")}',
+                        getattr(args, 'verbose') or verbose
                     )
-                    if status:
-                        success_message(GenDataModel.GEN_VERBOSE, 'done\n')
-                        self.logger.write_log(
-                            '{0} {1} done'.format(
-                                'generating data model', getattr(args, 'gen')
-                            ), ATSLogger.ATS_INFO
-                        )
-                    else:
-                        error_message(
-                            GenDataModel.GEN_VERBOSE, 'generation failed'
-                        )
-                        self.logger.write_log(
-                            'generation failed', ATSLogger.ATS_ERROR
-                        )
+                except (ATSTypeError, ATSValueError) as e:
+                    error_message(
+                        [f'{self._GEN_VERBOSE.lower()} {str(e)}']
+                    )
+                    self._logger.write_log(
+                        f'{str(e)}', self._logger.ATS_ERROR
+                    )
+                if status:
+                    success_message(
+                        [f'{self._GEN_VERBOSE.lower()} done\n']
+                    )
+                    self._logger.write_log(
+                        f'gen pro {getattr(args, "gen")} done',
+                        self._logger.ATS_INFO
+                    )
                 else:
                     error_message(
-                        GenDataModel.GEN_VERBOSE, 'provide model name'
+                        [f'{self._GEN_VERBOSE.lower()} generation failed']
                     )
-                    self.logger.write_log(
-                        'provide model name', ATSLogger.ATS_ERROR
+                    self._logger.write_log(
+                        'generation failed', self._logger.ATS_ERROR
                     )
             else:
-                error_message(GenDataModel.GEN_VERBOSE, 'model already exist')
-                self.logger.write_log(
-                    'model already exist', ATSLogger.ATS_ERROR
+                error_message(
+                    [
+                        f'{self._GEN_VERBOSE.lower()}',
+                        f'project with name [{getattr(args, "gen")}] exists'
+                    ]
+                )
+                self._logger.write_log(
+                    f'project with name [{getattr(args, "gen")}] exists',
+                    self._logger.ATS_ERROR
                 )
         else:
-            error_message(GenDataModel.GEN_VERBOSE, 'tool is not operational')
-            self.logger.write_log(
-                'tool is not operational', ATSLogger.ATS_ERROR
+            error_message(
+                [f'{self._GEN_VERBOSE.lower()} tool is not operational']
+            )
+            self._logger.write_log(
+                'tool is not operational', self._logger.ATS_ERROR
             )
         return status
-
-    def __str__(self):
-        '''
-            Dunder method for GenDataModel.
-
-            :return: object in a human-readable format.
-            :rtype: <str>
-            :exceptions: None
-        '''
-        return '{0} ({1}, {2})'.format(
-            self.__class__.__name__, CfgCLI.__str__(self), str(self.logger)
-        )
