@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.2'
+__version__ = '2.3.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -49,14 +49,13 @@ class WriteTemplate(FileCheck):
     '''
         Defines class WriteTemplate with attribute(s) and method(s).
         Creates an API for write a template content with parameters to a file.
+
         It defines:
 
             :attributes:
                 | _GEN_VERBOSE - Console text indicator for process-phase.
-                | __check_status - check status.
             :methods:
                 | __init__ - Initials WriteTemplate constructor.
-                | get_check_status - get check status.
                 | write - write a template content with parameters to a file.
     '''
 

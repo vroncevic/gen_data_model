@@ -29,7 +29,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.2'
+__version__ = '2.3.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -62,7 +62,7 @@ PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS + APPROVED_LICENSES
 
 setup(
     name='gen_data_model',
-    version='2.3.2',
+    version='2.3.3',
     description='Python App/Tool/Script Utilities',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
@@ -77,6 +77,7 @@ setup(
     install_requires=['ats-utilities'],
     package_data={
         'gen_data_model': [
+            'py.typed',
             f'{CONF}/gen_data_model.logo',
             f'{CONF}/gen_data_model.cfg',
             f'{CONF}/gen_data_model_util.cfg',

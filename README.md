@@ -1,6 +1,6 @@
-<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_logo.png" width="25%">
-
 # Generate Data Model (Django/Flask/SQLAlchemy)
+
+<img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_logo.png" width="25%">
 
 **gen_data_model** is tool generator of data model for
 
@@ -88,11 +88,6 @@ To install **gen_data_model** locate and run setup.py
 ```bash
 tar xvzf gen_data_model-x.y.z.tar.gz
 cd gen_data_model-x.y.z
-#python2
-pip install -r requirements.txt
-python setup.py install_lib
-python setup.py install_egg_info
-python setup.py install_data
 #python3
 pip3 install -r requirements.txt
 python3 setup.py install_lib
