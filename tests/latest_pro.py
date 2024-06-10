@@ -4,7 +4,7 @@
 Module
     latest_pro.py
 Copyright
-    Copyright (C) 2023 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
     latest_pro is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -30,7 +30,7 @@ except ImportError as error:
     sys.exit(f'\n{__file__}\n{error}\n')
 
 __author__ = 'Vladimir Roncevic'
-__copyright__ = '(C) 2023, Free software to use and distributed it.'
+__copyright__ = '(C) 2024, Free software to use and distributed it.'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'GNU General Public License (GPL)'
 __version__ = '1.0.0'

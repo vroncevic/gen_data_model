@@ -34,7 +34,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.2'
+__version__ = '2.3.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -66,7 +66,6 @@ class ReadTemplate:
             :type verbose: <bool>
             :excptions: None
         '''
-        super().__init__()
         verbose_message(verbose, [f'{self._GEN_VERBOSE.lower()} init reader'])
 
     def read(

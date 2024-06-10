@@ -42,7 +42,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.2'
+__version__ = '2.3.3'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -74,8 +74,6 @@ class GenModel(FileCheck, ProConfig, ProName):
         '''
             Initial constructor.
 
-            :param model_name: data model name.
-            :type model_name: <str>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :exceptions: None
@@ -146,21 +144,21 @@ class GenModel(FileCheck, ProConfig, ProName):
         status: bool = False
         verbose_message(
             verbose, [
-                f'{self._GEN_VERBOSE}',
+                f'{self._GEN_VERBOSE.lower()}',
                 'generate', model_type, 'model', model_name
             ]
         )
         base_content: str | None = None
         model_content: str | None = None
-        if bool(self._reader):
+        if bool(self._reader) and bool(self._writer):
             base_content, model_content = self._reader.read(
                 model_type, verbose
             )
-        if all([bool(base_content), bool(model_content), bool(self._writer)]):
-            model_generated: list[bool] = [
-                self._writer.write(base_content, 'base', verbose),
-                self._writer.write(model_content, model_name, verbose)
-            ]
-            if all([bool(model_generated), all(model_generated)]):
-                status = True
+            if all([bool(base_content), bool(model_content)]):
+                model_generated: list[bool] = [
+                    self._writer.write(base_content, 'base', verbose),
+                    self._writer.write(model_content, model_name, verbose)
+                ]
+                if all([bool(model_generated), all(model_generated)]):
+                    status = True
         return status
