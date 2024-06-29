@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# @brief   armpicom
+# @brief   gen_data_model
 # @version v1.0.1
 # @date    Sat Aug 11 09:58:41 2022
 # @company None, free software to use 2022
