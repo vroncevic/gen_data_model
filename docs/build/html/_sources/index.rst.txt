@@ -86,29 +86,30 @@ Generator structure
 .. code-block:: bash
 
     gen_data_model/
-        ├── conf/
-        │   ├── gen_data_model.cfg
-        │   ├── gen_data_model.logo
-        │   ├── gen_data_model_util.cfg
-        │   ├── model_types.yaml
-        │   └── template/
-        │       ├── django_base_model.template
-        │       ├── django.template
-        │       ├── flask_base_model.template
-        │       ├── flask.template
-        │       ├── sqlalchemy_base_model.template
-        │       └── sqlalchemy.template
-        ├── __init__.py
-        ├── log/
-        │   └── gen_data_model.log
-        ├── pro/
-        │   ├── __init__.py
-        │   ├── read_template.py
-        │   └── write_template.py
-        └── run/
-            └── gen_data_model_run.py
-        
-        6 directories, 16 files
+          ├── conf/
+          │   ├── gen_data_model.cfg
+          │   ├── gen_data_model.logo
+          │   ├── gen_data_model_util.cfg
+          │   ├── model_types.yaml
+          │   └── template/
+          │       ├── django_base_model.template
+          │       ├── django.template
+          │       ├── flask_base_model.template
+          │       ├── flask.template
+          │       ├── sqlalchemy_base_model.template
+          │       └── sqlalchemy.template
+          ├── __init__.py
+          ├── log/
+          │   └── gen_data_model.log
+          ├── pro/
+          │   ├── __init__.py
+          │   ├── read_template.py
+          │   └── write_template.py
+          ├── py.typed
+          └── run/
+              └── gen_data_model_run.py
+    
+    6 directories, 17 files
 
 Copyright and licence
 ----------------------

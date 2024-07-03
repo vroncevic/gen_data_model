@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 from os.path import dirname, realpath, exists
 
 try:
@@ -34,7 +34,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.4'
+__version__ = '2.3.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -70,22 +70,22 @@ class ReadTemplate:
 
     def read(
         self,
-        model_type: str | None,
+        model_type: Optional[str],
         verbose: bool = False
-    ) -> Tuple[str | None, str | None]:
+    ) -> Tuple[Optional[str], Optional[str]]:
         '''
             Reads a template.
 
             :param model_type: Model type | None
-            :type model_type: <str> | <NoneType>
+            :type model_type: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: Models (base data model | None, data model | None)
-            :rtype: <str> <str> | <NoneType> <NoneType>
+            :rtype: <str> <Optional[str]> <NoneType>
             :excptions: None
         '''
-        model_base_content: str | None = None
-        model_content: str | None = None
+        model_base_content: Optional[str] = None
+        model_content: Optional[str] = None
         current_dir: str = dirname(realpath(__file__))
         pro_structure: str = f'{current_dir}{self._TEMPLATE_DIR}'
         base_model: str = f'{pro_structure}{model_type}_base_model.template'

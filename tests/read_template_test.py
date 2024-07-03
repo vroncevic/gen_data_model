@@ -23,7 +23,7 @@ Execute
 '''
 
 import sys
-from typing import List
+from typing import List, Optional
 from unittest import TestCase, main
 
 try:
@@ -36,7 +36,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.4'
+__version__ = '2.3.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -75,18 +75,24 @@ class ReadTemplateTestCase(TestCase):
     def test_read_template_empty(self) -> None:
         '''Test read templates empty'''
         template = ReadTemplate()
+        base_module: Optional[str]
+        module: Optional[str]
         base_module, module = template.read('')
         self.assertTrue(all([not bool(base_module), not bool(module)]))
 
     def test_read_template_none(self) -> None:
         '''Test read templates None'''
         template = ReadTemplate()
+        base_module: Optional[str]
+        module: Optional[str]
         base_module, module = template.read(None)
         self.assertTrue(all([not bool(base_module), not bool(module)]))
 
     def test_read_template(self) -> None:
         '''Test read templates'''
         template = ReadTemplate()
+        base_module: Optional[str]
+        module: Optional[str]
         base_module, module = template.read('django')
         self.assertTrue(all([bool(base_module), bool(module)]))
 
