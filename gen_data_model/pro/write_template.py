@@ -21,7 +21,7 @@ Info
 '''
 
 import sys
-from typing import List, Dict
+from typing import List, Dict, Optional
 from datetime import date
 from os import getcwd, chmod
 from string import Template
@@ -39,7 +39,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.4'
+__version__ = '2.3.5'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -74,25 +74,25 @@ class WriteTemplate(FileCheck):
 
     def write(
         self,
-        model_content: str | None,
-        model_name: str | None,
+        model_content: Optional[str],
+        model_name: Optional[str],
         verbose: bool = False
     ) -> bool:
         '''
             Write a template content with parameters to a file.
 
             :param model_content: Content for model | None
-            :type model_content: <str> | <NoneType>
+            :type model_content: <Optional[str]>
             :param model_name: Model name | None
-            :type model_name: <str> | <NoneType>
+            :type model_name: <Optional[str]>
             :param verbose: Enable/Disable verbose option
             :type verbose: <bool>
             :return: True (success operation) | False
             :rtype: <bool>
             :excptions: ATSTypeError | ATSValueError
         '''
-        error_msg: str | None = None
-        error_id: int | None = None
+        error_msg: Optional[str] = None
+        error_id: Optional[int] = None
         error_msg, error_id = self.check_params([
             ('str:model_content', model_content),
             ('str:model_name', model_name)
@@ -107,6 +107,7 @@ class WriteTemplate(FileCheck):
         verbose_message(
             verbose, [f'{self._GEN_VERBOSE.lower()} writer template']
         )
+        module_file: str
         if model_name == 'base':
             module_file = f'{getcwd()}/model_{model_name}.py'
         else:
@@ -118,7 +119,7 @@ class WriteTemplate(FileCheck):
             'YEAR': f'{date.today().year}'
         }
         template: Template = Template(model_content)
-        if all([bool(template), bool(model_params)]):
+        if bool(template) and bool(model_params):
             with open(module_file, 'w', encoding='utf-8') as model_file:
                 verbose_message(
                     verbose, [
