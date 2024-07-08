@@ -155,8 +155,8 @@ class GenDataModel(ATSCli):
                         ])
                     )
                     status = gen.gen_model(
-                        f'{getattr(args, 'name')}',
-                        f'{getattr(args, 'type')}',
+                        f'{getattr(args, "name")}',
+                        f'{getattr(args, "type")}',
                         getattr(args, 'verbose') or verbose
                     )
                 except (ATSTypeError, ATSValueError) as e:
