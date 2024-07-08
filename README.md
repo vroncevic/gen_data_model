@@ -139,6 +139,16 @@ Generator structure
     6 directories, 17 files
 ```
 
+### Code coverage
+
+| Name | Stmts | Miss | Cover |
+|------|-------|------|-------|
+| `gen_data_model/__init__.py` | 75 | 14 | 81% |
+| `gen_data_model/pro/__init__.py` | 66 | 2 | 97% |
+| `gen_data_model/pro/read_template.py` | 34 | 2 | 94% |
+| `gen_data_model/pro/write_template.py` | 53 | 2 | 96% |
+| **Total** | 228 | 20 | 91% |
+
 ### Docs
 
 [![Documentation Status](https://readthedocs.org/projects/gen_data_model/badge/?version=latest)](https://gen-data-model.readthedocs.io/projects/gen_data_model/en/latest/?badge=latest)
