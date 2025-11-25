@@ -1,4 +1,4 @@
-# Copyright 2017 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+# Copyright 2017 - 2026 Vladimir Roncevic <elektron.ronca@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ RUN rm -f get-pip.py
 RUN mkdir /gen_data_model/
 RUN mkdir /tests/
 COPY gen_data_model /gen_data_model/
-COPY setup.cfg /
 COPY pyproject.toml /
 COPY MANIFEST.in /
 COPY setup.py /
@@ -53,7 +52,6 @@ RUN python3 -m build --no-isolation --wheel
 RUN pip3 install /dist/gen_data_model-*-py3-none-any.whl
 RUN rm -rf /gen_data_model/
 RUN rm -rf dist/ tests/
-RUN rm -f setup.cfg
 RUN rm -f pyproject.toml
 RUN rm -f MANIFEST.in
 RUN rm -f setup.py
