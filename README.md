@@ -27,6 +27,7 @@ other information that should be provided before the modules are installed.
     - [Install using docker](#install-using-docker)
 - [Dependencies](#dependencies)
 - [Tool structure](#tool-structure)
+- [Code coverage](#code-coverage)
 - [Docs](#docs)
 - [Contributing](#contributing)
 - [Copyright and licence](#copyright-and-licence)
@@ -143,11 +144,11 @@ Generator structure
 
 | Name | Stmts | Miss | Cover |
 |------|-------|------|-------|
-| `gen_data_model/__init__.py` | 75 | 14 | 81% |
-| `gen_data_model/pro/__init__.py` | 66 | 2 | 97% |
-| `gen_data_model/pro/read_template.py` | 34 | 2 | 94% |
-| `gen_data_model/pro/write_template.py` | 53 | 2 | 96% |
-| **Total** | 228 | 20 | 91% |
+| `gen_data_model/__init__.py` | 73 | 12 | 84%|
+| `gen_data_model/pro/__init__.py` | 64 | 0 | 100%|
+| `gen_data_model/pro/read_template.py` | 32 | 0 | 100%|
+| `gen_data_model/pro/write_template.py` | 51 | 0 | 100%|
+| **Total** | 220 | 12 | 95% |
 
 ### Docs
 
@@ -166,7 +167,7 @@ More documentation and info at
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Copyright (C) 2017 - 2024 by [vroncevic.github.io/gen_data_model](https://vroncevic.github.io/gen_data_model/)
+Copyright (C) 2017 - 2026 by [vroncevic.github.io/gen_data_model](https://vroncevic.github.io/gen_data_model/)
 
 **gen_data_model** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,

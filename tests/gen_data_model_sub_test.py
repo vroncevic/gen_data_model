@@ -4,7 +4,7 @@
 Module
     gen_data_model_sub_test.py
 Copyright
-    Copyright (C) 2017 - 2024 Vladimir Roncevic <elektron.ronca@gmail.com>
+    Copyright (C) 2017 - 2026 Vladimir Roncevic <elektron.ronca@gmail.com>
     gen_data_model is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
     Free Software Foundation, either version 3 of the License, or
@@ -34,14 +34,14 @@ except ImportError as test_error_message:
     # Force close python test #################################################
     sys.exit(f'\n{__file__}\n{test_error_message}\n')
 
-__author__ = 'Vladimir Roncevic'
-__copyright__ = '(C) 2024, https://vroncevic.github.io/gen_data_model'
+__author__: str = 'Vladimir Roncevic'
+__copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_data_model'
 __credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
-__license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.6'
-__maintainer__ = 'Vladimir Roncevic'
-__email__ = 'elektron.ronca@gmail.com'
-__status__ = 'Updated'
+__license__: str = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
+__version__: str = '2.3.7'
+__maintainer__: str = 'Vladimir Roncevic'
+__email__: str = 'elektron.ronca@gmail.com'
+__status__: str = 'Updated'
 
 
 class GenModelTestCase(TestCase):
@@ -102,13 +102,13 @@ class GenModelTestCase(TestCase):
         '''Create project with missing type'''
         generator: GenModel = GenModel()
         with self.assertRaises(ATSValueError):
-            generator.gen_model('full_simepl_new', '')
+            generator.gen_model('full_simple_new', '')
 
     def test_gen_type_none(self) -> None:
         '''Create project with None type'''
         generator: GenModel = GenModel()
         with self.assertRaises(ATSTypeError):
-            generator.gen_model('full_simepl_new', None)
+            generator.gen_model('full_simple_new', None)
 
     def test_gen_project(self) -> None:
         '''Create project'''
