@@ -1,5 +1,5 @@
 Generate Data Model (Django/Flask/SQLAlchemy)
----------------------------------------------
+-----------------------------------------------
 
 **gen_data_model** is tool generator of form model for
 
@@ -13,13 +13,22 @@ The README is used to introduce the modules and provide instructions on
 how to install the modules, any machine dependencies it may have and any
 other information that should be provided before the modules are installed.
 
-|gen_data_model python checker| |gen_data_model python package| |github issues| |documentation status| |github contributors|
+|gen_data_model python checker| |gen_data_model python package| |gen_data_model interface checker| |gen_data_model isp checker| |gen_data_model srp checker| |github issues| |documentation status| |github contributors|
 
 .. |gen_data_model python checker| image:: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_python_checker.yml
 
 .. |gen_data_model python package| image:: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package_checker.yml/badge.svg
    :target: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_package.yml
+
+.. |gen_data_model interface checker| image:: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_interface_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_interface_checker.yml
+
+.. |gen_data_model isp checker| image:: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_isp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_isp_checker.yml
+
+.. |gen_data_model srp checker| image:: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_srp_checker.yml/badge.svg
+   :target: https://github.com/vroncevic/gen_data_model/actions/workflows/gen_data_model_srp_checker.yml
 
 .. |github issues| image:: https://img.shields.io/github/issues/vroncevic/gen_data_model.svg
    :target: https://github.com/vroncevic/gen_data_model/issues
@@ -37,8 +46,8 @@ other information that should be provided before the modules are installed.
    self
    modules
 
-Installation
--------------
+🚀 Installation
+------------------
 
 |gen_data_model python3 build|
 
@@ -69,15 +78,15 @@ You can use Docker to create image/container, or You can use pip to install
     pip3 install gen_data_model
 
 
-Dependencies
--------------
+📦 Dependencies
+------------------
 
 **gen_data_model** requires next modules and libraries
 
 * `ats-utilities - Python App/Tool/Script Utilities <https://pypi.org/project/ats-utilities/>`_
 
-Tool structure
----------------
+📁 Tool structure
+--------------------
 
 **gen_data_model** is based on OOP
 
@@ -86,33 +95,117 @@ Generator structure
 .. code-block:: bash
 
     gen_data_model/
-          ├── conf/
-          │   ├── gen_data_model.cfg
-          │   ├── gen_data_model.logo
-          │   ├── gen_data_model_util.cfg
-          │   ├── model_types.yaml
-          │   └── template/
-          │       ├── django_base_model.template
-          │       ├── django.template
-          │       ├── flask_base_model.template
-          │       ├── flask.template
-          │       ├── sqlalchemy_base_model.template
-          │       └── sqlalchemy.template
-          ├── __init__.py
-          ├── log/
-          │   └── gen_data_model.log
-          ├── pro/
-          │   ├── __init__.py
-          │   ├── read_template.py
-          │   └── write_template.py
-          ├── py.typed
-          └── run/
-              └── gen_data_model_run.py
-    
-    6 directories, 17 files
+         ├── core/
+         │   ├── __init__.py
+         │   ├── model/
+         │   │   ├── __init__.py
+         │   │   └── model_setup.py
+         │   └── service/
+         │       ├── engine.py
+         │       ├── __init__.py
+         │       ├── iservice.py
+         │       └── isubprocessor.py
+         ├── engine.py
+         ├── infrastructure/
+         │   ├── cli/
+         │   │   ├── engine.py
+         │   │   ├── icli.py
+         │   │   ├── __init__.py
+         │   │   └── setup/
+         │   │       ├── bundle.py
+         │   │       ├── dep_validator.py
+         │   │       ├── dependencies.py
+         │   │       ├── factory.py
+         │   │       ├── __init__.py
+         │   │       ├── keys.py
+         │   │       ├── opt_validator.py
+         │   │       ├── options.py
+         │   │       ├── registry.py
+         │   │       └── validator.py
+         │   ├── command/
+         │   │   ├── command.py
+         │   │   ├── gen_model_command_definition.py
+         │   │   ├── gen_model_command_executor.py
+         │   │   ├── icommand_definition.py
+         │   │   ├── icommand_executor.py
+         │   │   └── __init__.py
+         │   ├── config/
+         │   │   ├── gen_data_model.cfg
+         │   │   ├── gen_data_model.logo
+         │   │   ├── scheme.json
+         │   │   └── templates.tgz
+         │   ├── __init__.py
+         │   └── subprocessor.py
+         ├── __init__.py
+         ├── py.typed
+         └── setup/
+             ├── bundle.py
+             ├── dep_validator.py
+             ├── dependencies.py
+             ├── factory.py
+             ├── __init__.py
+             ├── keys.py
+             ├── opt_validator.py
+             ├── options.py
+             ├── registry.py
+             └── validator.py
 
-Copyright and licence
-----------------------
+     10 directories, 45 files
+
+✨ Features
+--------------
+
+* Automatically generates data models skeletons (Django, Flask, SQLAlchemy).
+* Provides a modular and extensible architecture based on OOP and SOLID principles.
+* Includes command line interface (CLI) support via a command/executor structure.
+* Robust validation of project bundles, dependencies, and options.
+* Comes with configurable templates and JSON schema definitions.
+* High code quality with full type checking and 100% unit test coverage.
+
+📊 Code coverage
+-------------------
+
+.. csv-table:: Code coverage
+   :file: coverage_table.csv
+   :widths: 60, 10, 10, 20
+   :header-rows: 1
+
+🛠 Usage
+-----------
+
+Install package
+
+.. code-block:: bash
+
+    pip3 install gen_data_model
+
+Prepare main entry point by downloading `main.py` or create your own.
+
+.. code-block:: bash
+
+    wget -O main.py https://raw.githubusercontent.com/vroncevic/gen_data_model/main/main.py
+
+Running tool for creating new data model skeleton files
+
+.. code-block:: bash
+
+    python3 main.py create --name mytool --type django --output ./demo/
+
+📚 Docs
+----------
+
+More documentation and info at
+
+* `gen-data-model.readthedocs.io <https://gen-data-model.readthedocs.io>`_
+* `www.python.org <https://www.python.org/>`_
+
+👥 Contributing
+-----------------
+
+`Contributing to gen_data_model <https://github.com/vroncevic/gen_data_model/blob/dev/CONTRIBUTING.md>`_
+
+📄 Copyright and licence
+-------------------------
 
 |license: gpl v3| |license: apache 2.0|
 
@@ -122,7 +215,7 @@ Copyright and licence
 .. |license: apache 2.0| image:: https://img.shields.io/badge/License-Apache%202.0-blue.svg
    :target: https://opensource.org/licenses/Apache-2.0
 
-Copyright (C) 2017 - 2024 by `vroncevic.github.io/gen_data_model <https://vroncevic.github.io/gen_data_model>`_
+Copyright (C) 2017 - 2026 by `vroncevic.github.io/gen_data_model <https://vroncevic.github.io/gen_data_model>`_
 
 **gen_data_model** is free software; you can redistribute it and/or modify
 it under the same terms as Python itself, either Python version 3.x or,

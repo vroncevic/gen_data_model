@@ -7,7 +7,17 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   gen_data_model.pro
+   gen_data_model.core
+   gen_data_model.infrastructure
+   gen_data_model.setup
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   gen_data_model.engine
 
 Module contents
 ---------------

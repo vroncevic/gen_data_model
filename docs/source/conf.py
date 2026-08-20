@@ -19,40 +19,40 @@ Info
     Defines properties for sphinx-doc.
 '''
 
-import os
-import sys
+from __future__ import annotations
 
-from typing import Any, List, Dict, Tuple
+from os.path import abspath
+from sys import path
 
-sys.path.insert(0, os.path.abspath('../../'))
+path.insert(0, abspath('../../'))
 
 project: str = 'gen_data_model'
 project_copyright: str = '2026, Vladimir Roncevic <elektron.ronca@gmail.com>'
 author: str = 'Vladimir Roncevic <elektron.ronca@gmail.com>'
 version: str = '2.3.7'
 release: str = 'https://github.com/vroncevic/gen_data_model/releases'
-extensions: List[str] = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
-templates_path: List[str] = ['_templates']
+extensions: list[str] = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+templates_path: list[str] = ['_templates']
 source_suffix: str = '.rst'
-master_doc: str = 'index'
+root_doc: str = 'index'
 language: str = 'en'
-exclude_patterns: List[str] = []
+exclude_patterns: list[str] = []
 pygments_style: str = 'sphinx'
 html_theme: str = 'classic'
-html_static_path: List[str] = ['_static']
+html_static_path: list[str] = ['_static']
 htmlhelp_basename: str = 'gen_data_modeldoc'
-latex_elements: Dict[Any, Any] = {}
-latex_documents: List[Tuple[Any, ...]] = [(
-    master_doc, 'gen_data_model.tex', 'gen_data_model Documentation',
+latex_elements: dict[object, object] = {}
+latex_documents: list[tuple[object, ...]] = [(
+    root_doc, 'gen_data_model.tex', 'gen_data_model Documentation',
     'Vladimir Roncevic \\textless{}elektron.ronca@gmail.com\\textgreater{}',
     'manual'
 )]
-man_pages: List[Tuple[Any, ...]] = [(
-    master_doc, 'gen_data_model', 'gen_data_model Documentation', [author], 1
+man_pages: list[tuple[object, ...]] = [(
+    root_doc, 'gen_data_model', 'gen_data_model Documentation', [author], 1
 )]
-texinfo_documents: List[Tuple[Any, ...]] = [(
-    master_doc, 'gen_data_model', 'gen_data_model Documentation', author,
+texinfo_documents: list[tuple[object, ...]] = [(
+    root_doc, 'gen_data_model', 'gen_data_model Documentation', author,
     'gen_data_model', 'One line description of project.', 'Miscellaneous'
 )]
 epub_title: str = project
-epub_exclude_files: List[str] = ['search.html']
+epub_exclude_files: list[str] = ['search.html']

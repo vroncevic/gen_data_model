@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
 '''
@@ -20,68 +19,69 @@ Info
     Defines setup for tool gen_data_model.
 '''
 
-from __future__ import print_function
-from typing import List, Optional
-from os.path import abspath, dirname, join
-from setuptools import setup
+from __future__ import annotations
 
-__author__: str = 'Vladimir Roncevic'
-__copyright__: str = '(C) 2026, https://vroncevic.github.io/gen_data_model'
-__credits__: List[str] = ['Vladimir Roncevic', 'Python Software Foundation']
-__license__: str = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__: str = '2.3.7'
-__maintainer__: str = 'Vladimir Roncevic'
-__email__: str = 'elektron.ronca@gmail.com'
-__status__: str = 'Updated'
+from os import walk
+from os.path import abspath, dirname, join, relpath
+from setuptools import setup, find_packages
 
-TOOL_DIR: str = 'gen_data_model/'
-CONF: str = 'conf'
-TEMPLATE: str = 'conf/template'
-LOG: str = 'log'
+__author__ = 'Vladimir Roncevic'
+__copyright__ = '(C) 2026, https://vroncevic.github.io/gen_data_model'
+__credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
+__license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
+__version__ = '2.3.7'
+__maintainer__ = 'Vladimir Roncevic'
+__email__ = 'elektron.ronca@gmail.com'
+__status__ = 'Updated'
+
 THIS_DIR: str = abspath(dirname(__file__))
-long_description: Optional[str] = None
+long_description: str | None = None
+
 with open(join(THIS_DIR, 'README.md'), encoding='utf-8') as readme:
     long_description = readme.read()
+
 PROGRAMMING_LANG: str = 'Programming Language :: Python ::'
-VERSIONS: List[str] = ['3.10', '3.11', '3.12']
-SUPPORTED_PY_VERSIONS: List[str] = [
-    f'{PROGRAMMING_LANG} {VERSION}' for VERSION in VERSIONS
-]
-PYP_CLASSIFIERS: List[str] = SUPPORTED_PY_VERSIONS
+VERSIONS: list[str] = ['3.12', '3.13', '3.14']
+SUPPORTED_PY_VERSIONS: list[str] = [f'{PROGRAMMING_LANG} {VERSION}' for VERSION in VERSIONS]
+PYP_CLASSIFIERS: list[str] = SUPPORTED_PY_VERSIONS
+
+def find_package_data(pkg: str) -> list[str]:
+    '''
+        Finds all files in package to include in package_data.
+
+        :param pkg: The package folder name.
+        :return: The list of package files relative to the package folder.
+        :exceptions: None.
+    '''
+    package_data: list[str] = []
+
+    for root, dirs, files in walk(pkg):
+        dirs[:] = [d for d in dirs if d != '__pycache__']
+
+        for file in files:
+            if file.endswith('.pyc') or file == '.editorconfig':
+                continue
+
+            full_path: str = join(root, file)
+            rel_path: str = relpath(full_path, pkg)
+            package_data.append(rel_path)
+
+    return package_data
+
 setup(
     name='gen_data_model',
     version='2.3.7',
-    description='Python App/Tool/Script Utilities',
+    description='Python package for generation of data model',
     author='Vladimir Roncevic',
     author_email='elektron.ronca@gmail.com',
-    url='https://vroncevic.github.io/gen_data_model/',
+    url='https://vroncevic.github.io/gen_data_model',
     license='GPL-3.0-or-later',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    keywords='data model, django, flask, sqlalchemy',
+    keywords='setup, python, install, django, flask, sqlalchemy, generator',
     platforms='POSIX',
     classifiers=PYP_CLASSIFIERS,
-    packages=['gen_data_model', 'gen_data_model.pro'],
+    packages=find_packages(exclude=['tests', 'tests.*', '*.*.pyc', '*.pyo']),
     install_requires=['ats-utilities'],
-    package_data={
-        'gen_data_model': [
-            'py.typed',
-            f'{CONF}/gen_data_model.logo',
-            f'{CONF}/gen_data_model.cfg',
-            f'{CONF}/gen_data_model_util.cfg',
-            f'{CONF}/model_types.yaml',
-            f'{TEMPLATE}/django.template',
-            f'{TEMPLATE}/flask.template',
-            f'{TEMPLATE}/sqlalchemy.template',
-            f'{TEMPLATE}/django_base_model.template',
-            f'{TEMPLATE}/flask_base_model.template',
-            f'{TEMPLATE}/sqlalchemy_base_model.template',
-            f'{LOG}/gen_data_model.log'
-        ]
-    },
-    data_files=[(
-        '/usr/local/bin/', [
-            f'{TOOL_DIR}run/gen_data_model_run.py'
-        ]
-    )]
+    package_data={'gen_data_model': find_package_data('gen_data_model')}
 )

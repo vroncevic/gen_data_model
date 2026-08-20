@@ -5,3 +5,4 @@ gen_data_model
    :maxdepth: 4
 
    gen_data_model
+   main
