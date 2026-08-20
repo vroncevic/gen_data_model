@@ -1,0 +1,29 @@
+name: gen_data_model_interface_checker
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'gen_data_model/**/*.py'
+      - 'setup.py'
+  pull_request:
+    branches: [ master, main ]
+    paths:
+      - 'gen_data_model/**/*.py'
+      - 'setup.py'
+
+jobs:
+  interface_gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Verify that each concrete class implements a valid interface
+        run: |
+          python3 gates/gates/interfaces_checker.py gen_data_model
