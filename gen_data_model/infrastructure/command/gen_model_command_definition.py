@@ -30,7 +30,7 @@ __author__ = 'Vladimir Roncevic'
 __copyright__ = '(C) 2026, https://vroncevic.github.io/gen_data_model'
 __credits__ = ['Vladimir Roncevic', 'Python Software Foundation']
 __license__ = 'https://github.com/vroncevic/gen_data_model/blob/dev/LICENSE'
-__version__ = '2.3.8'
+__version__ = '2.3.9'
 __maintainer__ = 'Vladimir Roncevic'
 __email__ = 'elektron.ronca@gmail.com'
 __status__ = 'Updated'
@@ -86,11 +86,11 @@ class GenModelCommandDefinition:
             ),
             OptionData(
                 name="--type",
-                help_text="model type (django | flask | sqlalchemy)",
+                help_text="model type (django | flask | sqlalchemy | pydantic | dataclass | sqlmodel)",
                 action=None,
                 default=None,
                 required=True,
-                choices=["django", "flask", "sqlalchemy"],
+                choices=["django", "flask", "sqlalchemy", "pydantic", "dataclass", "sqlmodel"],
                 nargs=None
             ),
             OptionData(

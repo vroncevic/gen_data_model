@@ -72,5 +72,5 @@ class TestGenDataModelBundleRegistry(unittest.TestCase):
             GenDataModelBundleRegistry.create_bundle(None)
 
     def test_get_version(self) -> None:
-        self.assertEqual(GenDataModelBundleRegistry.get_version(), '2.3.8')
+        self.assertEqual(GenDataModelBundleRegistry.get_version(), '2.3.9')
 

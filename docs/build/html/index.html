@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Generate Data Model (Django/Flask/SQLAlchemy) &#8212; gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</title>
+    <title>Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel) &#8212; gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css?v=514cf933" />
     
@@ -30,7 +30,7 @@
           <a href="modules.html" title="gen_data_model"
              accesskey="N">next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Generate Data Model (Django/Flask/SQLAlchemy)</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel)</a></li> 
       </ul>
     </div>  
 
@@ -39,13 +39,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="generate-data-model-django-flask-sqlalchemy">
-<h1>Generate Data Model (Django/Flask/SQLAlchemy)<a class="headerlink" href="#generate-data-model-django-flask-sqlalchemy" title="Link to this heading">¶</a></h1>
+  <section id="generate-data-model-django-flask-sqlalchemy-pydantic-dataclass-sqlmodel">
+<h1>Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel)<a class="headerlink" href="#generate-data-model-django-flask-sqlalchemy-pydantic-dataclass-sqlmodel" title="Link to this heading">¶</a></h1>
 <p><strong>gen_data_model</strong> is tool generator of form model for</p>
 <ul class="simple">
 <li><p>Django FWK</p></li>
 <li><p>Flask FWK</p></li>
 <li><p>SQLAlchemy</p></li>
+<li><p>Pydantic V2</p></li>
+<li><p>Python Dataclass</p></li>
+<li><p>SQLModel FWK</p></li>
 </ul>
 <p>Developed in <a class="reference external" href="https://www.python.org/">python</a> code.</p>
 <p>The README is used to introduce the modules and provide instructions on
@@ -55,7 +58,7 @@ other information that should be provided before the modules are installed.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Generate Data Model (Django/Flask/SQLAlchemy)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">gen_data_model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gen_data_model.html">gen_data_model package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gen_data_model.html#subpackages">Subpackages</a><ul>
@@ -174,7 +177,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_data_model
 <section id="features">
 <h1>✨ Features<a class="headerlink" href="#features" title="Link to this heading">¶</a></h1>
 <ul class="simple">
-<li><p>Automatically generates data models skeletons (Django, Flask, SQLAlchemy).</p></li>
+<li><p>Automatically generates data models skeletons (Django, Flask, SQLAlchemy, Pydantic, Dataclass, SQLModel).</p></li>
 <li><p>Provides a modular and extensible architecture based on OOP and SOLID principles.</p></li>
 <li><p>Includes command line interface (CLI) support via a command/executor structure.</p></li>
 <li><p>Robust validation of project bundles, dependencies, and options.</p></li>
@@ -371,7 +374,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_data_model
 <td><p>100%</p></td>
 </tr>
 <tr class="row-even"><td><p>gen_data_model/setup/factory.py</p></td>
-<td><p>48</p></td>
+<td><p>49</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -401,7 +404,7 @@ pip3<span class="w"> </span>install<span class="w"> </span>gen_data_model
 <td><p>100%</p></td>
 </tr>
 <tr class="row-even"><td><p>Total</p></td>
-<td><p>945</p></td>
+<td><p>946</p></td>
 <td><p>0</p></td>
 <td><p>100%</p></td>
 </tr>
@@ -465,7 +468,7 @@ at your option, any later version of Python 3 you may have available.</p>
   <div>
     <h3><a href="#">Table of Contents</a></h3>
     <ul>
-<li><a class="reference internal" href="#">Generate Data Model (Django/Flask/SQLAlchemy)</a></li>
+<li><a class="reference internal" href="#">Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel)</a></li>
 <li><a class="reference internal" href="#installation">🚀 Installation</a></li>
 <li><a class="reference internal" href="#dependencies">📦 Dependencies</a></li>
 <li><a class="reference internal" href="#tool-structure">📁 Tool structure</a></li>
@@ -518,7 +521,7 @@ at your option, any later version of Python 3 you may have available.</p>
           <a href="modules.html" title="gen_data_model"
              >next</a> |</li>
         <li class="nav-item nav-item-0"><a href="#">gen_data_model https://github.com/vroncevic/gen_data_model/releases documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Generate Data Model (Django/Flask/SQLAlchemy)</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel)</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

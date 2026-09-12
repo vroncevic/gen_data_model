@@ -1,4 +1,4 @@
-# Generate Data Model (Django/Flask/SQLAlchemy)
+# Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel)
 
 <img align="right" src="https://raw.githubusercontent.com/vroncevic/gen_data_model/dev/docs/gen_data_model_logo.png" width="25%">
 
@@ -7,6 +7,9 @@
 * Django FWK
 * Flask FWK
 * SQLAlchemy FWK
+* Pydantic V2
+* Python Dataclass
+* SQLModel FWK
 
 Developed in **[python](https://www.python.org/)** code.
 
@@ -215,13 +218,13 @@ Tool structure
 | `gen_data_model/setup/bundle.py` | 23 | 0 | 100%|
 | `gen_data_model/setup/dep_validator.py` | 36 | 0 | 100%|
 | `gen_data_model/setup/dependencies.py` | 19 | 0 | 100%|
-| `gen_data_model/setup/factory.py` | 48 | 0 | 100%|
+| `gen_data_model/setup/factory.py` | 49 | 0 | 100%|
 | `gen_data_model/setup/keys.py` | 27 | 0 | 100%|
 | `gen_data_model/setup/opt_validator.py` | 34 | 0 | 100%|
 | `gen_data_model/setup/options.py` | 12 | 0 | 100%|
 | `gen_data_model/setup/registry.py` | 32 | 0 | 100%|
 | `gen_data_model/setup/validator.py` | 48 | 0 | 100%|
-| **Total** | 945 | 0 | 100% |
+| **Total** | 946 | 0 | 100% |
 
 </details>
 

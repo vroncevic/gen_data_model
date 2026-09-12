@@ -1,11 +1,14 @@
-Generate Data Model (Django/Flask/SQLAlchemy)
------------------------------------------------
+Generate Data Model (Django/Flask/SQLAlchemy/Pydantic/Dataclass/SQLModel)
+-------------------------------------------------------------------------
 
 **gen_data_model** is tool generator of form model for
 
 * Django FWK
 * Flask FWK
 * SQLAlchemy
+* Pydantic V2
+* Python Dataclass
+* SQLModel FWK
 
 Developed in `python <https://www.python.org/>`_ code.
 
@@ -155,7 +158,7 @@ Generator structure
 ✨ Features
 --------------
 
-* Automatically generates data models skeletons (Django, Flask, SQLAlchemy).
+* Automatically generates data models skeletons (Django, Flask, SQLAlchemy, Pydantic, Dataclass, SQLModel).
 * Provides a modular and extensible architecture based on OOP and SOLID principles.
 * Includes command line interface (CLI) support via a command/executor structure.
 * Robust validation of project bundles, dependencies, and options.
