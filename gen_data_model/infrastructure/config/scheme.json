@@ -1,0 +1,69 @@
+{
+    "django": {
+        "source_dir": "django_templates",
+        "path_replacements": {
+            "core_model": "model_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "flask": {
+        "source_dir": "flask_templates",
+        "path_replacements": {
+            "core_model": "model_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "sqlalchemy": {
+        "source_dir": "sqlalchemy_templates",
+        "path_replacements": {
+            "core_model": "model_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "pydantic": {
+        "source_dir": "pydantic_templates",
+        "path_replacements": {
+            "core_model": "model_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "dataclass": {
+        "source_dir": "dataclass_templates",
+        "path_replacements": {
+            "core_model": "model_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    },
+    "sqlmodel": {
+        "source_dir": "sqlmodel_templates",
+        "path_replacements": {
+            "core_model": "model_name"
+        },
+        "exclude": [
+            "**/.coverage",
+            "**/.vscode/**",
+            "**/.git/**"
+        ]
+    }
+}
+

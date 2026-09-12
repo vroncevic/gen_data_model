@@ -5,7 +5,10 @@ __pycache__/
 # Reports
 *.report
 *.xml
-*.json
+*report*.json
+*coverage*.json
+/*.json
+
 .coverage
 htmlcov/
 .coverage.gen_data_model
